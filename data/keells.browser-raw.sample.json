@@ -1,0 +1,29 @@
+[
+  {
+    "productId": "browser-keells-raw-001",
+    "name": "Keells Mutton Curry Cut",
+    "url": "https://keellssuper.com/product/mutton-curry-cut-500g",
+    "price": "Rs. 2,150.00",
+    "size": "500 g",
+    "inStock": "In Stock",
+    "notes": "Copied from browser-visible product card fields."
+  },
+  {
+    "productId": "browser-keells-raw-002",
+    "name": "Keells Chicken Drumsticks",
+    "url": "https://keellssuper.com/product/chicken-drumsticks-1kg",
+    "price": 1980,
+    "size": "1kg",
+    "inStock": true,
+    "notes": "Copied from browser-visible product card fields."
+  },
+  {
+    "productId": "browser-keells-raw-003",
+    "name": "Keells Pork Cubes",
+    "url": "https://keellssuper.com/product/pork-cubes-300g",
+    "price": "Rs 980",
+    "size": "Per 300g(s)",
+    "availability": "Out of Stock",
+    "notes": "Copied from browser-visible product card fields."
+  }
+]

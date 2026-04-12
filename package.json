@@ -7,6 +7,7 @@
     "dev": "HOME=/tmp wrangler dev",
     "start": "HOME=/tmp wrangler dev",
     "deploy": "HOME=/tmp wrangler deploy",
+    "keells:transform": "node scripts/keells-browser-export.mjs",
     "test": "node --test"
   },
   "devDependencies": {

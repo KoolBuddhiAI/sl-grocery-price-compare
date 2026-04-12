@@ -1,0 +1,39 @@
+{
+  "provider": "keells",
+  "category": "meat",
+  "extraction_mode": "browser_assisted",
+  "captured_at": "2026-04-12T09:00:00.000Z",
+  "source_status": "ok",
+  "items": [
+    {
+      "id": "browser-keells-raw-001-import",
+      "source_product_id": "browser-keells-raw-001",
+      "name": "Keells Mutton Curry Cut",
+      "source_url": "https://keellssuper.com/product/mutton-curry-cut-500g",
+      "displayed_price_lkr": 2150,
+      "raw_size_text": "500 g",
+      "in_stock": true,
+      "notes": "Copied from browser-visible product card fields."
+    },
+    {
+      "id": "browser-keells-raw-002-import",
+      "source_product_id": "browser-keells-raw-002",
+      "name": "Keells Chicken Drumsticks",
+      "source_url": "https://keellssuper.com/product/chicken-drumsticks-1kg",
+      "displayed_price_lkr": 1980,
+      "raw_size_text": "1kg",
+      "in_stock": true,
+      "notes": "Copied from browser-visible product card fields."
+    },
+    {
+      "id": "browser-keells-raw-003-import",
+      "source_product_id": "browser-keells-raw-003",
+      "name": "Keells Pork Cubes",
+      "source_url": "https://keellssuper.com/product/pork-cubes-300g",
+      "displayed_price_lkr": 980,
+      "raw_size_text": "Per 300g(s)",
+      "in_stock": false,
+      "notes": "Copied from browser-visible product card fields."
+    }
+  ]
+}

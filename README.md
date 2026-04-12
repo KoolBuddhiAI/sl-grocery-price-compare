@@ -23,14 +23,39 @@ See [src/adapters/keells.seed.ts](/root/.openclaw/workspace/WIP/price-compare-cl
 
 ## Browser-Assisted Import Flow
 
-The intended future Keells flow is:
+Keells live access is still intentionally disabled from this server. The supported workflow is a small manual export flow run from a separate, browser-capable environment.
 
-1. Run browser-assisted extraction in an allowed environment where Keells can be accessed legitimately.
-2. Export raw product JSON in the snapshot shape shown in [data/keells.meat.import.json](/root/.openclaw/workspace/WIP/price-compare-cloudflare/data/keells.meat.import.json:1).
-3. Commit or otherwise import that snapshot into the Worker codebase.
-4. Let the Worker validate and normalize the snapshot into the shared product schema.
+1. In an allowed browser environment, open the relevant Keells meat page or product pages.
+2. Copy visible product fields or a browser-captured API payload into a local JSON file using the simple raw array shape shown in [data/keells.browser-raw.sample.json](/root/.openclaw/workspace/WIP/price-compare-cloudflare/data/keells.browser-raw.sample.json:1).
+3. Run the transformer in this repo:
 
-This repo deliberately does **not** implement the extraction/browser automation itself. It only defines the import contract and consumes a sample snapshot.
+```bash
+npm run keells:transform -- data/keells.browser-raw.sample.json data/keells.meat.import.from-raw.sample.json --captured-at 2026-04-12T09:00:00.000Z --source-status ok
+```
+
+4. Replace `data/keells.meat.import.json` with the generated output when you want the Worker to consume that snapshot.
+5. Run `npm test` to verify the snapshot still matches the import contract used by [src/providers/keells.import.ts](/root/.openclaw/workspace/WIP/price-compare-cloudflare/src/providers/keells.import.ts:1).
+
+Accepted raw record fields are intentionally small:
+
+- `name` or `title`
+- `url`, `link`, or `source_url`
+- `price`, `price_lkr`, or `displayed_price_lkr`
+- `size`, `weight`, `pack`, or `raw_size_text`
+- `inStock`, `in_stock`, `available`, or `availability`
+- optional `productId`, `product_id`, `source_product_id`, or `sku`
+- optional `notes`
+
+The transformer always emits the checked import contract:
+
+- `provider: "keells"`
+- `category: "meat"`
+- `extraction_mode: "browser_assisted"`
+- `captured_at`
+- `source_status`
+- `items[]` matching the item contract consumed by the provider
+
+See the raw sample fixture at [data/keells.browser-raw.sample.json](/root/.openclaw/workspace/WIP/price-compare-cloudflare/data/keells.browser-raw.sample.json:1) and the corresponding transformed output at [data/keells.meat.import.from-raw.sample.json](/root/.openclaw/workspace/WIP/price-compare-cloudflare/data/keells.meat.import.from-raw.sample.json:1).
 
 ## API
 
