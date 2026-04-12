@@ -25,16 +25,23 @@ See [src/adapters/keells.seed.ts](/root/.openclaw/workspace/WIP/price-compare-cl
 
 Keells live access is still intentionally disabled from this server. The supported workflow is a small manual export flow run from a separate, browser-capable environment.
 
-1. In an allowed browser environment, open the relevant Keells meat page or product pages.
-2. Copy visible product fields or a browser-captured API payload into a local JSON file using the simple raw array shape shown in [data/keells.browser-raw.sample.json](/root/.openclaw/workspace/WIP/price-compare-cloudflare/data/keells.browser-raw.sample.json:1).
-3. Run the transformer in this repo:
+1. In an allowed browser session, open a Keells meat listing page and wait for the visible product cards to load.
+2. Open DevTools and paste the full snippet from [scripts/keells-browser-console-snippet.js](/root/.openclaw/workspace/WIP/price-compare-cloudflare/scripts/keells-browser-console-snippet.js:1) into the Console.
+3. The snippet returns an array of raw product objects and tries to copy the JSON to your clipboard automatically. If DevTools did not copy it, run:
 
-```bash
-npm run keells:transform -- data/keells.browser-raw.sample.json data/keells.meat.import.from-raw.sample.json --captured-at 2026-04-12T09:00:00.000Z --source-status ok
+```js
+copy(JSON.stringify(window.__keellsCapture, null, 2))
 ```
 
-4. Replace `data/keells.meat.import.json` with the generated output when you want the Worker to consume that snapshot.
-5. Run `npm test` to verify the snapshot still matches the import contract used by [src/providers/keells.import.ts](/root/.openclaw/workspace/WIP/price-compare-cloudflare/src/providers/keells.import.ts:1).
+4. Save that JSON into a local file in this repo, for example `data/keells.browser-raw.capture.json`. The raw shape should look like [data/keells.browser-raw.sample.json](/root/.openclaw/workspace/WIP/price-compare-cloudflare/data/keells.browser-raw.sample.json:1).
+5. Run the transformer in this repo:
+
+```bash
+npm run keells:transform -- data/keells.browser-raw.capture.json data/keells.meat.import.from-raw.sample.json --captured-at 2026-04-12T09:00:00.000Z --source-status ok
+```
+
+6. Replace `data/keells.meat.import.json` with the generated output when you want the Worker to consume that snapshot.
+7. Run `npm test` to verify the snapshot still matches the import contract used by [src/providers/keells.import.ts](/root/.openclaw/workspace/WIP/price-compare-cloudflare/src/providers/keells.import.ts:1).
 
 Accepted raw record fields are intentionally small:
 
@@ -56,6 +63,8 @@ The transformer always emits the checked import contract:
 - `items[]` matching the item contract consumed by the provider
 
 See the raw sample fixture at [data/keells.browser-raw.sample.json](/root/.openclaw/workspace/WIP/price-compare-cloudflare/data/keells.browser-raw.sample.json:1) and the corresponding transformed output at [data/keells.meat.import.from-raw.sample.json](/root/.openclaw/workspace/WIP/price-compare-cloudflare/data/keells.meat.import.from-raw.sample.json:1).
+
+The browser snippet is intentionally defensive, not tightly coupled to one exact DOM shape. The selectors most likely to need updates over time are the product-card, title, price, size, and availability selectors in [scripts/keells-browser-console-snippet.js](/root/.openclaw/workspace/WIP/price-compare-cloudflare/scripts/keells-browser-console-snippet.js:1).
 
 ## API
 
