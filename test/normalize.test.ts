@@ -2,6 +2,10 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import { computePricePerKgLkr, normalizeKeellsProduct, parsePackSize } from "../src/normalize.ts";
+import {
+  getImportedKeellsMeatProducts,
+  parseKeellsImportedSnapshot
+} from "../src/providers/keells.import.ts";
 
 test("parsePackSize handles gram and kilogram variations", () => {
   assert.deepEqual(parsePackSize("300g"), {
@@ -58,4 +62,18 @@ test("normalizeKeellsProduct computes price_per_kg_lkr from parsed weight", () =
 
   assert.equal(product.net_weight_g, 300);
   assert.equal(product.price_per_kg_lkr, 2400);
+});
+
+test("parseKeellsImportedSnapshot rejects invalid snapshot shapes", () => {
+  assert.equal(parseKeellsImportedSnapshot({ provider: "keells" }), null);
+});
+
+test("getImportedKeellsMeatProducts normalizes checked-in browser snapshot data", () => {
+  const products = getImportedKeellsMeatProducts();
+
+  assert.ok(products);
+  assert.equal(products.length, 3);
+  assert.equal(products[0]?.store, "keells");
+  assert.equal(products[0]?.source_status, "ok");
+  assert.equal(products[0]?.price_per_kg_lkr, 2180);
 });

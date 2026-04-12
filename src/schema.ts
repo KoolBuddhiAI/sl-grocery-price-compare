@@ -30,3 +30,25 @@ export type ParsedPackSize = {
   net_weight_g: number | null;
   raw_size_text: string | null;
 };
+
+export type ImportedSnapshotMode = "browser_assisted";
+
+export type KeellsImportedSnapshotItem = {
+  id: string;
+  source_product_id: string | null;
+  name: string;
+  source_url: string;
+  displayed_price_lkr: number | null;
+  raw_size_text: string | null;
+  in_stock: boolean | null;
+  notes?: string | null;
+};
+
+export type KeellsImportedSnapshot = {
+  provider: "keells";
+  category: "meat";
+  extraction_mode: ImportedSnapshotMode;
+  captured_at: string;
+  source_status: SourceStatus;
+  items: KeellsImportedSnapshotItem[];
+};

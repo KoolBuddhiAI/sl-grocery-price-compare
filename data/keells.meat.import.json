@@ -1,0 +1,39 @@
+{
+  "provider": "keells",
+  "category": "meat",
+  "extraction_mode": "browser_assisted",
+  "captured_at": "2026-04-12T08:30:00.000Z",
+  "source_status": "ok",
+  "items": [
+    {
+      "id": "keells-boneless-chicken-breast-500g-import",
+      "source_product_id": "browser-keells-001",
+      "name": "Keells Boneless Chicken Breast",
+      "source_url": "https://keellssuper.com/product/boneless-chicken-breast-500g",
+      "displayed_price_lkr": 1090,
+      "raw_size_text": "500 g",
+      "in_stock": true,
+      "notes": "Sample browser-assisted export record."
+    },
+    {
+      "id": "keells-chicken-sausages-300g-import",
+      "source_product_id": "browser-keells-002",
+      "name": "Keells Chicken Sausages",
+      "source_url": "https://keellssuper.com/product/chicken-sausages-300g",
+      "displayed_price_lkr": 750,
+      "raw_size_text": "Per 300g(s)",
+      "in_stock": true,
+      "notes": "Sample browser-assisted export record."
+    },
+    {
+      "id": "keells-beef-cubes-1kg-import",
+      "source_product_id": "browser-keells-003",
+      "name": "Keells Beef Cubes",
+      "source_url": "https://keellssuper.com/product/beef-cubes-1kg",
+      "displayed_price_lkr": 3350,
+      "raw_size_text": "1kg",
+      "in_stock": false,
+      "notes": "Sample browser-assisted export record."
+    }
+  ]
+}
