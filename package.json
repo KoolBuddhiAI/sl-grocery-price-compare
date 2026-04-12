@@ -1,0 +1,15 @@
+{
+  "name": "price-compare-cloudflare",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "HOME=/tmp wrangler dev",
+    "start": "HOME=/tmp wrangler dev",
+    "deploy": "HOME=/tmp wrangler deploy",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "wrangler": "^4.77.0"
+  }
+}
