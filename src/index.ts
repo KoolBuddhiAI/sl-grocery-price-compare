@@ -8,10 +8,17 @@ import { getSnapshotFromKV, snapshotKey, isValidProvider, putSnapshotToKV } from
 import type { Env } from "./kv-helpers.ts";
 import type { NormalizedProduct } from "./schema.ts";
 
+const CORS_HEADERS: Record<string, string> = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+};
+
 function json(data: unknown, init?: ResponseInit): Response {
   return new Response(JSON.stringify(data, null, 2), {
     headers: {
-      "content-type": "application/json; charset=utf-8"
+      "content-type": "application/json; charset=utf-8",
+      ...CORS_HEADERS
     },
     ...init
   });
@@ -165,6 +172,10 @@ async function handleSnapshotPush(request: Request, env: Env): Promise<Response>
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
+    if (request.method === "OPTIONS") {
+      return new Response(null, { status: 204, headers: CORS_HEADERS });
+    }
+
     const url = new URL(request.url);
 
     if (request.method === "POST" && url.pathname === "/api/snapshots") {
