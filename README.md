@@ -1,8 +1,8 @@
 # Sri Lankan Grocery Price Compare Worker
 
-Minimal Cloudflare Worker slice for a Sri Lankan grocery price comparison app.
+Minimal Cloudflare Worker slice for a Sri Lankan grocery price comparison app, now positioned as the read/API layer inside a hybrid ingestion architecture.
 
-This repo intentionally proves only a narrow vertical:
+This repo intentionally proves only a narrow vertical today:
 
 - one Worker
 - one `GET /api/products` endpoint
@@ -12,7 +12,23 @@ This repo intentionally proves only a narrow vertical:
 
 There is no scraping, frontend, database, KV, D1, or R2 in this iteration.
 
-## Keells Data Modes
+## Docs
+
+The docs set under [`docs/`](/root/.openclaw/workspace/WIP/price-compare-cloudflare/docs) describes the broader product and architecture direction:
+
+- [Product brief](/root/.openclaw/workspace/WIP/price-compare-cloudflare/docs/product-brief.md)
+- [Architecture big picture](/root/.openclaw/workspace/WIP/price-compare-cloudflare/docs/architecture-big-picture.md)
+- [Provider rollout plan](/root/.openclaw/workspace/WIP/price-compare-cloudflare/docs/provider-rollout-plan.md)
+
+The high-level direction is hybrid:
+
+- Cloudflare Worker remains the public API and normalized read layer
+- providers that can be fetched safely from Workers can use Cloudflare-native ingestion
+- hard providers such as Keells can use external ingestion and push normalized snapshots into the read layer
+
+Current practical status: a working Keells provider exists outside this repo via Puppeteer, while this repo currently consumes a checked-in Keells snapshot sample plus a seeded fallback.
+
+## Current Keells Data Modes
 
 Keells live access is intentionally **not** implemented here. In this environment, Keells fetches are region blocked, so the Worker supports two minimal modes only:
 
@@ -23,7 +39,7 @@ See [src/adapters/keells.seed.ts](/root/.openclaw/workspace/WIP/price-compare-cl
 
 ## Browser-Assisted Import Flow
 
-Keells live access is still intentionally disabled from this server. The supported workflow is a small manual export flow run from a separate, browser-capable environment.
+Keells live access is still intentionally disabled from this server. The supported workflow is a small manual export flow run from a separate, browser-capable environment. This repo's import contract is also the intended bridge point for the external Puppeteer-based Keells provider.
 
 1. In an allowed browser session, open a Keells meat listing page and wait for the visible product cards to load.
 2. Open DevTools and paste the full snippet from [scripts/keells-browser-console-snippet.js](/root/.openclaw/workspace/WIP/price-compare-cloudflare/scripts/keells-browser-console-snippet.js:1) into the Console.
@@ -108,10 +124,18 @@ npm run dev
 
 Wrangler writes logs under `$HOME`, so the provided scripts set `HOME=/tmp` for local runs in restricted environments like this one.
 
+## Direction
+
+This repo does not yet implement the full multi-provider system described in the docs. The intended next shape is:
+
+- stored latest snapshot per provider
+- merged read path in the Worker
+- provider-specific ingestion chosen per source reality rather than one enforced scraping pattern
+
 ## Vertical Iteration Approach
 
 Iteration 1 uses seeded Keells data and proves the schema/API.
 
 Iteration 2 adds browser-assisted snapshot import for Keells without live scraping from this server.
 
-Iteration 3 revisits browser extraction/export tooling in an allowed environment.
+Iteration 3 revisits browser extraction/export tooling in an allowed environment and generalizes the read layer for additional providers.
