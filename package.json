@@ -10,6 +10,7 @@
     "keells:transform": "node scripts/keells-browser-export.mjs",
     "keells:refresh": "node scripts/keells-refresh.mjs",
     "keells:capture": "node scripts/keells-capture.mjs",
+    "keells:push": "node scripts/keells-push.mjs",
     "generate:product-types": "node scripts/generate-product-types.mjs",
     "test": "node --test"
   },

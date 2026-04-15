@@ -11,6 +11,8 @@
  *   npm run keells:capture -- --headless          # headless mode
  *   npm run keells:capture -- --dry-run           # preview without writing
  *   npm run keells:capture -- --category seafood  # different category
+ *   npm run keells:capture -- --headless --push   # capture and push to Worker
+ *   npm run keells:capture -- --push --push-url https://... --push-key SECRET
  */
 
 import fs from "node:fs/promises";
@@ -47,6 +49,9 @@ function parseArgs(argv) {
     dryRun: false,
     category: "meat",
     sourceStatus: "ok",
+    push: false,
+    pushUrl: null,
+    pushKey: null,
   };
 
   for (let i = 0; i < argv.length; i++) {
@@ -55,6 +60,9 @@ function parseArgs(argv) {
     else if (arg === "--dry-run") options.dryRun = true;
     else if (arg === "--category") options.category = argv[++i];
     else if (arg === "--source-status") options.sourceStatus = argv[++i];
+    else if (arg === "--push") options.push = true;
+    else if (arg === "--push-url") options.pushUrl = argv[++i];
+    else if (arg === "--push-key") options.pushKey = argv[++i];
   }
 
   return options;
@@ -218,6 +226,39 @@ async function main() {
   // Write import file
   await fs.writeFile(IMPORT_FILE, `${JSON.stringify(snapshot, null, 2)}\n`, "utf8");
   console.log(`Wrote snapshot to: ${path.relative(PROJECT_ROOT, IMPORT_FILE)}`);
+
+  // Push snapshot to Worker
+  if (options.push) {
+    const pushUrl = options.pushUrl || process.env.WORKER_URL;
+    const pushKey = options.pushKey || process.env.SNAPSHOT_API_KEY;
+
+    if (!pushUrl || !pushKey) {
+      console.error("--push requires WORKER_URL and SNAPSHOT_API_KEY (via flags or env vars)");
+      process.exitCode = 1;
+      return;
+    }
+
+    console.log(`Pushing snapshot to ${pushUrl}/api/snapshots...`);
+    const resp = await fetch(`${pushUrl}/api/snapshots`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${pushKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(snapshot),
+    });
+
+    if (resp.ok) {
+      const result = await resp.json();
+      console.log(`Pushed: ${result.items} items to ${result.provider}/${result.category}`);
+    } else {
+      console.error(`Push failed: ${resp.status} ${resp.statusText}`);
+      const text = await resp.text();
+      if (text) console.error(text);
+      process.exitCode = 1;
+      return;
+    }
+  }
 
   // Run tests
   console.log("\nRunning tests...\n");

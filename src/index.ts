@@ -1,9 +1,11 @@
 import { getSeededKeellsMeatProducts } from "./adapters/keells.seed.ts";
-import { getImportedKeellsMeatProducts, getImportedKeellsSnapshotMeta } from "./providers/keells.import.ts";
-import { getImportedGlomarkMeatProducts, getImportedGlomarkSnapshotMeta } from "./providers/glomark.import.ts";
-import { getImportedCargillsMeatProducts, getImportedCargillsSnapshotMeta } from "./providers/cargills.import.ts";
+import { getImportedKeellsMeatProducts, getImportedKeellsSnapshotMeta, parseKeellsImportedSnapshot, normalizeKeellsImportedSnapshot } from "./providers/keells.import.ts";
+import { getImportedGlomarkMeatProducts, getImportedGlomarkSnapshotMeta, parseGlomarkImportedSnapshot, normalizeGlomarkImportedSnapshot } from "./providers/glomark.import.ts";
+import { getImportedCargillsMeatProducts, getImportedCargillsSnapshotMeta, parseCargillsImportedSnapshot, normalizeCargillsImportedSnapshot } from "./providers/cargills.import.ts";
 import { fetchGlomarkCategory } from "./adapters/glomark.fetch.ts";
 import { fetchCargillsCategory } from "./adapters/cargills.fetch.ts";
+import { getSnapshotFromKV, snapshotKey, isValidProvider, putSnapshotToKV } from "./kv-helpers.ts";
+import type { Env } from "./kv-helpers.ts";
 import type { NormalizedProduct } from "./schema.ts";
 
 function json(data: unknown, init?: ResponseInit): Response {
@@ -15,14 +17,32 @@ function json(data: unknown, init?: ResponseInit): Response {
   });
 }
 
-function getKeellsProducts() {
+async function getKeellsProducts(env?: Env) {
+  // Try KV first
+  const kvData = await getSnapshotFromKV(env, snapshotKey("keells", "meat"));
+  const kvSnapshot = kvData ? parseKeellsImportedSnapshot(kvData) : null;
+
+  if (kvSnapshot && kvSnapshot.items.length > 0) {
+    return {
+      products: normalizeKeellsImportedSnapshot(kvSnapshot),
+      meta: {
+        store: "keells" as const,
+        mode: "kv_snapshot" as const,
+        source_status: kvSnapshot.source_status,
+        captured_at: kvSnapshot.captured_at,
+        extraction_mode: kvSnapshot.extraction_mode,
+      },
+    };
+  }
+
+  // Fall back to static imports
   const imported = getImportedKeellsMeatProducts();
   const meta = getImportedKeellsSnapshotMeta();
   return {
     products: imported ?? getSeededKeellsMeatProducts(),
     meta: {
       store: "keells" as const,
-      mode: imported ? "imported_snapshot" : "seeded",
+      mode: imported ? "imported_snapshot" as const : "seeded" as const,
       source_status: meta?.source_status ?? "partial",
       captured_at: meta?.captured_at ?? "2026-04-12T00:00:00.000Z",
       extraction_mode: meta?.extraction_mode ?? null,
@@ -30,14 +50,32 @@ function getKeellsProducts() {
   };
 }
 
-function getGlomarkProducts() {
+async function getGlomarkProducts(env?: Env) {
+  // Try KV first
+  const kvData = await getSnapshotFromKV(env, snapshotKey("glomark", "meat"));
+  const kvSnapshot = kvData ? parseGlomarkImportedSnapshot(kvData) : null;
+
+  if (kvSnapshot && kvSnapshot.items.length > 0) {
+    return {
+      products: normalizeGlomarkImportedSnapshot(kvSnapshot),
+      meta: {
+        store: "glomark" as const,
+        mode: "kv_snapshot" as const,
+        source_status: kvSnapshot.source_status,
+        captured_at: kvSnapshot.captured_at,
+        extraction_mode: kvSnapshot.extraction_mode,
+      },
+    };
+  }
+
+  // Fall back to static imports
   const imported = getImportedGlomarkMeatProducts();
   const meta = getImportedGlomarkSnapshotMeta();
   return {
     products: imported ?? [],
     meta: {
       store: "glomark" as const,
-      mode: imported ? "imported_snapshot" : "none",
+      mode: imported ? "imported_snapshot" as const : "none" as const,
       source_status: meta?.source_status ?? "not_found",
       captured_at: meta?.captured_at ?? null,
       extraction_mode: meta?.extraction_mode ?? null,
@@ -45,14 +83,32 @@ function getGlomarkProducts() {
   };
 }
 
-function getCargillsProducts() {
+async function getCargillsProducts(env?: Env) {
+  // Try KV first
+  const kvData = await getSnapshotFromKV(env, snapshotKey("cargills", "meat"));
+  const kvSnapshot = kvData ? parseCargillsImportedSnapshot(kvData) : null;
+
+  if (kvSnapshot && kvSnapshot.items.length > 0) {
+    return {
+      products: normalizeCargillsImportedSnapshot(kvSnapshot),
+      meta: {
+        store: "cargills" as const,
+        mode: "kv_snapshot" as const,
+        source_status: kvSnapshot.source_status,
+        captured_at: kvSnapshot.captured_at,
+        extraction_mode: kvSnapshot.extraction_mode,
+      },
+    };
+  }
+
+  // Fall back to static imports
   const imported = getImportedCargillsMeatProducts();
   const meta = getImportedCargillsSnapshotMeta();
   return {
     products: imported ?? [],
     meta: {
       store: "cargills" as const,
-      mode: imported ? "imported_snapshot" : "none",
+      mode: imported ? "imported_snapshot" as const : "none" as const,
       source_status: meta?.source_status ?? "not_found",
       captured_at: meta?.captured_at ?? null,
       extraction_mode: meta?.extraction_mode ?? null,
@@ -60,16 +116,67 @@ function getCargillsProducts() {
   };
 }
 
+async function handleSnapshotPush(request: Request, env: Env): Promise<Response> {
+  // Check authorization
+  const authHeader = request.headers.get("Authorization");
+  const expectedToken = env?.SNAPSHOT_API_KEY;
+
+  if (!expectedToken || !authHeader || authHeader !== `Bearer ${expectedToken}`) {
+    return json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ error: "Invalid JSON body" }, { status: 400 });
+  }
+
+  if (typeof body !== "object" || body === null) {
+    return json({ error: "Request body must be a JSON object" }, { status: 400 });
+  }
+
+  const payload = body as Record<string, unknown>;
+  const provider = payload.provider;
+  const category = payload.category;
+
+  if (typeof provider !== "string" || !isValidProvider(provider)) {
+    return json({ error: "Invalid provider. Must be keells, glomark, or cargills." }, { status: 400 });
+  }
+
+  if (typeof category !== "string" || !category) {
+    return json({ error: "Missing category field" }, { status: 400 });
+  }
+
+  if (!Array.isArray(payload.items)) {
+    return json({ error: "Missing or invalid items array" }, { status: 400 });
+  }
+
+  const key = snapshotKey(provider, category);
+  await putSnapshotToKV(env, key, body);
+
+  return json({
+    ok: true,
+    provider,
+    category,
+    items: payload.items.length,
+  });
+}
+
 export default {
-  async fetch(request: Request): Promise<Response> {
+  async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
+
+    if (request.method === "POST" && url.pathname === "/api/snapshots") {
+      return handleSnapshotPush(request, env);
+    }
 
     if (request.method === "GET" && url.pathname === "/api/products") {
       const storeFilter = url.searchParams.get("store");
 
-      const keells = storeFilter && storeFilter !== "keells" ? null : getKeellsProducts();
-      const glomark = storeFilter && storeFilter !== "glomark" ? null : getGlomarkProducts();
-      const cargills = storeFilter && storeFilter !== "cargills" ? null : getCargillsProducts();
+      const keells = storeFilter && storeFilter !== "keells" ? null : await getKeellsProducts(env);
+      const glomark = storeFilter && storeFilter !== "glomark" ? null : await getGlomarkProducts(env);
+      const cargills = storeFilter && storeFilter !== "cargills" ? null : await getCargillsProducts(env);
 
       const allProducts: NormalizedProduct[] = [
         ...(keells?.products ?? []),
@@ -123,9 +230,9 @@ export default {
     }
 
     if (request.method === "GET" && url.pathname === "/api/health") {
-      const keells = getKeellsProducts();
-      const glomark = getGlomarkProducts();
-      const cargills = getCargillsProducts();
+      const keells = await getKeellsProducts(env);
+      const glomark = await getGlomarkProducts(env);
+      const cargills = await getCargillsProducts(env);
 
       return json({
         stores: {
@@ -137,5 +244,19 @@ export default {
     }
 
     return json({ error: "Not found" }, { status: 404 });
-  }
+  },
+
+  async scheduled(_event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
+    // Fetch Glomark
+    const glomarkSnapshot = await fetchGlomarkCategory("meat");
+    if (glomarkSnapshot.items.length > 0) {
+      await env.SNAPSHOTS.put(snapshotKey("glomark", "meat"), JSON.stringify(glomarkSnapshot));
+    }
+
+    // Fetch Cargills
+    const cargillsSnapshot = await fetchCargillsCategory("meat");
+    if (cargillsSnapshot.items.length > 0) {
+      await env.SNAPSHOTS.put(snapshotKey("cargills", "meat"), JSON.stringify(cargillsSnapshot));
+    }
+  },
 };
