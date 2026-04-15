@@ -2,59 +2,96 @@
 
 ## Summary
 
-Build a Sri Lankan grocery price comparison app that exposes a small, reliable view of supermarket pricing data, starting with meat and expanding provider by provider.
+Build a Sri Lankan grocery price comparison website that helps shoppers find the most cost-effective products across Keells, Glomark, and Cargills. The app normalizes inconsistent product names, pack sizes, and pricing into a unified view with base-weight unit pricing (per kg, per litre, per unit).
 
 ## Problem
 
-Sri Lankan grocery shoppers who compare supermarkets manually have to search multiple storefronts, interpret inconsistent pack sizes, and mentally normalize prices across grams, kilograms, and per-pack listings. That makes simple price comparison slow and error-prone.
+Sri Lankan grocery shoppers face three compounding problems:
+
+1. **Fragmented pricing** -- comparing prices requires visiting three separate storefronts (Keells, Glomark, Cargills), each with different layouts and navigation
+2. **Inconsistent naming** -- the same product is described differently across stores (e.g. "Chicken Breast Skinless" vs "Boneless Chicken Breast" vs "Chicken Breast Meat Boneless")
+3. **Hidden unit economics** -- products are sold in different package sizes (300g, 500g, 1kg, per piece) making it impossible to compare cost-effectiveness at a glance without mental math
 
 ## Users
 
-- price-sensitive household shoppers comparing common grocery items
-- operators who maintain ingestion jobs and need clear source health/freshness signals
-- future frontend consumers of a simple normalized comparison API
+- **Price-sensitive household shoppers** who want to find the cheapest option for a specific product across stores, or the best value per kg/litre
+- **Budget planners** who want to compare a basket of common items across stores
+- **Operators** who maintain the ingestion pipeline and need source health/freshness signals
+
+## Solution
+
+A read-only comparison website and API that:
+
+- fetches product data from all three stores on a schedule
+- normalizes product names, categories, and pack sizes into a common schema
+- computes **base-weight unit pricing** (price per kg for solids, price per litre for liquids, price per unit for count-based items) so shoppers can compare cost-effectiveness regardless of package size
+- displays products grouped by category with cross-store price comparison
+- shows both the **package price** and the **unit price** so users can pick the most cost-effective option
+- surfaces data freshness and source health per store
+
+## Normalization Requirements
+
+### Product naming
+
+Products across stores will have different descriptions for the same item. The system must support:
+
+- displaying each store's original product name
+- grouping similar products for comparison (manual mapping initially, automated matching later)
+
+### Weight and unit normalization
+
+Every product must display:
+
+| Field | Description | Example |
+|-------|-------------|---------|
+| `raw_size_text` | Original size text from store | "Per 300g(s)", "500 g", "1kg" |
+| `pack_weight_g` | Package weight in grams | 300, 500, 1000 |
+| `pack_weight_display` | Human-readable package weight | "300g", "500g", "1kg" |
+| `base_unit` | Normalization unit | "kg", "l", "unit" |
+| `price_per_base_unit_lkr` | Price per kg/litre/unit | 2400.00 |
+
+Supported input formats: `300g`, `500 g`, `1kg`, `1.3kg`, `Per 300g(s)`, `1L`, `500ml`, `6 Pack`
+
+### Price display
+
+For every product, show:
+
+- **Package price**: "Rs 720.00 for 300g"
+- **Unit price**: "Rs 2,400/kg"
+- **Store**: which store this price is from
+- **Freshness**: when the price was last captured
 
 ## Scope
 
-Initial scope:
+### In scope (MVP)
 
-- public read API for normalized grocery product snapshots
-- normalized pricing fields, including `price_per_kg_lkr` where weight is available
-- provider-specific ingestion paths chosen by operational reality, not by a single scraping pattern
-- freshness and `source_status` metadata per provider snapshot
+- Three stores: Keells, Glomark, Cargills
+- Categories: start with meat, expand to seafood, vegetables, fruits, beverages
+- Public read-only API (`GET /api/products`, `GET /api/products?category=meat&store=keells`)
+- Simple comparison frontend on Cloudflare Pages or embedded in Worker
+- Automated ingestion on a schedule (6-12 hours)
+- Source health and freshness metadata per store
 
-Current repo scope today:
+### Out of scope (MVP)
 
-- one Cloudflare Worker
-- one `GET /api/products` endpoint
-- one normalized product schema
-- Keells meat data only
-- imported snapshot mode plus seeded fallback mode
+- User accounts, auth, cart, or checkout
+- Historical price tracking or trends
+- Full-site product discovery (curated categories first)
+- Automated product name matching across stores (manual mapping first)
+- Real-time prices (snapshot-based, refreshed periodically)
+- Mobile app
 
-## Value
+## Success Metrics
 
-- faster comparison across stores without opening multiple supermarket sites
-- consistent normalization of pack sizes and unit economics
-- resilient architecture that can still ship useful data when some providers cannot be fetched from Workers
-
-## Constraints
-
-- keep extraction respectful and limited to public, unauthenticated data
-- do not rely on anti-bot evasion or brittle infrastructure-heavy scraping
-- some providers may be region-blocked, challenge-protected, or highly JS-driven from Cloudflare Workers
-- this repo currently has no KV, D1, R2, or frontend
-- unknowns must stay marked as unknown until validated
+- All three stores returning data with `source_status: ok`
+- At least meat category fully covered across all three stores
+- Unit prices computed for 80%+ of products where weight is available
+- Data refreshed within the last 12 hours
 
 ## Current Status
 
-- this repo currently proves a narrow Keells slice: schema, normalization, import validation, seeded fallback, and Worker read API
-- a working Keells provider exists outside this repo via Puppeteer
-- that external Keells path should be treated as the current practical ingestion route for Keells until a Cloudflare-native path is proven safe and reliable
-
-## Non-Goals
-
-- full-site crawling across all supermarkets
-- checkout, cart, auth, or user accounts
-- guaranteed real-time prices
-- historical analytics in this iteration
-- forcing every provider through the same runtime when different ingestion paths are more practical
+- Keells: working automated capture via Puppeteer (80 meat products, local cron)
+- Glomark: researched, server-rendered HTML, no bot protection, ready for Worker-native adapter
+- Cargills: researched, AngularJS SPA with POST APIs, no bot protection, needs API investigation
+- Worker: serves Keells data via `GET /api/products`
+- Frontend: not yet built

@@ -1,162 +1,206 @@
 # Architecture Big Picture
 
-## Intent
+## Design Principle
 
-Use a hybrid architecture:
+Use a **hybrid ingestion architecture** where each provider uses the extraction method that actually works for it, rather than forcing all providers through one pattern.
 
-- Cloudflare Worker as the public API and normalized read layer
-- Cloudflare-native fetch/automation only for providers that can be reached safely and consistently from Workers
-- external or home cron ingestion for hard providers such as Keells when Worker access is blocked, inconsistent, or too brittle
+```
++===========================================================================+
+|  INGESTION LAYER (per-provider, chosen by operational reality)            |
+|                                                                           |
+|  +------------------+  +------------------+  +------------------------+  |
+|  | Glomark          |  | Cargills         |  | Keells                 |  |
+|  | Worker-native    |  | Worker-native    |  | Local Puppeteer        |  |
+|  | HTML fetch       |  | POST API calls   |  | + stealth plugin       |  |
+|  | (no bot protect) |  | (no bot protect) |  | (Cloudflare-protected) |  |
+|  +--------+---------+  +--------+---------+  +-----------+------------+  |
+|           |                      |                        |               |
++===========|======================|========================|===============+
+            |                      |                        |
+            v                      v                        v
++===========================================================================+
+|  NORMALIZATION LAYER                                                      |
+|                                                                           |
+|  - Parse product name, price, weight, stock                               |
+|  - Normalize pack size: "Per 300g(s)" -> 300g, "1.3kg" -> 1300g          |
+|  - Compute unit price: price_per_kg_lkr, price_per_l_lkr                 |
+|  - Validate snapshot contract per provider                                |
+|  - Stamp captured_at, source_status                                       |
+|                                                                           |
++====================================+=====================================+
+                                     |
+                                     v
++===========================================================================+
+|  STORAGE LAYER (Cloudflare KV)                                            |
+|                                                                           |
+|  snapshots/keells/meat      -> latest Keells meat snapshot                |
+|  snapshots/glomark/meat     -> latest Glomark meat snapshot               |
+|  snapshots/cargills/meat    -> latest Cargills meat snapshot              |
+|  snapshots/merged/meat      -> merged cross-store comparison              |
+|                                                                           |
++====================================+=====================================+
+                                     |
+                                     v
++===========================================================================+
+|  API LAYER (Cloudflare Worker)                                            |
+|                                                                           |
+|  GET /api/products                 -> all products, all stores            |
+|  GET /api/products?category=meat   -> filter by category                  |
+|  GET /api/products?store=keells    -> filter by store                     |
+|  GET /api/health                   -> per-store freshness + status        |
+|                                                                           |
++====================================+=====================================+
+                                     |
+                                     v
++===========================================================================+
+|  FRONTEND (Cloudflare Pages or Worker-embedded)                           |
+|                                                                           |
+|  - Category browse with cross-store price comparison                      |
+|  - Package price + unit price side by side                                |
+|  - Sort by unit price to find best value                                  |
+|  - Source freshness indicators                                            |
+|                                                                           |
++===========================================================================+
+```
 
-This matches the repo's current state better than pretending all providers should be fetched live from the Worker.
+## Provider Ingestion Strategies
 
-## Current Repo Baseline
+### Glomark -- Worker-Native HTML Fetch
 
-Today this repo already has the core read-side shape:
+**Why:** Server-rendered HTML with full product data. No bot protection. No JS rendering needed.
 
-- normalized product schema in [src/schema.ts](/root/.openclaw/workspace/WIP/price-compare-cloudflare/src/schema.ts:1)
-- normalization logic in [src/normalize.ts](/root/.openclaw/workspace/WIP/price-compare-cloudflare/src/normalize.ts:1)
-- a checked import contract plus validation in [src/providers/keells.import.ts](/root/.openclaw/workspace/WIP/price-compare-cloudflare/src/providers/keells.import.ts:1)
-- a public Worker endpoint in [src/index.ts](/root/.openclaw/workspace/WIP/price-compare-cloudflare/src/index.ts:1)
+```
+Cloudflare Cron Trigger
+  -> Worker fetches https://glomark.lk/fresh/meat/c/144
+  -> Parse server-rendered HTML for product cards
+  -> Extract: name, price, weight, stock, product URL, image
+  -> Normalize into snapshot contract
+  -> Write to KV: snapshots/glomark/meat
+```
 
-The current Worker serves Keells meat products from:
+Key technical details:
+- URL pattern: `/fresh/meat/c/144`, `/fresh/fish/c/146`
+- Product fields in HTML: name, price (LKR), weight, brand, stock status, image
+- Pagination: "Show More" AJAX button (may need investigation for full listing)
+- Product IDs: stable numeric IDs (e.g. `/chicken-breast/p/9154`)
+- JSON-LD structured data available on product pages
 
-- imported snapshot mode when `data/keells.meat.import.json` is valid
-- seeded fallback mode when no valid imported snapshot is available
+### Cargills -- Worker-Native POST API (needs validation)
 
-## Recommended System Shape
+**Why:** No bot protection detected. Product data loaded via AJAX POST calls to `/Web/*` endpoints. If these endpoints work without browser session cookies, Worker can call them directly.
 
-### 1. Cloudflare Worker: public API and read layer
+```
+Cloudflare Cron Trigger
+  -> Worker POSTs to /Web/GetSearchBarProductsV1 or category endpoint
+  -> Parse JSON response
+  -> Extract: ItemName, Price, UnitSize, UOM, Inventory, ItemImage
+  -> Normalize into snapshot contract
+  -> Write to KV: snapshots/cargills/meat
+```
 
-Responsibilities:
+Key technical details:
+- Backend: ASP.NET MVC, AngularJS frontend
+- Product data NOT in HTML (template expressions only)
+- POST endpoints: `/Web/GetCategoriesV1`, `/Web/GetSearchBarProductsV1`
+- Product fields: `ItemName`, `Price`, `Mrp`, `UnitSize`, `UOM`, `Inventory`, `SKUCODE`
+- Encoded IDs (`EnId`) -- may be session-dependent (needs testing)
+- **Fallback:** if POST APIs need session cookies, use Puppeteer like Keells
 
-- serve normalized product data to clients
-- expose freshness and provider health metadata
-- merge provider snapshots into one response shape
-- avoid scraping on user requests
+### Keells -- Local Puppeteer + Stealth (already built)
 
-Near-term read contract:
+**Why:** Cloudflare bot protection blocks all non-browser requests. Puppeteer with stealth plugin is the only reliable extraction method.
 
-- `GET /api/products`
-- returns normalized items plus per-provider metadata such as `captured_at`, `source_status`, and ingestion mode
+```
+Local cron (every 6-12 hours)
+  -> Puppeteer + stealth bypasses Cloudflare
+  -> Establishes guest session
+  -> Calls GetItemDetails API with itemsPerPage=200
+  -> Extracts all products for department
+  -> Transforms into snapshot contract
+  -> Pushes to cloud (git push + deploy, or KV API upload)
+```
 
-### 2. Worker-native provider ingestion
+Key technical details:
+- API: `zebraliveback.keellssuper.com/2.0/WebV2/GetItemDetails`
+- Auth: `cf_clearance` cookie + `usersessionid` header
+- Meat dept ID: 12, itemsPerPage=200 gets all products in one call
+- 80 meat products currently captured
+- See `docs/keells-provider.md` for full API documentation
 
-Use this only when a provider can be fetched safely from Workers using public pages or public JSON endpoints.
+## Normalized Product Schema
 
-Good fit:
+Every product from every store normalizes into one shape:
 
-- stable public HTML or JSON
-- no login requirement
-- no recurring challenge pages or region blocking
-- low enough request volume to keep refresh jobs small and respectful
+```typescript
+type NormalizedProduct = {
+  id: string;                          // stable internal ID
+  store: "keells" | "glomark" | "cargills";
+  source_url: string;                  // link to product on store site
+  source_product_id: string | null;    // store's SKU/product ID
+  source_category: string;             // "meat", "seafood", "vegetables", etc.
+  captured_at: string;                 // ISO timestamp of last capture
+  source_status: SourceStatus;         // "ok" | "partial" | "blocked_or_unstable"
 
-Typical path:
+  name: string;                        // product name as shown on store
+  displayed_price_lkr: number | null;  // package price in LKR
+  displayed_currency: "LKR";
+  in_stock: boolean | null;
 
-1. Cron trigger runs on Cloudflare.
-2. Provider adapter fetches a curated allowlist or stable listing/API endpoint.
-3. Adapter normalizes raw records into the shared snapshot contract.
-4. Worker writes the latest provider snapshot to storage.
+  // Weight normalization
+  raw_size_text: string | null;        // original text: "Per 300g(s)", "1kg"
+  pack_qty: number | null;             // parsed quantity: 300, 1
+  pack_unit: "g" | "kg" | "ml" | "l" | "unit" | "unknown";
+  net_weight_g: number | null;         // normalized to grams (or ml for liquids)
 
-### 3. External or home cron ingestion
+  // Unit pricing (the key comparison metric)
+  price_per_kg_lkr: number | null;     // price per kg for solids
+  price_per_l_lkr: number | null;      // price per litre for liquids
 
-Use this for providers that are blocked, challenge-protected, or operationally easier from a browser-capable machine.
+  notes: string | null;
+};
+```
 
-Good fit:
+## Storage: Cloudflare KV
 
-- Puppeteer or browser automation already works outside this repo
-- the site behaves differently by region or browser context
-- Worker fetches return challenge pages, 403s, or incomplete data
+### Key structure
 
-Typical path:
+```
+snapshots/{store}/{category}     -> ProviderSnapshot JSON
+snapshots/merged/{category}      -> MergedSnapshot JSON (pre-computed)
+meta/{store}                     -> { last_captured_at, source_status, product_count }
+```
 
-1. External job captures provider data.
-2. External job transforms it into the normalized snapshot contract used by this repo.
-3. Snapshot is pushed into the system for Worker reads.
-4. Worker serves only stored snapshots, not live provider fetches.
+### Why KV (not D1)
 
-Keells currently belongs in this path based on the repo state and the separate working Puppeteer provider.
+- Latest-snapshot reads only -- no historical queries needed yet
+- Simple key-value access pattern
+- Free tier sufficient for initial traffic
+- D1 later if historical price tracking becomes a requirement
 
-## Normalized Snapshot Contract
+## Freshness and Health
 
-This repo already establishes the practical pattern:
+Every snapshot carries:
 
-- provider-specific raw extraction
-- transform into a small snapshot document
-- validate snapshot shape
-- normalize each item into API records
+| Field | Meaning |
+|-------|---------|
+| `captured_at` | When the source data was last fetched |
+| `source_status` | `ok`, `partial`, `blocked_or_unstable`, `not_found` |
+| `product_count` | Number of products in snapshot |
+| `extraction_mode` | `worker_fetch`, `worker_api`, `browser_assisted` |
 
-Current checked contract fields for the Keells import snapshot:
+The `GET /api/health` endpoint exposes per-store freshness so the frontend can show "Keells prices updated 3 hours ago" or warn when data is stale.
 
-- `provider`
-- `category`
-- `extraction_mode`
-- `captured_at`
-- `source_status`
-- `items[]`
+## Deployment
 
-Each normalized item then carries fields such as:
+### Cloud (Cloudflare)
 
-- `id`
-- `store`
-- `source_url`
-- `source_product_id`
-- `displayed_price_lkr`
-- `pack_qty`
-- `pack_unit`
-- `net_weight_g`
-- `price_per_kg_lkr`
-- `raw_size_text`
+- **Worker**: API + Glomark/Cargills ingestion cron
+- **KV**: snapshot storage
+- **Pages** (optional): static frontend
 
-Recommendation:
+### Local (operator machine)
 
-- keep provider snapshot documents small and explicit
-- validate them before serving
-- treat the normalized item shape as the stable public contract
+- **Keells capture**: `npm run keells:capture -- --headless` via cron/launchd
+- **Sync to cloud**: git push + GitHub Actions deploy, or direct KV API upload
 
-## Freshness and `source_status`
-
-Every provider snapshot should include:
-
-- `captured_at`: when the source data was observed
-- `source_status`: current source health for that snapshot
-
-Practical status meanings:
-
-- `ok`: snapshot looks complete enough for normal use
-- `partial`: usable, but known to have limited coverage or missing fields
-- `blocked_or_unstable`: provider could not be fetched reliably by the intended path
-- `not_found`: fetch completed but the expected product/listing data was absent
-
-The API should surface these values directly so clients can explain coverage gaps instead of hiding them.
-
-## Ingestion Flow
-
-Recommended steady-state flow:
-
-1. Each provider produces a latest snapshot through either Worker-native or external ingestion.
-2. Snapshot is validated against the provider contract.
-3. Items are normalized into the shared schema.
-4. Latest normalized provider snapshot is stored.
-5. Worker reads from stored snapshots and returns merged results.
-
-That separation keeps ingestion failures away from end-user request latency.
-
-## Storage Options
-
-Current repo:
-
-- checked-in JSON import file for Keells
-- no remote persistence yet
-
-Reasonable next options:
-
-- `KV` for latest snapshot per provider and a merged latest view
-- `D1` later if historical tracking, audit history, or diff queries become important
-
-Practical recommendation:
-
-- use KV first for latest reads
-- add D1 only when history is a real product requirement
-
-R2 is optional later for raw archives if external jobs start storing larger artifacts.
+See `docs/keells-provider.md` "Next Step: Local Cron + Auto-Deploy" for detailed sync options.
