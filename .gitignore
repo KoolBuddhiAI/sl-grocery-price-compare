@@ -1,2 +1,6 @@
 node_modules/
 .wrangler/
+data/keells-debug-*
+data/keells-meat-page.png
+data/keells.browser-raw.capture.json
+scripts/_probe-*

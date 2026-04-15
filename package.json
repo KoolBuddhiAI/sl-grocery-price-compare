@@ -8,9 +8,14 @@
     "start": "HOME=/tmp wrangler dev",
     "deploy": "HOME=/tmp wrangler deploy",
     "keells:transform": "node scripts/keells-browser-export.mjs",
+    "keells:refresh": "node scripts/keells-refresh.mjs",
+    "keells:capture": "node scripts/keells-capture.mjs",
     "test": "node --test"
   },
   "devDependencies": {
+    "puppeteer": "^24.40.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
     "wrangler": "^4.77.0"
   }
 }
