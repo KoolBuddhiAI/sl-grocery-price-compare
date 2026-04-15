@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "HOME=/tmp wrangler dev",
     "start": "HOME=/tmp wrangler dev",
-    "deploy": "HOME=/tmp wrangler deploy",
+    "deploy": "wrangler deploy",
     "keells:transform": "node scripts/keells-browser-export.mjs",
     "keells:refresh": "node scripts/keells-refresh.mjs",
     "keells:capture": "node scripts/keells-capture.mjs",
