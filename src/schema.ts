@@ -1,4 +1,4 @@
-export type Store = "keells";
+export type Store = "keells" | "glomark" | "cargills";
 
 export type ProductUnit = "g" | "kg" | "unit" | "unknown";
 
@@ -31,7 +31,7 @@ export type ParsedPackSize = {
   raw_size_text: string | null;
 };
 
-export type ImportedSnapshotMode = "browser_assisted";
+export type ImportedSnapshotMode = "browser_assisted" | "worker_fetch";
 
 export type KeellsImportedSnapshotItem = {
   id: string;
@@ -51,4 +51,48 @@ export type KeellsImportedSnapshot = {
   captured_at: string;
   source_status: SourceStatus;
   items: KeellsImportedSnapshotItem[];
+};
+
+export type GlomarkImportedSnapshotItem = {
+  id: string;
+  source_product_id: string | null;
+  name: string;
+  source_url: string;
+  displayed_price_lkr: number | null;
+  raw_size_text: string | null;
+  in_stock: boolean | null;
+  brand: string | null;
+  sub_category: string | null;
+  notes?: string | null;
+};
+
+export type GlomarkImportedSnapshot = {
+  provider: "glomark";
+  category: "meat";
+  extraction_mode: ImportedSnapshotMode;
+  captured_at: string;
+  source_status: SourceStatus;
+  items: GlomarkImportedSnapshotItem[];
+};
+
+export type CargillsImportedSnapshotItem = {
+  id: string;
+  source_product_id: string | null;
+  name: string;
+  source_url: string;
+  displayed_price_lkr: number | null;
+  raw_size_text: string | null;
+  in_stock: boolean | null;
+  sku_code: string | null;
+  category_code: string | null;
+  notes?: string | null;
+};
+
+export type CargillsImportedSnapshot = {
+  provider: "cargills";
+  category: "meat";
+  extraction_mode: ImportedSnapshotMode;
+  captured_at: string;
+  source_status: SourceStatus;
+  items: CargillsImportedSnapshotItem[];
 };

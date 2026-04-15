@@ -1,4 +1,4 @@
-import type { NormalizedProduct, ParsedPackSize } from "./schema.ts";
+import type { NormalizedProduct, ParsedPackSize, Store } from "./schema.ts";
 
 type NormalizeInput = {
   id: string;
@@ -55,12 +55,12 @@ export function computePricePerKgLkr(
   return Number((displayedPriceLkr / (netWeightG / 1000)).toFixed(2));
 }
 
-export function normalizeKeellsProduct(input: NormalizeInput): NormalizedProduct {
+function normalizeProduct(store: Store, input: NormalizeInput): NormalizedProduct {
   const pack = parsePackSize(input.raw_size_text);
 
   return {
     id: input.id,
-    store: "keells",
+    store,
     source_url: input.source_url,
     source_product_id: input.source_product_id ?? null,
     source_category: "meat",
@@ -77,4 +77,16 @@ export function normalizeKeellsProduct(input: NormalizeInput): NormalizedProduct
     raw_size_text: pack.raw_size_text,
     notes: input.notes ?? null
   };
+}
+
+export function normalizeKeellsProduct(input: NormalizeInput): NormalizedProduct {
+  return normalizeProduct("keells", input);
+}
+
+export function normalizeGlomarkProduct(input: NormalizeInput): NormalizedProduct {
+  return normalizeProduct("glomark", input);
+}
+
+export function normalizeCargillsProduct(input: NormalizeInput): NormalizedProduct {
+  return normalizeProduct("cargills", input);
 }

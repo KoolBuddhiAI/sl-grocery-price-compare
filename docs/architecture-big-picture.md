@@ -2,180 +2,212 @@
 
 ## Design Principle
 
-Use a **hybrid ingestion architecture** where each provider uses the extraction method that actually works for it, rather than forcing all providers through one pattern.
+Use a **hybrid ingestion architecture** where each provider uses the extraction method that actually works for it, rather than forcing all providers through one pattern. All providers write snapshots to Cloudflare KV. The Worker reads from KV to serve the API.
+
+## System Diagram
 
 ```
-+===========================================================================+
-|  INGESTION LAYER (per-provider, chosen by operational reality)            |
-|                                                                           |
-|  +------------------+  +------------------+  +------------------------+  |
-|  | Glomark          |  | Cargills         |  | Keells                 |  |
-|  | Worker-native    |  | Worker-native    |  | Local Puppeteer        |  |
-|  | HTML fetch       |  | POST API calls   |  | + stealth plugin       |  |
-|  | (no bot protect) |  | (no bot protect) |  | (Cloudflare-protected) |  |
-|  +--------+---------+  +--------+---------+  +-----------+------------+  |
-|           |                      |                        |               |
-+===========|======================|========================|===============+
-            |                      |                        |
-            v                      v                        v
-+===========================================================================+
-|  NORMALIZATION LAYER                                                      |
-|                                                                           |
-|  - Parse product name, price, weight, stock                               |
-|  - Normalize pack size: "Per 300g(s)" -> 300g, "1.3kg" -> 1300g          |
-|  - Compute unit price: price_per_kg_lkr, price_per_l_lkr                 |
-|  - Validate snapshot contract per provider                                |
-|  - Stamp captured_at, source_status                                       |
-|                                                                           |
-+====================================+=====================================+
-                                     |
-                                     v
-+===========================================================================+
-|  STORAGE LAYER (Cloudflare KV)                                            |
-|                                                                           |
-|  snapshots/keells/meat      -> latest Keells meat snapshot                |
-|  snapshots/glomark/meat     -> latest Glomark meat snapshot               |
-|  snapshots/cargills/meat    -> latest Cargills meat snapshot              |
-|  snapshots/merged/meat      -> merged cross-store comparison              |
-|                                                                           |
-+====================================+=====================================+
-                                     |
-                                     v
-+===========================================================================+
-|  API LAYER (Cloudflare Worker)                                            |
-|                                                                           |
-|  GET /api/products                 -> all products, all stores            |
-|  GET /api/products?category=meat   -> filter by category                  |
-|  GET /api/products?store=keells    -> filter by store                     |
-|  GET /api/health                   -> per-store freshness + status        |
-|                                                                           |
-+====================================+=====================================+
-                                     |
-                                     v
-+===========================================================================+
-|  FRONTEND (Cloudflare Pages or Worker-embedded)                           |
-|                                                                           |
-|  - Category browse with cross-store price comparison                      |
-|  - Package price + unit price side by side                                |
-|  - Sort by unit price to find best value                                  |
-|  - Source freshness indicators                                            |
-|                                                                           |
-+===========================================================================+
+ LOCAL MACHINE (Keells only — Cloudflare-protected)
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  +------------------+
+  | cron / launchd   |  Every 6-12 hours
+  +--------+---------+
+           |
+           v
+  +------------------+
+  | keells-capture   |  Puppeteer + stealth
+  | --headless       |  → 80 meat products
+  +--------+---------+
+           |
+           |  POST /api/snapshots?key=SECRET
+           |  (snapshot JSON body)
+           |
+ ~~~~~~~~~~|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+           v
+ CLOUDFLARE
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  +------------------+        +-----------------+       +------------------+
+  | POST /api/       |        | Cron Trigger    |       | Cron Trigger     |
+  | snapshots        |        | (every 6h)      |       | (every 6h)       |
+  | (Keells push)    |        |                 |       |                  |
+  +--------+---------+        +--------+--------+       +--------+---------+
+           |                           |                         |
+           |                  Glomark fetch              Cargills fetch
+           |                  HTML parse                 Session + POST API
+           |                  38 products                82 products
+           |                  ~6s                        ~0.4s
+           |                           |                         |
+           v                           v                         v
+  +====================================================================+
+  |  CLOUDFLARE KV                                                     |
+  |                                                                    |
+  |  snapshots:keells:meat     → { provider, captured_at, items[] }    |
+  |  snapshots:glomark:meat    → { provider, captured_at, items[] }    |
+  |  snapshots:cargills:meat   → { provider, captured_at, items[] }    |
+  +============================+=======================================+
+                               |
+                               v
+  +====================================================================+
+  |  WORKER API                                                        |
+  |                                                                    |
+  |  GET /api/products              → all 200 products, all stores     |
+  |  GET /api/products?store=keells → filter by store                  |
+  |  GET /api/health                → per-store freshness + counts     |
+  |  POST /api/snapshots            → external push (Keells)           |
+  |                                                                    |
+  |  GET /api/glomark/fetch         → live fetch (debug/manual)        |
+  |  GET /api/cargills/fetch        → live fetch (debug/manual)        |
+  +============================+=======================================+
+                               |
+                               v
+  +====================================================================+
+  |  ASTRO FRONTEND (Cloudflare Pages)                                 |
+  |                                                                    |
+  |  /                     → homepage                                  |
+  |  /meat                 → meat comparison (grouped by product type) |
+  |  /meat/whole-chicken   → specific product type detail              |
+  |                                                                    |
+  |  React islands for: filters, sorting, store toggle                 |
+  |  Tailwind CSS for styling                                          |
+  +====================================================================+
+
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
-## Provider Ingestion Strategies
+## Provider Summary (Verified)
 
-### Glomark -- Worker-Native HTML Fetch
+| Store | Method | Bot Protection | Products | Fetch Time | Status |
+|-------|--------|----------------|----------|------------|--------|
+| **Keells** | Local Puppeteer + stealth → push to KV | Cloudflare | 80 | ~15s locally | Done |
+| **Glomark** | Worker cron → HTML fetch → KV | None | 38 | ~6s | Done |
+| **Cargills** | Worker cron → session + POST API → KV | None | 82 | ~0.4s | Done |
+| **Total** | | | **200** | | |
 
-**Why:** Server-rendered HTML with full product data. No bot protection. No JS rendering needed.
-
-```
-Cloudflare Cron Trigger
-  -> Worker fetches https://glomark.lk/fresh/meat/c/144
-  -> Parse server-rendered HTML for product cards
-  -> Extract: name, price, weight, stock, product URL, image
-  -> Normalize into snapshot contract
-  -> Write to KV: snapshots/glomark/meat
-```
-
-Key technical details:
-- URL pattern: `/fresh/meat/c/144`, `/fresh/fish/c/146`
-- Product fields in HTML: name, price (LKR), weight, brand, stock status, image
-- Pagination: "Show More" AJAX button (may need investigation for full listing)
-- Product IDs: stable numeric IDs (e.g. `/chicken-breast/p/9154`)
-- JSON-LD structured data available on product pages
-
-### Cargills -- Worker-Native POST API (needs validation)
-
-**Why:** No bot protection detected. Product data loaded via AJAX POST calls to `/Web/*` endpoints. If these endpoints work without browser session cookies, Worker can call them directly.
+## Data Flow: Glomark (Worker-Native)
 
 ```
-Cloudflare Cron Trigger
-  -> Worker POSTs to /Web/GetSearchBarProductsV1 or category endpoint
-  -> Parse JSON response
-  -> Extract: ItemName, Price, UnitSize, UOM, Inventory, ItemImage
-  -> Normalize into snapshot contract
-  -> Write to KV: snapshots/cargills/meat
+Cron trigger (every 6 hours)
+  → fetch("https://glomark.lk/fresh/meat/c/144")
+  → receive 960KB HTML with productList = [...] embedded in <script>
+  → extractProductListFromHtml(html) → 38 raw products
+  → transformGlomarkProducts(raw) → GlomarkImportedSnapshot
+  → KV.put("snapshots:glomark:meat", snapshot)
 ```
 
-Key technical details:
-- Backend: ASP.NET MVC, AngularJS frontend
-- Product data NOT in HTML (template expressions only)
-- POST endpoints: `/Web/GetCategoriesV1`, `/Web/GetSearchBarProductsV1`
-- Product fields: `ItemName`, `Price`, `Mrp`, `UnitSize`, `UOM`, `Inventory`, `SKUCODE`
-- Encoded IDs (`EnId`) -- may be session-dependent (needs testing)
-- **Fallback:** if POST APIs need session cookies, use Puppeteer like Keells
+All 38 products in one HTTP GET. No pagination, no auth, no session. The `productList` JSON is embedded in the page's inline JavaScript.
 
-### Keells -- Local Puppeteer + Stealth (already built)
-
-**Why:** Cloudflare bot protection blocks all non-browser requests. Puppeteer with stealth plugin is the only reliable extraction method.
+## Data Flow: Cargills (Worker-Native)
 
 ```
-Local cron (every 6-12 hours)
-  -> Puppeteer + stealth bypasses Cloudflare
-  -> Establishes guest session
-  -> Calls GetItemDetails API with itemsPerPage=200
-  -> Extracts all products for department
-  -> Transforms into snapshot contract
-  -> Pushes to cloud (git push + deploy, or KV API upload)
+Cron trigger (every 6 hours)
+  → POST /Web/CheckDeliveryOptionV1 (PinCode=Colombo)
+  → extract Set-Cookie headers (ASP.NET_SessionId, etc.)
+  → POST /Web/GetMenuCategoryItemsPagingV3/ (CategoryId=MTE=, cookies)
+  → receive JSON array of 82 products
+  → transformCargillsProducts(raw) → CargillsImportedSnapshot
+  → KV.put("snapshots:cargills:meat", snapshot)
 ```
 
-Key technical details:
-- API: `zebraliveback.keellssuper.com/2.0/WebV2/GetItemDetails`
-- Auth: `cf_clearance` cookie + `usersessionid` header
-- Meat dept ID: 12, itemsPerPage=200 gets all products in one call
-- 80 meat products currently captured
-- See `docs/keells-provider.md` for full API documentation
+Two HTTP calls: session bootstrap + product fetch. Session cookies are extracted manually from `Set-Cookie` headers (Workers-compatible, no cookie jar).
 
-## Normalized Product Schema
+## Data Flow: Keells (External Push)
 
-Every product from every store normalizes into one shape:
-
-```typescript
-type NormalizedProduct = {
-  id: string;                          // stable internal ID
-  store: "keells" | "glomark" | "cargills";
-  source_url: string;                  // link to product on store site
-  source_product_id: string | null;    // store's SKU/product ID
-  source_category: string;             // "meat", "seafood", "vegetables", etc.
-  captured_at: string;                 // ISO timestamp of last capture
-  source_status: SourceStatus;         // "ok" | "partial" | "blocked_or_unstable"
-
-  name: string;                        // product name as shown on store
-  displayed_price_lkr: number | null;  // package price in LKR
-  displayed_currency: "LKR";
-  in_stock: boolean | null;
-
-  // Weight normalization
-  raw_size_text: string | null;        // original text: "Per 300g(s)", "1kg"
-  pack_qty: number | null;             // parsed quantity: 300, 1
-  pack_unit: "g" | "kg" | "ml" | "l" | "unit" | "unknown";
-  net_weight_g: number | null;         // normalized to grams (or ml for liquids)
-
-  // Unit pricing (the key comparison metric)
-  price_per_kg_lkr: number | null;     // price per kg for solids
-  price_per_l_lkr: number | null;      // price per litre for liquids
-
-  notes: string | null;
-};
 ```
+Local cron (every 6-12 hours, macOS launchd or crontab)
+  → npm run keells:capture -- --headless
+  → Puppeteer + stealth bypasses Cloudflare
+  → establishes guest session via GuestLogin
+  → calls GetItemDetails API (itemsPerPage=200)
+  → 80 products captured
+  → POST to Worker: /api/snapshots?key=SECRET
+  → Worker writes to KV.put("snapshots:keells:meat", snapshot)
+```
+
+Keells capture MUST run locally because Cloudflare bot detection blocks all non-browser requests. The local script captures data then pushes the snapshot to the Worker via an authenticated POST endpoint.
 
 ## Storage: Cloudflare KV
 
 ### Key structure
 
 ```
-snapshots/{store}/{category}     -> ProviderSnapshot JSON
-snapshots/merged/{category}      -> MergedSnapshot JSON (pre-computed)
-meta/{store}                     -> { last_captured_at, source_status, product_count }
+snapshots:{store}:{category}  → ProviderSnapshot JSON
+```
+
+Examples:
+- `snapshots:keells:meat` → Keells meat snapshot (80 products)
+- `snapshots:glomark:meat` → Glomark meat snapshot (38 products)
+- `snapshots:cargills:meat` → Cargills meat snapshot (82 products)
+
+### Snapshot contract
+
+Every snapshot in KV follows the same shape:
+
+```json
+{
+  "provider": "keells",
+  "category": "meat",
+  "extraction_mode": "browser_assisted",
+  "captured_at": "2026-04-15T06:49:21.340Z",
+  "source_status": "ok",
+  "items": [
+    {
+      "id": "...",
+      "source_product_id": "...",
+      "name": "...",
+      "source_url": "...",
+      "displayed_price_lkr": 1250,
+      "raw_size_text": "300g",
+      "in_stock": true,
+      "notes": null
+    }
+  ]
+}
 ```
 
 ### Why KV (not D1)
 
-- Latest-snapshot reads only -- no historical queries needed yet
+- Latest-snapshot reads only — no historical queries needed yet
 - Simple key-value access pattern
-- Free tier sufficient for initial traffic
+- Free tier: 100k reads/day, 1k writes/day (plenty for 3 stores x 4 refreshes)
 - D1 later if historical price tracking becomes a requirement
+
+## API Endpoints
+
+### Public (read)
+
+| Endpoint | Description |
+|---|---|
+| `GET /api/products` | All products across all stores |
+| `GET /api/products?store=keells` | Filter by store |
+| `GET /api/products?store=glomark` | Filter by store |
+| `GET /api/products?store=cargills` | Filter by store |
+| `GET /api/health` | Per-store freshness, status, product counts |
+
+### Internal (write)
+
+| Endpoint | Description |
+|---|---|
+| `POST /api/snapshots` | Push snapshot to KV (requires `Authorization: Bearer <key>`) |
+
+### Debug (manual fetch)
+
+| Endpoint | Description |
+|---|---|
+| `GET /api/glomark/fetch` | Live fetch from glomark.lk (~6s) |
+| `GET /api/cargills/fetch` | Live fetch from cargillsonline.com (~0.4s) |
+
+## Cron Schedule
+
+```
+Worker cron: */6 * * * * (every 6 hours)
+  → fetchGlomarkCategory("meat") → KV.put("snapshots:glomark:meat")
+  → fetchCargillsCategory("meat") → KV.put("snapshots:cargills:meat")
+
+Local cron: 0 */12 * * * (every 12 hours)
+  → npm run keells:capture -- --headless
+  → curl -X POST https://worker.dev/api/snapshots -H "Authorization: Bearer KEY" -d @data/keells.meat.import.json
+```
 
 ## Freshness and Health
 
@@ -185,22 +217,56 @@ Every snapshot carries:
 |-------|---------|
 | `captured_at` | When the source data was last fetched |
 | `source_status` | `ok`, `partial`, `blocked_or_unstable`, `not_found` |
-| `product_count` | Number of products in snapshot |
-| `extraction_mode` | `worker_fetch`, `worker_api`, `browser_assisted` |
+| `extraction_mode` | `worker_fetch`, `browser_assisted` |
 
-The `GET /api/health` endpoint exposes per-store freshness so the frontend can show "Keells prices updated 3 hours ago" or warn when data is stale.
+The `GET /api/health` endpoint exposes per-store freshness:
 
-## Deployment
+```json
+{
+  "stores": {
+    "keells":   { "source_status": "ok", "captured_at": "...", "count": 80 },
+    "glomark":  { "source_status": "ok", "captured_at": "...", "count": 38 },
+    "cargills": { "source_status": "ok", "captured_at": "...", "count": 82 }
+  }
+}
+```
 
-### Cloud (Cloudflare)
+The frontend shows "Updated 3 hours ago" per store and warns when data is older than 24 hours.
 
-- **Worker**: API + Glomark/Cargills ingestion cron
-- **KV**: snapshot storage
-- **Pages** (optional): static frontend
+## Product Type Mapping
 
-### Local (operator machine)
+Products are auto-categorized into ~26 types (e.g. "Whole Chicken", "Chicken Breast", "Beef Cubes") using keyword matching, with manual corrections stored in `data/product-type-mapping.json`.
 
-- **Keells capture**: `npm run keells:capture -- --headless` via cron/launchd
-- **Sync to cloud**: git push + GitHub Actions deploy, or direct KV API upload
+```bash
+npm run generate:product-types            # regenerate auto-mapping
+npm run generate:product-types -- --update # preserve manual corrections
+```
 
-See `docs/keells-provider.md` "Next Step: Local Cron + Auto-Deploy" for detailed sync options.
+See the product type grouping design in the PRD for the frontend comparison layout.
+
+## Frontend: Astro + React + Tailwind
+
+- **Astro** on Cloudflare Pages (static by default, free tier)
+- **React islands** for interactive components (filters, sorting)
+- **Tailwind CSS** for styling
+- Pages call the Worker API for data
+- Product types grouped for cross-store comparison
+
+## Wrangler Configuration
+
+```jsonc
+{
+  "name": "price-compare-cloudflare",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-04-12",
+  "kv_namespaces": [
+    { "binding": "SNAPSHOTS", "id": "<kv-namespace-id>" }
+  ],
+  "vars": {
+    "SNAPSHOT_API_KEY": "<set-via-wrangler-secret>"
+  },
+  "triggers": {
+    "crons": ["0 */6 * * *"]
+  }
+}
+```
