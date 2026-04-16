@@ -4,134 +4,7 @@
     "name": "Cleaned Handella",
     "url": "https://www.keellssuper.com/product/941161",
     "price": 3400,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941015",
-    "name": "Hendella",
-    "url": "https://www.keellssuper.com/product/941015",
-    "price": 2290,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941016",
-    "name": "Hurulla",
-    "url": "https://www.keellssuper.com/product/941016",
-    "price": 1390,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941023",
-    "name": "Lena Paraw",
-    "url": "https://www.keellssuper.com/product/941023",
-    "price": 1560,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941040",
-    "name": "Paraw Fish Slices",
-    "url": "https://www.keellssuper.com/product/941040",
-    "price": 2790,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941037",
-    "name": "Paraw Small",
-    "url": "https://www.keellssuper.com/product/941037",
-    "price": 2200,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941055",
-    "name": "Seer Fish Slices",
-    "url": "https://www.keellssuper.com/product/941055",
-    "price": 4400,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941063",
-    "name": "Sudaya",
-    "url": "https://www.keellssuper.com/product/941063",
-    "price": 790,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941067",
-    "name": "Thalapath Small",
-    "url": "https://www.keellssuper.com/product/941067",
-    "price": 3060,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941070",
-    "name": "Tuna Fish",
-    "url": "https://www.keellssuper.com/product/941070",
-    "price": 1900,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941001",
-    "name": "Alagoduwa",
-    "url": "https://www.keellssuper.com/product/941001",
-    "price": 1400,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941006",
-    "name": "Bollu",
-    "url": "https://www.keellssuper.com/product/941006",
-    "price": 1600,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941007",
-    "name": "Cleaned Cuttlefish",
-    "url": "https://www.keellssuper.com/product/941007",
-    "price": 2490,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941162",
-    "name": "Cleaned Shrimp Medium",
-    "url": "https://www.keellssuper.com/product/941162",
-    "price": 4890.01,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941082",
-    "name": "Habarali-Gar Fish",
-    "url": "https://www.keellssuper.com/product/941082",
-    "price": 1750,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941018",
-    "name": "Jeelawa Fish Slices",
-    "url": "https://www.keellssuper.com/product/941018",
-    "price": 2100,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941021",
-    "name": "Kumbalawa",
-    "url": "https://www.keellssuper.com/product/941021",
-    "price": 1520,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -140,46 +13,25 @@
     "name": "Linna",
     "url": "https://www.keellssuper.com/product/941024",
     "price": 1290,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "941031",
-    "name": "Moralla Fish kg",
-    "url": "https://www.keellssuper.com/product/941031",
-    "price": 1750,
+    "productId": "941040",
+    "name": "Paraw Fish Slices",
+    "url": "https://www.keellssuper.com/product/941040",
+    "price": 2790,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "941157",
-    "name": "Norwegian Salmon Fillet",
-    "url": "https://www.keellssuper.com/product/941157",
-    "price": 5990,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941034",
-    "name": "Octopus",
-    "url": "https://www.keellssuper.com/product/941034",
-    "price": 1390,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941038",
-    "name": "Paraw Fish Head",
-    "url": "https://www.keellssuper.com/product/941038",
-    "price": 1320,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "941041",
-    "name": "Piyamessa",
-    "url": "https://www.keellssuper.com/product/941041",
-    "price": 990,
+    "productId": "941037",
+    "name": "Paraw Small",
+    "url": "https://www.keellssuper.com/product/941037",
+    "price": 2200,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -188,6 +40,178 @@
     "name": "Prawns Medium",
     "url": "https://www.keellssuper.com/product/941043",
     "price": 3190,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941055",
+    "name": "Seer Fish Slices",
+    "url": "https://www.keellssuper.com/product/941055",
+    "price": 4400,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941063",
+    "name": "Sudaya",
+    "url": "https://www.keellssuper.com/product/941063",
+    "price": 790,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941067",
+    "name": "Thalapath Small",
+    "url": "https://www.keellssuper.com/product/941067",
+    "price": 3060,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941070",
+    "name": "Tuna Fish",
+    "url": "https://www.keellssuper.com/product/941070",
+    "price": 1900,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941001",
+    "name": "Alagoduwa",
+    "url": "https://www.keellssuper.com/product/941001",
+    "price": 1400,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941006",
+    "name": "Bollu",
+    "url": "https://www.keellssuper.com/product/941006",
+    "price": 1600,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941007",
+    "name": "Cleaned Cuttlefish",
+    "url": "https://www.keellssuper.com/product/941007",
+    "price": 2490,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941162",
+    "name": "Cleaned Shrimp Medium",
+    "url": "https://www.keellssuper.com/product/941162",
+    "price": 4890.01,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941082",
+    "name": "Habarali-Gar Fish",
+    "url": "https://www.keellssuper.com/product/941082",
+    "price": 1750,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941015",
+    "name": "Hendella",
+    "url": "https://www.keellssuper.com/product/941015",
+    "price": 2290,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941016",
+    "name": "Hurulla",
+    "url": "https://www.keellssuper.com/product/941016",
+    "price": 1390,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941018",
+    "name": "Jeelawa Fish Slices",
+    "url": "https://www.keellssuper.com/product/941018",
+    "price": 2100,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941021",
+    "name": "Kumbalawa",
+    "url": "https://www.keellssuper.com/product/941021",
+    "price": 1520,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941023",
+    "name": "Lena Paraw",
+    "url": "https://www.keellssuper.com/product/941023",
+    "price": 1560,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941031",
+    "name": "Moralla Fish kg",
+    "url": "https://www.keellssuper.com/product/941031",
+    "price": 1750,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941157",
+    "name": "Norwegian Salmon Fillet",
+    "url": "https://www.keellssuper.com/product/941157",
+    "price": 5990,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941034",
+    "name": "Octopus",
+    "url": "https://www.keellssuper.com/product/941034",
+    "price": 1390,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941038",
+    "name": "Paraw Fish Head",
+    "url": "https://www.keellssuper.com/product/941038",
+    "price": 1320,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "941041",
+    "name": "Piyamessa",
+    "url": "https://www.keellssuper.com/product/941041",
+    "price": 990,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -196,6 +220,7 @@
     "name": "Sea Chicken",
     "url": "https://www.keellssuper.com/product/941049",
     "price": 440,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -204,6 +229,7 @@
     "name": "Sea Crab Large",
     "url": "https://www.keellssuper.com/product/941051",
     "price": 3840,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -212,6 +238,7 @@
     "name": "Seer Fish Head",
     "url": "https://www.keellssuper.com/product/941054",
     "price": 2250,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -220,6 +247,7 @@
     "name": "Shark",
     "url": "https://www.keellssuper.com/product/941058",
     "price": 2250,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -228,6 +256,7 @@
     "name": "Skinless Sea Chicken",
     "url": "https://www.keellssuper.com/product/941175",
     "price": 690,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -236,6 +265,7 @@
     "name": "Sudha",
     "url": "https://www.keellssuper.com/product/941064",
     "price": 1950,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -244,6 +274,7 @@
     "name": "Sura Paraw",
     "url": "https://www.keellssuper.com/product/941065",
     "price": 2580,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -252,6 +283,7 @@
     "name": "Thalapath Koppara",
     "url": "https://www.keellssuper.com/product/941066",
     "price": 2490,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -260,6 +292,7 @@
     "name": "Thilapiya Fish",
     "url": "https://www.keellssuper.com/product/942001",
     "price": 960,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -268,6 +301,7 @@
     "name": "Tuna Premium",
     "url": "https://www.keellssuper.com/product/941103",
     "price": 3490,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -276,6 +310,7 @@
     "name": "Un Cleaned Cuttlefish",
     "url": "https://www.keellssuper.com/product/941073",
     "price": 2430,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -284,6 +319,7 @@
     "name": "White Mullet",
     "url": "https://www.keellssuper.com/product/941076",
     "price": 2040,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   }

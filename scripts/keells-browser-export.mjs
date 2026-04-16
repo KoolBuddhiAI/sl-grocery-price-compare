@@ -188,6 +188,7 @@ export function transformRawKeellsRecords(rawInput, options = {}) {
       source_url: sourceUrl,
       displayed_price_lkr: parsePrice(record.displayed_price_lkr ?? record.price ?? record.price_lkr),
       raw_size_text: readNullableString(record, ["raw_size_text", "size", "weight", "pack"]),
+      uom: readNullableString(record, ["uom"]),
       in_stock: parseStock(record.in_stock ?? record.inStock ?? record.available ?? record.availability),
       notes: readNullableString(record, ["notes"])
     };

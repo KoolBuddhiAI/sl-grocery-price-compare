@@ -40,6 +40,7 @@ export type KeellsImportedSnapshotItem = {
   source_url: string;
   displayed_price_lkr: number | null;
   raw_size_text: string | null;
+  uom?: string | null;
   in_stock: boolean | null;
   notes?: string | null;
 };

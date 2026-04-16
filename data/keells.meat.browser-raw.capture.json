@@ -4,6 +4,7 @@
     "name": "Bairaha Half Chicken",
     "url": "https://www.keellssuper.com/product/937039",
     "price": 1250,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -12,6 +13,7 @@
     "name": "Bairaha Whole Chicken",
     "url": "https://www.keellssuper.com/product/937001",
     "price": 1250,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -20,6 +22,7 @@
     "name": "Bone In Curry Pork",
     "url": "https://www.keellssuper.com/product/934001",
     "price": 4690,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -28,6 +31,7 @@
     "name": "Chicken Drumsticks Skin On",
     "url": "https://www.keellssuper.com/product/935006",
     "price": 1390,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -36,6 +40,7 @@
     "name": "Chicken Drumsticks Skinless",
     "url": "https://www.keellssuper.com/product/935005",
     "price": 1690,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -44,6 +49,7 @@
     "name": "Chicken Full Breast Skinless",
     "url": "https://www.keellssuper.com/product/935008",
     "price": 1750,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -52,6 +58,7 @@
     "name": "Chicken Gizzard",
     "url": "https://www.keellssuper.com/product/935009",
     "price": 1090,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -60,6 +67,7 @@
     "name": "Chicken Liver",
     "url": "https://www.keellssuper.com/product/935010",
     "price": 1040,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -68,6 +76,7 @@
     "name": "Chicken Neck",
     "url": "https://www.keellssuper.com/product/935011",
     "price": 890,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -76,6 +85,7 @@
     "name": "Chicken Thigh Skin On",
     "url": "https://www.keellssuper.com/product/935013",
     "price": 1540,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -84,6 +94,7 @@
     "name": "Chicken Thigh Skinless",
     "url": "https://www.keellssuper.com/product/935012",
     "price": 1790,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -92,6 +103,7 @@
     "name": "Chicken Whole Legs Skin On",
     "url": "https://www.keellssuper.com/product/935015",
     "price": 1290,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -100,6 +112,7 @@
     "name": "Chicken Whole Legs Skinless",
     "url": "https://www.keellssuper.com/product/935014",
     "price": 1690,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -108,6 +121,7 @@
     "name": "Chicken Winglets",
     "url": "https://www.keellssuper.com/product/935016",
     "price": 1360,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -116,6 +130,7 @@
     "name": "Chicken Wings",
     "url": "https://www.keellssuper.com/product/935017",
     "price": 990,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -124,6 +139,7 @@
     "name": "Cic Half Chicken",
     "url": "https://www.keellssuper.com/product/937003",
     "price": 1260,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -132,6 +148,7 @@
     "name": "Cic Skin Less Whole Chicken",
     "url": "https://www.keellssuper.com/product/937004",
     "price": 1400,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -140,6 +157,7 @@
     "name": "Cic Whole Chicken With Giblet",
     "url": "https://www.keellssuper.com/product/937005",
     "price": 1250,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -148,6 +166,7 @@
     "name": "Curry Pork Rind On Boneless",
     "url": "https://www.keellssuper.com/product/934002",
     "price": 4890,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -156,6 +175,7 @@
     "name": "Elephant House Mutton Cubes 250g",
     "url": "https://www.keellssuper.com/product/65778",
     "price": 1550,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -164,6 +184,7 @@
     "name": "Local Mutton For Curry",
     "url": "https://www.keellssuper.com/product/933002",
     "price": 5100,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -172,6 +193,7 @@
     "name": "New Anthony's Pre Cut Chicken S/L",
     "url": "https://www.keellssuper.com/product/937023",
     "price": 1570,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -180,6 +202,7 @@
     "name": "New Anthonys Pre Cut Whole Chicken",
     "url": "https://www.keellssuper.com/product/937020",
     "price": 1415,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -188,6 +211,7 @@
     "name": "New Anthonys Whole Chicken Skin On",
     "url": "https://www.keellssuper.com/product/937021",
     "price": 1260,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -196,6 +220,7 @@
     "name": "Pork Belly (Boneless)",
     "url": "https://www.keellssuper.com/product/934004",
     "price": 5060,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -204,6 +229,7 @@
     "name": "Pork Cubes Boneless",
     "url": "https://www.keellssuper.com/product/934006",
     "price": 5980,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -212,6 +238,7 @@
     "name": "Pork For Roasting",
     "url": "https://www.keellssuper.com/product/934008",
     "price": 3900,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -220,6 +247,7 @@
     "name": "Pork Knuckle",
     "url": "https://www.keellssuper.com/product/934009",
     "price": 2950,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -228,6 +256,7 @@
     "name": "Pork Leg Bone In",
     "url": "https://www.keellssuper.com/product/934010",
     "price": 6350,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -236,6 +265,7 @@
     "name": "Pork Shoulder (Loin)",
     "url": "https://www.keellssuper.com/product/934011",
     "price": 5990,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -244,6 +274,7 @@
     "name": "Pussalla Bier Pork Ham",
     "url": "https://www.keellssuper.com/product/939210",
     "price": 6350,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -252,6 +283,7 @@
     "name": "Pussalla Chicken Paprika Bologna Ham                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ",
     "url": "https://www.keellssuper.com/product/939206",
     "price": 4570,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -260,14 +292,7 @@
     "name": "Pussalla Cottage Pork Ham",
     "url": "https://www.keellssuper.com/product/939207",
     "price": 7700,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "939208",
-    "name": "Pussalla Honey Glazed Pork Ham",
-    "url": "https://www.keellssuper.com/product/939208",
-    "price": 8050,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -276,6 +301,7 @@
     "name": "Pussalla Pork Bologna Ham",
     "url": "https://www.keellssuper.com/product/939209",
     "price": 5400,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -284,6 +310,7 @@
     "name": "Argal Chorizo Iberico 75g",
     "url": "https://www.keellssuper.com/product/939138",
     "price": 1980,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -292,6 +319,7 @@
     "name": "Argal Chorizo Pamplona 80g",
     "url": "https://www.keellssuper.com/product/939133",
     "price": 1890,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -300,6 +328,7 @@
     "name": "Argal Chorizo Sarta Forte 200g",
     "url": "https://www.keellssuper.com/product/939136",
     "price": 3830,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -308,6 +337,7 @@
     "name": "Argal Jamon Serrano 100g",
     "url": "https://www.keellssuper.com/product/939134",
     "price": 2180,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -316,6 +346,7 @@
     "name": "Argal Salchichon Iberico 75g",
     "url": "https://www.keellssuper.com/product/939139",
     "price": 1980,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -324,6 +355,7 @@
     "name": "Argal Salchicon Regio 100g",
     "url": "https://www.keellssuper.com/product/939142",
     "price": 2230,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -332,6 +364,7 @@
     "name": "Argal Trio Espanol 150g",
     "url": "https://www.keellssuper.com/product/939141",
     "price": 3970,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -340,6 +373,7 @@
     "name": "Aust. Beef Topside",
     "url": "https://www.keellssuper.com/product/931002",
     "price": 6650,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -348,6 +382,7 @@
     "name": "Aust. Lamb Leg",
     "url": "https://www.keellssuper.com/product/932000",
     "price": 4990,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -356,6 +391,7 @@
     "name": "Aust. Lamb Leg Boneless",
     "url": "https://www.keellssuper.com/product/939116",
     "price": 6290,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -364,6 +400,7 @@
     "name": "Aust. Mutton Cubes",
     "url": "https://www.keellssuper.com/product/939106",
     "price": 5290,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -372,6 +409,7 @@
     "name": "Aust. Mutton Leg Boneless",
     "url": "https://www.keellssuper.com/product/939110",
     "price": 4990,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -380,6 +418,7 @@
     "name": "Bairaha Family Pack 250g",
     "url": "https://www.keellssuper.com/product/937046",
     "price": 320,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -388,6 +427,7 @@
     "name": "Bairaha Pre Cut Chicken Skinless",
     "url": "https://www.keellssuper.com/product/937026",
     "price": 1500,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -396,6 +436,7 @@
     "name": "Bairaha Pre Cut Whole Chicken S/On",
     "url": "https://www.keellssuper.com/product/937022",
     "price": 1400,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -404,6 +445,7 @@
     "name": "Bairaha Whole Chicken Skinless",
     "url": "https://www.keellssuper.com/product/937002",
     "price": 1360,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -412,6 +454,7 @@
     "name": "Bbq Spare Ribs Sheet",
     "url": "https://www.keellssuper.com/product/931003",
     "price": 6740,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -420,6 +463,7 @@
     "name": "Beef Cubes",
     "url": "https://www.keellssuper.com/product/931004",
     "price": 3700,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -428,6 +472,7 @@
     "name": "Beef Fillet",
     "url": "https://www.keellssuper.com/product/931005",
     "price": 4500,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -436,6 +481,7 @@
     "name": "Beef Topside Premium",
     "url": "https://www.keellssuper.com/product/931006",
     "price": 3700,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -444,6 +490,7 @@
     "name": "Casa Di Sapori Cooked Ham - 100g",
     "url": "https://www.keellssuper.com/product/939171",
     "price": 1980,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -452,6 +499,7 @@
     "name": "Casa Di Sapori Mortadella - 100g",
     "url": "https://www.keellssuper.com/product/939173",
     "price": 2130,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -460,6 +508,7 @@
     "name": "Casa Di Sapori Salami Milano - 100g",
     "url": "https://www.keellssuper.com/product/939174",
     "price": 2370,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -468,6 +517,7 @@
     "name": "Casa Di Sapori Salami Pepperoni- 80g",
     "url": "https://www.keellssuper.com/product/939175",
     "price": 1980,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -476,6 +526,7 @@
     "name": "Casa Di Sapori Smoked Salami - 100g",
     "url": "https://www.keellssuper.com/product/939172",
     "price": 2580,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -484,6 +535,7 @@
     "name": "Chicken Boneless Thigh",
     "url": "https://www.keellssuper.com/product/935060",
     "price": 2100,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -492,6 +544,7 @@
     "name": "Chicken Breast Meat Boneless",
     "url": "https://www.keellssuper.com/product/935003",
     "price": 2170,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -500,6 +553,7 @@
     "name": "Chicken Mortadella",
     "url": "https://www.keellssuper.com/product/939025",
     "price": 3480,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -508,6 +562,7 @@
     "name": "Chilled Whole Chicken Skinless",
     "url": "https://www.keellssuper.com/product/935018",
     "price": 1380,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -516,6 +571,7 @@
     "name": "Eh Pork Belly",
     "url": "https://www.keellssuper.com/product/934015",
     "price": 4610,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -524,6 +580,7 @@
     "name": "Eh Roasted Pork Knucle",
     "url": "https://www.keellssuper.com/product/939192",
     "price": 3750,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -532,6 +589,7 @@
     "name": "Goldi Boneless  Beef Cubes  250g",
     "url": "https://www.keellssuper.com/product/931031",
     "price": 940,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -540,6 +598,7 @@
     "name": "Goldi Boneless Pork Cubes  250g",
     "url": "https://www.keellssuper.com/product/934025",
     "price": 740,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -548,6 +607,7 @@
     "name": "Goldi Curry Beef 250g",
     "url": "https://www.keellssuper.com/product/931032",
     "price": 790,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -556,6 +616,7 @@
     "name": "Minced Pork",
     "url": "https://www.keellssuper.com/product/934003",
     "price": 3990,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -564,6 +625,7 @@
     "name": "Mutton Leg Local",
     "url": "https://www.keellssuper.com/product/933005",
     "price": 5590,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -572,6 +634,7 @@
     "name": "Nelna Whole Chicken",
     "url": "https://www.keellssuper.com/product/937053",
     "price": 1250,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -580,6 +643,7 @@
     "name": "Pork Chops",
     "url": "https://www.keellssuper.com/product/934005",
     "price": 6170,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -588,6 +652,7 @@
     "name": "Pork Fillet",
     "url": "https://www.keellssuper.com/product/934007",
     "price": 5580,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -596,6 +661,7 @@
     "name": "Pork Paprika Mortadella",
     "url": "https://www.keellssuper.com/product/939014",
     "price": 4200,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -604,6 +670,7 @@
     "name": "Pork Salami",
     "url": "https://www.keellssuper.com/product/939016",
     "price": 4200,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -612,6 +679,16 @@
     "name": "Pussalla Chicken Bologna Ham (Mortadella)",
     "url": "https://www.keellssuper.com/product/939205",
     "price": 4500,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "939208",
+    "name": "Pussalla Honey Glazed Pork Ham",
+    "url": "https://www.keellssuper.com/product/939208",
+    "price": 8050,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -620,6 +697,7 @@
     "name": "Roasted Pork With Stuffing",
     "url": "https://www.keellssuper.com/product/939021",
     "price": 5990,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -628,6 +706,7 @@
     "name": "Turkey (Local)",
     "url": "https://www.keellssuper.com/product/937081",
     "price": 5600,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -636,6 +715,7 @@
     "name": "Turkey Rosted  (Local)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
     "url": "https://www.keellssuper.com/product/937083",
     "price": 5500,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   }

@@ -13,6 +13,7 @@
       "displayed_price_lkr": 2150,
       "raw_size_text": "500 g",
       "in_stock": true,
+      "uom": null,
       "notes": "Copied from browser-visible product card fields."
     },
     {
@@ -23,6 +24,7 @@
       "displayed_price_lkr": 1980,
       "raw_size_text": "1kg",
       "in_stock": true,
+      "uom": null,
       "notes": "Copied from browser-visible product card fields."
     },
     {
@@ -33,6 +35,7 @@
       "displayed_price_lkr": 980,
       "raw_size_text": "Per 300g(s)",
       "in_stock": false,
+      "uom": null,
       "notes": "Copied from browser-visible product card fields."
     }
   ]

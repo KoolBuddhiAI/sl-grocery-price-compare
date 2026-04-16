@@ -76,6 +76,7 @@ function normalizeApiItem(item) {
   const name = item.name || item.itemName || "";
   const price = item.amount ?? item.sellingPrice ?? null;
   const productId = item.itemCode || null;
+  const uom = item.uom || null; // "KG" = per kg, "NO" = per unit/piece
 
   let inStock = null;
   if (item.isOutOfStock === true) inStock = false;
@@ -89,6 +90,7 @@ function normalizeApiItem(item) {
     name,
     url,
     ...(price != null ? { price } : {}),
+    ...(uom ? { uom } : {}),
     ...(inStock != null ? { inStock } : {}),
     notes: "Captured from Keells API via automated Puppeteer session.",
   };

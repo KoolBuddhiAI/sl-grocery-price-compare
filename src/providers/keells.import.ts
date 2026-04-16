@@ -33,6 +33,7 @@ function isSnapshotItem(value: unknown): value is KeellsImportedSnapshotItem {
     typeof value.source_url === "string" &&
     (typeof value.displayed_price_lkr === "number" || value.displayed_price_lkr === null) &&
     isNullableString(value.raw_size_text) &&
+    (value.uom === undefined || isNullableString(value.uom)) &&
     (typeof value.in_stock === "boolean" || value.in_stock === null) &&
     (value.notes === undefined || isNullableString(value.notes))
   );
@@ -68,7 +69,7 @@ export function normalizeKeellsImportedSnapshot(snapshot: KeellsImportedSnapshot
       in_stock: item.in_stock,
       raw_size_text: item.raw_size_text ?? extractWeightFromName(item.name),
       notes: item.notes ?? "Imported from a browser-assisted Keells snapshot export.",
-      price_is_per_kg: !item.raw_size_text && !extractWeightFromName(item.name),
+      price_is_per_kg: item.uom === "KG",
       category: snapshot.category,
     })
   );
