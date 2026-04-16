@@ -98,7 +98,7 @@ export default function CategoryPage({ category, title }: Props) {
       </div>
 
       <div className="mb-6">
-        <FreshnessBar />
+        <FreshnessBar category={category} />
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">

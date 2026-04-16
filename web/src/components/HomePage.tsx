@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { HealthResponse, Store } from '../lib/api';
-import { fetchHealth } from '../lib/api';
+import { fetchHealth, getAggregateStoreStats } from '../lib/api';
 
 const storeConfig: Record<Store, { label: string; border: string; text: string; bg: string }> = {
   keells: {
@@ -44,8 +44,9 @@ export default function HomePage() {
       .catch(() => setError(true));
   }, []);
 
-  const totalProducts = health
-    ? Object.values(health.stores).reduce((sum, s) => sum + s.count, 0)
+  const aggregateStores = health ? getAggregateStoreStats(health) : null;
+  const totalProducts = aggregateStores
+    ? Object.values(aggregateStores).reduce((sum, s) => sum + s.count, 0)
     : null;
 
   return (
@@ -81,15 +82,16 @@ export default function HomePage() {
             Unable to connect to API. Make sure the Worker is running.
           </div>
         )}
-        {!health && !error && (
+        {!aggregateStores && !error && (
           <div className="sm:col-span-3 text-gray-400 dark:text-gray-500 animate-pulse py-8">
             Loading store data...
           </div>
         )}
-        {health &&
-          (Object.entries(health.stores) as [Store, HealthResponse['stores'][string]][]).map(
-            ([store, meta]) => {
+        {aggregateStores &&
+          (Object.entries(aggregateStores) as [Store, typeof aggregateStores[string]][]).map(
+            ([store, stats]) => {
               const cfg = storeConfig[store];
+              if (!cfg) return null;
               return (
                 <div
                   key={store}
@@ -97,13 +99,13 @@ export default function HomePage() {
                 >
                   <div className={`text-lg font-semibold ${cfg.text} mb-2`}>{cfg.label}</div>
                   <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                    {meta.count} <span className="text-sm font-normal text-gray-500 dark:text-gray-400">products</span>
+                    {stats.count} <span className="text-sm font-normal text-gray-500 dark:text-gray-400">products</span>
                   </div>
                   <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                    Updated {timeAgo(meta.captured_at)}
+                    Updated {timeAgo(stats.latestCapturedAt)}
                   </div>
                   <div className="text-xs text-gray-400 dark:text-gray-500 mt-1">
-                    Status: {meta.source_status}
+                    Status: {stats.source_status}
                   </div>
                 </div>
               );
@@ -113,7 +115,7 @@ export default function HomePage() {
 
       {totalProducts !== null && (
         <p className="mt-8 text-sm text-gray-400 dark:text-gray-500">
-          {totalProducts} total products tracked
+          {totalProducts} total products tracked across 4 categories
         </p>
       )}
     </div>

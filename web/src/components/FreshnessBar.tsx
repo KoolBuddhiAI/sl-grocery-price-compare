@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { HealthResponse, Store } from '../lib/api';
-import { fetchHealth } from '../lib/api';
+import { fetchHealth, getStoresForCategory } from '../lib/api';
 
 const storeColors: Record<Store, string> = {
   keells: 'text-green-600 dark:text-green-400',
@@ -30,7 +30,11 @@ function timeAgo(dateStr: string | null): { text: string; stale: boolean } {
   return { text, stale };
 }
 
-export default function FreshnessBar() {
+type Props = {
+  category?: string;
+};
+
+export default function FreshnessBar({ category = 'meat' }: Props) {
   const [health, setHealth] = useState<HealthResponse | null>(null);
   const [error, setError] = useState(false);
 
@@ -56,11 +60,23 @@ export default function FreshnessBar() {
     );
   }
 
-  const stores = Object.entries(health.stores) as [Store, HealthResponse['stores'][string]][];
+  const categoryStores = getStoresForCategory(health, category);
+  const stores = Object.entries(categoryStores) as [Store, typeof categoryStores[string]][];
+
+  // Only show stores that have data for this category
+  const activeStores = stores.filter(([, meta]) => meta.count > 0 || meta.source_status === 'ok');
+
+  if (activeStores.length === 0) {
+    return (
+      <div className="bg-gray-50 dark:bg-gray-800 rounded-lg px-4 py-2 text-sm text-gray-500 dark:text-gray-400">
+        No store data available for this category yet.
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-wrap gap-3">
-      {stores.map(([store, meta]) => {
+      {activeStores.map(([store, meta]) => {
         const { text: agoText, stale } = timeAgo(meta.captured_at);
         return (
           <div

@@ -43,8 +43,39 @@ export type ProductsResponse = {
 };
 
 export type HealthResponse = {
-  stores: Record<string, StoreMeta & { count: number }>;
+  categories: string[];
+  stores: Record<string, Record<string, StoreMeta & { count: number }>>;
 };
+
+/** Flatten the nested health response for a specific category */
+export function getStoresForCategory(
+  health: HealthResponse,
+  category: string
+): Record<string, StoreMeta & { count: number }> {
+  return health.stores[category] ?? {};
+}
+
+/** Get aggregate store stats across all categories */
+export function getAggregateStoreStats(
+  health: HealthResponse
+): Record<string, { count: number; latestCapturedAt: string | null; source_status: string }> {
+  const result: Record<string, { count: number; latestCapturedAt: string | null; source_status: string }> = {};
+  for (const category of Object.values(health.stores)) {
+    for (const [store, meta] of Object.entries(category)) {
+      if (!result[store]) {
+        result[store] = { count: 0, latestCapturedAt: null, source_status: 'not_found' };
+      }
+      result[store].count += meta.count || 0;
+      if (meta.captured_at && (!result[store].latestCapturedAt || meta.captured_at > result[store].latestCapturedAt)) {
+        result[store].latestCapturedAt = meta.captured_at;
+      }
+      if (meta.source_status === 'ok') {
+        result[store].source_status = 'ok';
+      }
+    }
+  }
+  return result;
+}
 
 export async function fetchProducts(store?: string, category?: string): Promise<ProductsResponse> {
   const url = new URL(`${API_BASE}/api/products`);
