@@ -15,6 +15,7 @@ type NormalizeInput = {
 };
 
 const PACK_SIZE_PATTERN = /^(?:per\s+)?(\d+(?:\.\d+)?)\s*(kg|g)(?:\(s\))?$/i;
+const UNIT_PATTERN = /^(\d+)\s*(?:pc|pcs|piece|pieces|each|unit|units|pack)$/i;
 
 export function parsePackSize(rawSizeText: string | null | undefined): ParsedPackSize {
   if (!rawSizeText) {
@@ -22,27 +23,23 @@ export function parsePackSize(rawSizeText: string | null | undefined): ParsedPac
   }
 
   const normalized = rawSizeText.trim().toLowerCase().replace(/\s+/g, " ");
-  const match = normalized.match(PACK_SIZE_PATTERN);
 
-  if (!match) {
-    return {
-      pack_qty: null,
-      pack_unit: "unknown",
-      net_weight_g: null,
-      raw_size_text: rawSizeText
-    };
+  // Match weight-based: "300g", "1kg", "Per 300g(s)"
+  const weightMatch = normalized.match(PACK_SIZE_PATTERN);
+  if (weightMatch) {
+    const qty = Number(weightMatch[1]);
+    const unit = weightMatch[2] as "g" | "kg";
+    const netWeightG = unit === "kg" ? qty * 1000 : qty;
+    return { pack_qty: qty, pack_unit: unit, net_weight_g: netWeightG, raw_size_text: rawSizeText };
   }
 
-  const qty = Number(match[1]);
-  const unit = match[2] as "g" | "kg";
-  const netWeightG = unit === "kg" ? qty * 1000 : qty;
+  // Match unit-based: "1 pc", "6 pack", "1 each"
+  const unitMatch = normalized.match(UNIT_PATTERN);
+  if (unitMatch) {
+    return { pack_qty: Number(unitMatch[1]), pack_unit: "unit", net_weight_g: null, raw_size_text: rawSizeText };
+  }
 
-  return {
-    pack_qty: qty,
-    pack_unit: unit,
-    net_weight_g: netWeightG,
-    raw_size_text: rawSizeText
-  };
+  return { pack_qty: null, pack_unit: "unknown", net_weight_g: null, raw_size_text: rawSizeText };
 }
 
 export function computePricePerKgLkr(

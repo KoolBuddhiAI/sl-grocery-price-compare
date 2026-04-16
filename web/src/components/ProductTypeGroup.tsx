@@ -107,11 +107,17 @@ export default function ProductTypeGroup({ type, products, enabledStores, apiUrl
                       }`}
                     >
                       <td className="px-4 py-2">
-                        <span className={`${isCheapest ? 'font-bold text-green-700 dark:text-green-400' : 'font-semibold text-gray-900 dark:text-white'}`}>
-                          {product.price_per_kg_lkr !== null ? formatPrice(product.price_per_kg_lkr) : '--'}
-                        </span>
-                        {product.price_per_kg_lkr !== null && (
-                          <span className="text-gray-400 dark:text-gray-500 text-xs">/kg</span>
+                        {product.price_per_kg_lkr !== null ? (
+                          <>
+                            <span className={`${isCheapest ? 'font-bold text-green-700 dark:text-green-400' : 'font-semibold text-gray-900 dark:text-white'}`}>
+                              {formatPrice(product.price_per_kg_lkr)}
+                            </span>
+                            <span className="text-gray-400 dark:text-gray-500 text-xs">/kg</span>
+                          </>
+                        ) : (
+                          <span className="text-gray-400 dark:text-gray-500 text-xs italic" title="Sold per piece — weight unknown, cannot compute per-kg price">
+                            per pc
+                          </span>
                         )}
                       </td>
                       <td className="px-4 py-2">
