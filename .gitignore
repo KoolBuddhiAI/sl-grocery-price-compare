@@ -1,6 +1,7 @@
 node_modules/
 .wrangler/
 .env*
+scripts/keells-cron.sh
 data/keells-debug-*
 data/keells-meat-page.png
 data/keells.browser-raw.capture.json
