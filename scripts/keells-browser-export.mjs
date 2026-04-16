@@ -148,6 +148,7 @@ function toImportId(record, index) {
 export function transformRawKeellsRecords(rawInput, options = {}) {
   const capturedAt = options.capturedAt ?? new Date().toISOString();
   const sourceStatus = options.sourceStatus ?? "ok";
+  const category = options.category ?? "meat";
 
   if (!VALID_SOURCE_STATUSES.has(sourceStatus)) {
     throw new Error(`Invalid source status: ${sourceStatus}`);
@@ -194,7 +195,7 @@ export function transformRawKeellsRecords(rawInput, options = {}) {
 
   return {
     provider: "keells",
-    category: "meat",
+    category,
     extraction_mode: "browser_assisted",
     captured_at: capturedAt,
     source_status: sourceStatus,

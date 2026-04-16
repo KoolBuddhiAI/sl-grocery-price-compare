@@ -26,8 +26,12 @@ puppeteerExtra.use(StealthPlugin());
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, "..");
-const IMPORT_FILE = path.join(PROJECT_ROOT, "data", "keells.meat.import.json");
-const RAW_CAPTURE_FILE = path.join(PROJECT_ROOT, "data", "keells.browser-raw.capture.json");
+function importFile(category) {
+  return path.join(PROJECT_ROOT, "data", `keells.${category}.import.json`);
+}
+function rawCaptureFile(category) {
+  return path.join(PROJECT_ROOT, "data", `keells.${category}.browser-raw.capture.json`);
+}
 
 const { transformRawKeellsRecords } = await import("./keells-browser-export.mjs");
 
@@ -207,13 +211,14 @@ async function main() {
   }
 
   // Save raw capture
-  await fs.writeFile(RAW_CAPTURE_FILE, `${JSON.stringify(products, null, 2)}\n`, "utf8");
-  console.log(`Raw capture saved to: ${path.relative(PROJECT_ROOT, RAW_CAPTURE_FILE)}`);
+  await fs.writeFile(rawCaptureFile(options.category), `${JSON.stringify(products, null, 2)}\n`, "utf8");
+  console.log(`Raw capture saved to: ${path.relative(PROJECT_ROOT, rawCaptureFile(options.category))}`);
 
   // Transform
   const snapshot = transformRawKeellsRecords(products, {
     capturedAt: new Date().toISOString(),
     sourceStatus: options.sourceStatus,
+    category: options.category,
   });
   console.log(`Transformed ${snapshot.items.length} items.`);
 
@@ -224,8 +229,8 @@ async function main() {
   }
 
   // Write import file
-  await fs.writeFile(IMPORT_FILE, `${JSON.stringify(snapshot, null, 2)}\n`, "utf8");
-  console.log(`Wrote snapshot to: ${path.relative(PROJECT_ROOT, IMPORT_FILE)}`);
+  await fs.writeFile(importFile(options.category), `${JSON.stringify(snapshot, null, 2)}\n`, "utf8");
+  console.log(`Wrote snapshot to: ${path.relative(PROJECT_ROOT, importFile(options.category))}`);
 
   // Push snapshot to Worker
   if (options.push) {
