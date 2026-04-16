@@ -3,6 +3,16 @@ import importedSnapshot from "../../data/keells.meat.import.json" with { type: "
 import { normalizeKeellsProduct } from "../normalize.ts";
 import type { KeellsImportedSnapshot, KeellsImportedSnapshotItem, NormalizedProduct } from "../schema.ts";
 
+/**
+ * Extract weight from product name when raw_size_text is missing.
+ * Keells API doesn't include weight for packaged items, but the name often contains it.
+ * e.g. "Bairaha Family Pack 250g" → "250g", "Argal Chorizo Iberico 75g" → "75g"
+ */
+function extractWeightFromName(name: string): string | null {
+  const match = name.match(/(\d+(?:\.\d+)?)\s*(g|kg|ml|l)\b/i);
+  return match ? `${match[1]}${match[2].toLowerCase()}` : null;
+}
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
 }
@@ -29,7 +39,7 @@ export function parseKeellsImportedSnapshot(value: unknown): KeellsImportedSnaps
   if (
     !isRecord(value) ||
     value.provider !== "keells" ||
-    value.category !== "meat" ||
+    typeof value.category !== "string" ||
     value.extraction_mode !== "browser_assisted" ||
     typeof value.captured_at !== "string" ||
     !["ok", "partial", "blocked_or_unstable", "not_found"].includes(String(value.source_status)) ||
@@ -53,9 +63,10 @@ export function normalizeKeellsImportedSnapshot(snapshot: KeellsImportedSnapshot
       name: item.name,
       displayed_price_lkr: item.displayed_price_lkr,
       in_stock: item.in_stock,
-      raw_size_text: item.raw_size_text,
+      raw_size_text: item.raw_size_text ?? extractWeightFromName(item.name),
       notes: item.notes ?? "Imported from a browser-assisted Keells snapshot export.",
-      price_is_per_kg: !item.raw_size_text,
+      price_is_per_kg: !item.raw_size_text && !extractWeightFromName(item.name),
+      category: snapshot.category,
     })
   );
 }
