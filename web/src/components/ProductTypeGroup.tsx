@@ -115,8 +115,8 @@ export default function ProductTypeGroup({ type, products, enabledStores, apiUrl
                             <span className="text-gray-400 dark:text-gray-500 text-xs">/kg</span>
                           </>
                         ) : (
-                          <span className="text-gray-400 dark:text-gray-500 text-xs italic" title="Sold per piece — weight unknown, cannot compute per-kg price">
-                            per pc
+                          <span className="text-gray-400 dark:text-gray-500 text-xs" title="Weight unknown — cannot compute per-kg price">
+                            —
                           </span>
                         )}
                       </td>
