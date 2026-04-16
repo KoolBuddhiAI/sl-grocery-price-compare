@@ -3,6 +3,15 @@ import importedSnapshot from "../../data/glomark.meat.import.json" with { type: 
 import { normalizeGlomarkProduct } from "../normalize.ts";
 import type { GlomarkImportedSnapshot, GlomarkImportedSnapshotItem, NormalizedProduct } from "../schema.ts";
 
+/**
+ * Extract weight from product name when raw_size_text is missing.
+ * e.g. "Fresh Leaf Kankun 150G" → "150g"
+ */
+function extractWeightFromName(name: string): string | null {
+  const match = name.match(/(\d+(?:\.\d+)?)\s*(g|kg|ml|l)\b/i);
+  return match ? `${match[1]}${match[2].toLowerCase()}` : null;
+}
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
 }
@@ -55,7 +64,7 @@ export function normalizeGlomarkImportedSnapshot(snapshot: GlomarkImportedSnapsh
       name: item.name,
       displayed_price_lkr: item.displayed_price_lkr,
       in_stock: item.in_stock,
-      raw_size_text: item.raw_size_text,
+      raw_size_text: item.raw_size_text ?? extractWeightFromName(item.name),
       notes: item.notes ?? "Imported from Glomark worker fetch snapshot.",
       category: snapshot.category,
     })

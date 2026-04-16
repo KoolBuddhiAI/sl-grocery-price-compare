@@ -19,7 +19,8 @@ function formatPrice(price: number | null): string {
 function formatPackSize(product: NormalizedProduct): string {
   if (product.raw_size_text) return product.raw_size_text;
   if (product.net_weight_g) return `${product.net_weight_g}g`;
-  return 'per kg';
+  if (product.price_per_kg_lkr !== null) return 'per kg';
+  return '\u2014';
 }
 
 const subcategoryEmoji: Record<string, string> = {

@@ -39,6 +39,11 @@ function buildSizeText(displayQuantity: number, unit: string): string | null {
   return null;
 }
 
+function extractWeightFromName(name: string): string | null {
+  const match = name.match(/(\d+(?:\.\d+)?)\s*(g|kg|ml|l)\b/i);
+  return match ? `${match[1]}${match[2].toLowerCase()}` : null;
+}
+
 function toSnapshotItem(raw: GlomarkRawProduct): GlomarkImportedSnapshotItem {
   const productId = String(raw.id);
   const slug = slugify(raw.name);
@@ -49,7 +54,7 @@ function toSnapshotItem(raw: GlomarkRawProduct): GlomarkImportedSnapshotItem {
     name: raw.name,
     source_url: `${GLOMARK_BASE}/${slug}/p/${productId}`,
     displayed_price_lkr: raw.applicablePrice ?? raw.price ?? null,
-    raw_size_text: buildSizeText(raw.displayQuantity, raw.unit),
+    raw_size_text: buildSizeText(raw.displayQuantity, raw.unit) ?? extractWeightFromName(raw.name),
     in_stock: !raw.isOutOfStock,
     brand: raw.brandDetails?.name ?? null,
     sub_category: raw.subCategoryDetails?.name ?? null,
