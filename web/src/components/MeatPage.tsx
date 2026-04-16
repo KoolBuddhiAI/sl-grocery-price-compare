@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { NormalizedProduct, Store } from '../lib/api';
-import { fetchProducts } from '../lib/api';
+import { fetchProducts, API_BASE } from '../lib/api';
 import { groupProductsByType, type GroupedProducts } from '../lib/product-types';
 import SubcategoryFilter from './SubcategoryFilter';
 import StoreFilter from './StoreFilter';
@@ -90,6 +90,7 @@ export default function MeatPage() {
             type={group.type}
             products={group.products}
             enabledStores={enabledStores}
+            apiUrl={API_BASE}
           />
         ))}
         {filteredGroups.length === 0 && (

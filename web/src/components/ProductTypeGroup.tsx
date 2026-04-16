@@ -2,11 +2,13 @@ import { useState } from 'react';
 import type { NormalizedProduct, Store } from '../lib/api';
 import type { ProductType } from '../lib/product-types';
 import StoreBadge from './StoreBadge';
+import PriceChart from './PriceChart';
 
 type Props = {
   type: ProductType;
   products: NormalizedProduct[];
   enabledStores: Set<Store>;
+  apiUrl: string;
 };
 
 function formatPrice(price: number | null): string {
@@ -31,8 +33,9 @@ const subcategoryEmoji: Record<string, string> = {
   Other: '\uD83D\uDCE6',
 };
 
-export default function ProductTypeGroup({ type, products, enabledStores }: Props) {
+export default function ProductTypeGroup({ type, products, enabledStores, apiUrl }: Props) {
   const [expanded, setExpanded] = useState(true);
+  const [expandedProductId, setExpandedProductId] = useState<string | null>(null);
 
   const filtered = products.filter((p) => enabledStores.has(p.store));
 
@@ -91,48 +94,79 @@ export default function ProductTypeGroup({ type, products, enabledStores }: Prop
               {filtered.map((product, idx) => {
                 const isCheapest = product.price_per_kg_lkr !== null && product.price_per_kg_lkr === cheapest;
                 return (
-                  <tr
-                    key={product.id}
-                    className={`border-t border-gray-100 dark:border-gray-800 ${
-                      isCheapest
-                        ? 'bg-green-50 dark:bg-green-900/20'
-                        : idx % 2 === 0
-                          ? 'bg-white dark:bg-gray-900'
-                          : 'bg-gray-50/50 dark:bg-gray-800/20'
-                    }`}
-                  >
-                    <td className="px-4 py-2">
-                      <span className={`${isCheapest ? 'font-bold text-green-700 dark:text-green-400' : 'font-semibold text-gray-900 dark:text-white'}`}>
-                        {product.price_per_kg_lkr !== null ? formatPrice(product.price_per_kg_lkr) : '--'}
-                      </span>
-                      {product.price_per_kg_lkr !== null && (
-                        <span className="text-gray-400 dark:text-gray-500 text-xs">/kg</span>
-                      )}
-                    </td>
-                    <td className="px-4 py-2 text-gray-800 dark:text-gray-200">{product.name}</td>
-                    <td className="px-4 py-2 text-gray-500 dark:text-gray-400 text-xs">
-                      {formatPackSize(product)}
-                    </td>
-                    <td className="px-4 py-2 text-gray-700 dark:text-gray-300">
-                      {product.displayed_price_lkr !== null
-                        ? `Rs ${formatPrice(product.displayed_price_lkr)}`
-                        : '--'}
-                    </td>
-                    <td className="px-4 py-2">
-                      <StoreBadge store={product.store} />
-                    </td>
-                    <td className="px-4 py-2 text-center">
-                      {product.in_stock === true && (
-                        <span className="text-green-600 dark:text-green-400" title="In stock">{'\u2713'}</span>
-                      )}
-                      {product.in_stock === false && (
-                        <span className="text-red-500 dark:text-red-400" title="Out of stock">{'\u2717'}</span>
-                      )}
-                      {product.in_stock === null && (
-                        <span className="text-gray-300 dark:text-gray-600">-</span>
-                      )}
-                    </td>
-                  </tr>
+                  <>
+                    <tr
+                      key={product.id}
+                      onClick={() => setExpandedProductId(expandedProductId === product.id ? null : product.id)}
+                      className={`cursor-pointer border-t border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 ${
+                        isCheapest
+                          ? 'bg-green-50 dark:bg-green-900/20'
+                          : idx % 2 === 0
+                            ? 'bg-white dark:bg-gray-900'
+                            : 'bg-gray-50/50 dark:bg-gray-800/20'
+                      }`}
+                    >
+                      <td className="px-4 py-2">
+                        <span className={`${isCheapest ? 'font-bold text-green-700 dark:text-green-400' : 'font-semibold text-gray-900 dark:text-white'}`}>
+                          {product.price_per_kg_lkr !== null ? formatPrice(product.price_per_kg_lkr) : '--'}
+                        </span>
+                        {product.price_per_kg_lkr !== null && (
+                          <span className="text-gray-400 dark:text-gray-500 text-xs">/kg</span>
+                        )}
+                      </td>
+                      <td className="px-4 py-2">
+                        <a
+                          href={product.source_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline text-blue-600 dark:text-blue-400"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {product.name}
+                        </a>
+                      </td>
+                      <td className="px-4 py-2 text-gray-500 dark:text-gray-400 text-xs">
+                        {formatPackSize(product)}
+                      </td>
+                      <td className="px-4 py-2 text-gray-700 dark:text-gray-300">
+                        {product.displayed_price_lkr !== null
+                          ? `Rs ${formatPrice(product.displayed_price_lkr)}`
+                          : '--'}
+                        {product.price_direction === "down" && (
+                          <span className="text-green-600 ml-1 cursor-help" title={`Was Rs ${product.previous_price_lkr}`}>&#9660;</span>
+                        )}
+                        {product.price_direction === "up" && (
+                          <span className="text-red-500 ml-1 cursor-help" title={`Was Rs ${product.previous_price_lkr}`}>&#9650;</span>
+                        )}
+                      </td>
+                      <td className="px-4 py-2">
+                        <StoreBadge store={product.store} />
+                      </td>
+                      <td className="px-4 py-2 text-center">
+                        {product.in_stock === true && (
+                          <span className="text-green-600 dark:text-green-400" title="In stock">{'\u2713'}</span>
+                        )}
+                        {product.in_stock === false && (
+                          <span className="text-red-500 dark:text-red-400" title="Out of stock">{'\u2717'}</span>
+                        )}
+                        {product.in_stock === null && (
+                          <span className="text-gray-300 dark:text-gray-600">-</span>
+                        )}
+                      </td>
+                    </tr>
+                    {expandedProductId === product.id && (
+                      <tr key={`${product.id}-chart`}>
+                        <td colSpan={6}>
+                          <PriceChart
+                            productId={product.id}
+                            store={product.store}
+                            currentPrice={product.displayed_price_lkr}
+                            apiUrl={apiUrl}
+                          />
+                        </td>
+                      </tr>
+                    )}
+                  </>
                 );
               })}
             </tbody>

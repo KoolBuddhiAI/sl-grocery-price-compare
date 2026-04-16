@@ -6,6 +6,6 @@
     { "binding": "SNAPSHOTS", "id": "28c676db7166464f85398a91b14132a6", "preview_id": "90249033ff2c45d8b8b30e695db86a3f" }
   ],
   "triggers": {
-    "crons": ["0 */6 * * *"]
+    "crons": ["30 2 * * *"]
   }
 }

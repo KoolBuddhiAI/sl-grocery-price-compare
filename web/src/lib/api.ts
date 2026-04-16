@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.PUBLIC_API_URL || 'http://localhost:8787';
+export const API_BASE = import.meta.env.PUBLIC_API_URL || 'http://localhost:8787';
 
 export type Store = 'keells' | 'glomark' | 'cargills';
 
@@ -13,6 +13,8 @@ export type NormalizedProduct = {
   name: string;
   displayed_price_lkr: number | null;
   displayed_currency: 'LKR';
+  price_direction: 'up' | 'down' | 'same' | null;
+  previous_price_lkr: number | null;
   in_stock: boolean | null;
   pack_qty: number | null;
   pack_unit: string;
@@ -53,5 +55,10 @@ export async function fetchProducts(store?: string): Promise<ProductsResponse> {
 
 export async function fetchHealth(): Promise<HealthResponse> {
   const res = await fetch(`${API_BASE}/api/health`);
+  return res.json();
+}
+
+export async function fetchHistory(store: string, category: string = 'meat') {
+  const res = await fetch(`${API_BASE}/api/history?store=${store}&category=${category}`);
   return res.json();
 }

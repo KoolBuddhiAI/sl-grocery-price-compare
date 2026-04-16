@@ -14,15 +14,20 @@ const storeLabels: Record<Store, string> = {
   cargills: 'Cargills',
 };
 
-function timeAgo(dateStr: string | null): string {
-  if (!dateStr) return 'No data';
+function timeAgo(dateStr: string | null): { text: string; stale: boolean } {
+  if (!dateStr) return { text: 'No data', stale: true };
   const diff = Date.now() - new Date(dateStr).getTime();
   const hours = Math.floor(diff / (1000 * 60 * 60));
   const days = Math.floor(hours / 24);
-  if (days > 0) return `${days}d ${hours % 24}h ago`;
-  if (hours > 0) return `${hours}h ago`;
-  const mins = Math.floor(diff / (1000 * 60));
-  return `${mins}m ago`;
+  const stale = hours >= 24;
+  let text: string;
+  if (days > 0) text = `${days}d ${hours % 24}h ago`;
+  else if (hours > 0) text = `${hours}h ago`;
+  else {
+    const mins = Math.floor(diff / (1000 * 60));
+    text = `${mins}m ago`;
+  }
+  return { text, stale };
 }
 
 export default function FreshnessBar() {
@@ -55,21 +60,28 @@ export default function FreshnessBar() {
 
   return (
     <div className="flex flex-wrap gap-3">
-      {stores.map(([store, meta]) => (
-        <div
-          key={store}
-          className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 rounded-lg px-3 py-2 text-sm"
-        >
-          <span className={`font-medium ${storeColors[store]}`}>{storeLabels[store]}</span>
-          <span className="text-gray-500 dark:text-gray-400">
-            {meta.count} items
-          </span>
-          <span className="text-gray-400 dark:text-gray-500">|</span>
-          <span className="text-gray-500 dark:text-gray-400">
-            Updated {timeAgo(meta.captured_at)}
-          </span>
-        </div>
-      ))}
+      {stores.map(([store, meta]) => {
+        const { text: agoText, stale } = timeAgo(meta.captured_at);
+        return (
+          <div
+            key={store}
+            className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${
+              stale
+                ? 'bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800'
+                : 'bg-gray-50 dark:bg-gray-800'
+            }`}
+          >
+            <span className={`font-medium ${storeColors[store]}`}>{storeLabels[store]}</span>
+            <span className="text-gray-500 dark:text-gray-400">
+              {meta.count} items
+            </span>
+            <span className="text-gray-400 dark:text-gray-500">|</span>
+            <span className={stale ? 'text-amber-600 dark:text-amber-400 font-medium' : 'text-gray-500 dark:text-gray-400'}>
+              Updated {agoText}
+            </span>
+          </div>
+        );
+      })}
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { getImportedGlomarkMeatProducts, getImportedGlomarkSnapshotMeta, parseGl
 import { getImportedCargillsMeatProducts, getImportedCargillsSnapshotMeta, parseCargillsImportedSnapshot, normalizeCargillsImportedSnapshot } from "./providers/cargills.import.ts";
 import { fetchGlomarkCategory } from "./adapters/glomark.fetch.ts";
 import { fetchCargillsCategory } from "./adapters/cargills.fetch.ts";
-import { getSnapshotFromKV, snapshotKey, isValidProvider, putSnapshotToKV } from "./kv-helpers.ts";
+import { getSnapshotFromKV, snapshotKey, isValidProvider, putSnapshotToKV, appendPriceHistory, getPriceHistory } from "./kv-helpers.ts";
 import type { Env } from "./kv-helpers.ts";
 import type { NormalizedProduct } from "./schema.ts";
 
@@ -161,12 +161,39 @@ async function handleSnapshotPush(request: Request, env: Env): Promise<Response>
 
   const key = snapshotKey(provider, category);
   await putSnapshotToKV(env, key, body);
+  await appendPriceHistory(env, provider, category, payload.items as Array<{ id: string; displayed_price_lkr: number | null }>);
 
   return json({
     ok: true,
     provider,
     category,
     items: payload.items.length,
+  });
+}
+
+function enrichWithPriceChanges(
+  products: NormalizedProduct[],
+  histories: Map<string, Array<{ date: string; prices: Record<string, number | null> }>>
+): Array<NormalizedProduct & { price_direction: string | null; previous_price_lkr: number | null }> {
+  return products.map(product => {
+    const history = histories.get(product.store);
+    if (!history || history.length < 2) {
+      return { ...product, price_direction: null, previous_price_lkr: null };
+    }
+
+    // history[0] is today/latest, history[1] is previous
+    const previousPrices = history[1]?.prices || {};
+    const prevPrice = previousPrices[product.id] ?? null;
+    const currentPrice = product.displayed_price_lkr;
+
+    let direction: string | null = null;
+    if (prevPrice !== null && currentPrice !== null) {
+      if (currentPrice > prevPrice) direction = "up";
+      else if (currentPrice < prevPrice) direction = "down";
+      else direction = "same";
+    }
+
+    return { ...product, price_direction: direction, previous_price_lkr: prevPrice };
   });
 }
 
@@ -182,6 +209,18 @@ export default {
       return handleSnapshotPush(request, env);
     }
 
+    if (request.method === "GET" && url.pathname === "/api/history") {
+      const store = url.searchParams.get("store");
+      const category = url.searchParams.get("category") || "meat";
+
+      if (!store) {
+        return json({ error: "Missing required query parameter: store" }, { status: 400 });
+      }
+
+      const history = await getPriceHistory(env, store, category);
+      return json({ data: history });
+    }
+
     if (request.method === "GET" && url.pathname === "/api/products") {
       const storeFilter = url.searchParams.get("store");
 
@@ -195,15 +234,27 @@ export default {
         ...(cargills?.products ?? []),
       ];
 
+      // Load price histories for enrichment
+      const storeNames = ["keells", "glomark", "cargills"].filter(
+        s => !storeFilter || s === storeFilter
+      );
+      const histories = new Map<string, Array<{ date: string; prices: Record<string, number | null> }>>();
+      for (const s of storeNames) {
+        const h = await getPriceHistory(env, s, "meat");
+        if (h.length > 0) histories.set(s, h);
+      }
+
+      const enrichedProducts = enrichWithPriceChanges(allProducts, histories);
+
       const stores: Record<string, unknown> = {};
       if (keells) stores.keells = keells.meta;
       if (glomark) stores.glomark = glomark.meta;
       if (cargills) stores.cargills = cargills.meta;
 
       return json({
-        data: allProducts,
+        data: enrichedProducts,
         meta: {
-          total: allProducts.length,
+          total: enrichedProducts.length,
           category: "meat",
           stores,
         },
@@ -262,12 +313,14 @@ export default {
     const glomarkSnapshot = await fetchGlomarkCategory("meat");
     if (glomarkSnapshot.items.length > 0) {
       await env.SNAPSHOTS.put(snapshotKey("glomark", "meat"), JSON.stringify(glomarkSnapshot));
+      await appendPriceHistory(env, "glomark", "meat", glomarkSnapshot.items);
     }
 
     // Fetch Cargills
     const cargillsSnapshot = await fetchCargillsCategory("meat");
     if (cargillsSnapshot.items.length > 0) {
       await env.SNAPSHOTS.put(snapshotKey("cargills", "meat"), JSON.stringify(cargillsSnapshot));
+      await appendPriceHistory(env, "cargills", "meat", cargillsSnapshot.items);
     }
   },
 };
