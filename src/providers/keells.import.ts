@@ -54,7 +54,8 @@ export function normalizeKeellsImportedSnapshot(snapshot: KeellsImportedSnapshot
       displayed_price_lkr: item.displayed_price_lkr,
       in_stock: item.in_stock,
       raw_size_text: item.raw_size_text,
-      notes: item.notes ?? "Imported from a browser-assisted Keells snapshot export."
+      notes: item.notes ?? "Imported from a browser-assisted Keells snapshot export.",
+      price_is_per_kg: !item.raw_size_text,
     })
   );
 }

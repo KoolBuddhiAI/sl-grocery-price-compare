@@ -11,6 +11,7 @@ type NormalizeInput = {
   in_stock?: boolean | null;
   raw_size_text?: string | null;
   notes?: string | null;
+  price_is_per_kg?: boolean;
 };
 
 const PACK_SIZE_PATTERN = /^(?:per\s+)?(\d+(?:\.\d+)?)\s*(kg|g)(?:\(s\))?$/i;
@@ -58,6 +59,11 @@ export function computePricePerKgLkr(
 function normalizeProduct(store: Store, input: NormalizeInput): NormalizedProduct {
   const pack = parsePackSize(input.raw_size_text);
 
+  // If the price is already per-kg (e.g. Keells fresh meat), use it directly
+  const pricePerKg = input.price_is_per_kg && input.displayed_price_lkr !== null
+    ? input.displayed_price_lkr
+    : computePricePerKgLkr(input.displayed_price_lkr, pack.net_weight_g);
+
   return {
     id: input.id,
     store,
@@ -71,10 +77,10 @@ function normalizeProduct(store: Store, input: NormalizeInput): NormalizedProduc
     displayed_currency: "LKR",
     in_stock: input.in_stock ?? null,
     pack_qty: pack.pack_qty,
-    pack_unit: pack.pack_unit,
-    net_weight_g: pack.net_weight_g,
-    price_per_kg_lkr: computePricePerKgLkr(input.displayed_price_lkr, pack.net_weight_g),
-    raw_size_text: pack.raw_size_text,
+    pack_unit: input.price_is_per_kg ? 1 : pack.pack_qty,
+    net_weight_g: input.price_is_per_kg ? 1000 : pack.net_weight_g,
+    price_per_kg_lkr: pricePerKg,
+    raw_size_text: input.price_is_per_kg && !input.raw_size_text ? "per kg" : pack.raw_size_text,
     notes: input.notes ?? null
   };
 }
