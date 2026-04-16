@@ -9,7 +9,7 @@ export type NormalizedProduct = {
   store: Store;
   source_url: string;
   source_product_id: string | null;
-  source_category: "meat";
+  source_category: string;
   captured_at: string;
   source_status: SourceStatus;
   name: string;
@@ -46,7 +46,7 @@ export type KeellsImportedSnapshotItem = {
 
 export type KeellsImportedSnapshot = {
   provider: "keells";
-  category: "meat";
+  category: string;
   extraction_mode: ImportedSnapshotMode;
   captured_at: string;
   source_status: SourceStatus;
@@ -68,7 +68,7 @@ export type GlomarkImportedSnapshotItem = {
 
 export type GlomarkImportedSnapshot = {
   provider: "glomark";
-  category: "meat";
+  category: string;
   extraction_mode: ImportedSnapshotMode;
   captured_at: string;
   source_status: SourceStatus;
@@ -90,7 +90,7 @@ export type CargillsImportedSnapshotItem = {
 
 export type CargillsImportedSnapshot = {
   provider: "cargills";
-  category: "meat";
+  category: string;
   extraction_mode: ImportedSnapshotMode;
   captured_at: string;
   source_status: SourceStatus;

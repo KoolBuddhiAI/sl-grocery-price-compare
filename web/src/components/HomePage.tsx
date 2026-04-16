@@ -53,19 +53,27 @@ export default function HomePage() {
       <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
         Sri Lanka Grocery Price Compare
       </h1>
-      <p className="text-lg text-gray-500 dark:text-gray-400 mb-8">
-        Compare meat prices across Keells, Glomark & Cargills
+      <p className="text-lg text-gray-500 dark:text-gray-400 mb-10">
+        Compare grocery prices across Keells, Glomark & Cargills
       </p>
 
-      <a
-        href="/meat"
-        className="inline-flex items-center gap-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-3 rounded-lg font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors text-lg"
-      >
-        Browse Meat Prices
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-        </svg>
-      </a>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mb-12">
+        {[
+          { href: '/meat', emoji: '\uD83E\uDD69', label: 'Meat', bg: 'bg-red-50 dark:bg-red-900/20', border: 'border-red-200 dark:border-red-800', text: 'text-red-700 dark:text-red-400', hover: 'hover:border-red-400 dark:hover:border-red-600' },
+          { href: '/seafood', emoji: '\uD83D\uDC1F', label: 'Seafood', bg: 'bg-blue-50 dark:bg-blue-900/20', border: 'border-blue-200 dark:border-blue-800', text: 'text-blue-700 dark:text-blue-400', hover: 'hover:border-blue-400 dark:hover:border-blue-600' },
+          { href: '/vegetables', emoji: '\uD83E\uDD6C', label: 'Vegetables', bg: 'bg-green-50 dark:bg-green-900/20', border: 'border-green-200 dark:border-green-800', text: 'text-green-700 dark:text-green-400', hover: 'hover:border-green-400 dark:hover:border-green-600' },
+          { href: '/fruits', emoji: '\uD83C\uDF4E', label: 'Fruits', bg: 'bg-orange-50 dark:bg-orange-900/20', border: 'border-orange-200 dark:border-orange-800', text: 'text-orange-700 dark:text-orange-400', hover: 'hover:border-orange-400 dark:hover:border-orange-600' },
+        ].map((cat) => (
+          <a
+            key={cat.href}
+            href={cat.href}
+            className={`${cat.bg} border ${cat.border} ${cat.hover} rounded-xl p-5 text-center transition-colors`}
+          >
+            <div className="text-3xl mb-2">{cat.emoji}</div>
+            <div className={`font-semibold ${cat.text}`}>{cat.label}</div>
+          </a>
+        ))}
+      </div>
 
       <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4">
         {error && (

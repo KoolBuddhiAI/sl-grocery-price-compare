@@ -2,7 +2,7 @@
   "provider": "keells",
   "category": "meat",
   "extraction_mode": "browser_assisted",
-  "captured_at": "2026-04-15T06:49:21.340Z",
+  "captured_at": "2026-04-16T04:10:50.445Z",
   "source_status": "ok",
   "items": [
     {
@@ -26,16 +26,6 @@
       "notes": "Captured from Keells API via automated Puppeteer session."
     },
     {
-      "id": "931004-import",
-      "source_product_id": "931004",
-      "name": "Beef Cubes",
-      "source_url": "https://www.keellssuper.com/product/931004",
-      "displayed_price_lkr": 3700,
-      "raw_size_text": null,
-      "in_stock": true,
-      "notes": "Captured from Keells API via automated Puppeteer session."
-    },
-    {
       "id": "931006-import",
       "source_product_id": "931006",
       "name": "Beef Topside Premium",
@@ -51,16 +41,6 @@
       "name": "Bone In Curry Pork",
       "source_url": "https://www.keellssuper.com/product/934001",
       "displayed_price_lkr": 4690,
-      "raw_size_text": null,
-      "in_stock": true,
-      "notes": "Captured from Keells API via automated Puppeteer session."
-    },
-    {
-      "id": "935060-import",
-      "source_product_id": "935060",
-      "name": "Chicken Boneless Thigh",
-      "source_url": "https://www.keellssuper.com/product/935060",
-      "displayed_price_lkr": 2100,
       "raw_size_text": null,
       "in_stock": true,
       "notes": "Captured from Keells API via automated Puppeteer session."
@@ -556,6 +536,16 @@
       "notes": "Captured from Keells API via automated Puppeteer session."
     },
     {
+      "id": "931004-import",
+      "source_product_id": "931004",
+      "name": "Beef Cubes",
+      "source_url": "https://www.keellssuper.com/product/931004",
+      "displayed_price_lkr": 3700,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
       "id": "931005-import",
       "source_product_id": "931005",
       "name": "Beef Fillet",
@@ -611,6 +601,16 @@
       "name": "Casa Di Sapori Smoked Salami - 100g",
       "source_url": "https://www.keellssuper.com/product/939172",
       "displayed_price_lkr": 2580,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "935060-import",
+      "source_product_id": "935060",
+      "name": "Chicken Boneless Thigh",
+      "source_url": "https://www.keellssuper.com/product/935060",
+      "displayed_price_lkr": 2100,
       "raw_size_text": null,
       "in_stock": true,
       "notes": "Captured from Keells API via automated Puppeteer session."

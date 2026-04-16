@@ -4,7 +4,9 @@ const CARGILLS_BASE = "https://cargillsonline.com";
 
 const CATEGORY_IDS: Record<string, number> = {
   meat: 11,
+  seafood: 19,
   vegetables: 23,
+  fruits: 9,
 };
 
 type CargillsRawProduct = {
@@ -102,11 +104,11 @@ export function encodeCategoryId(id: number): string {
 
 export function transformCargillsProducts(
   rawProducts: CargillsRawProduct[],
-  options: { capturedAt?: string; sourceStatus?: SourceStatus } = {}
+  options: { capturedAt?: string; sourceStatus?: SourceStatus; category?: string } = {}
 ): CargillsImportedSnapshot {
   return {
     provider: "cargills",
-    category: "meat",
+    category: options.category ?? "meat",
     extraction_mode: "worker_fetch",
     captured_at: options.capturedAt ?? new Date().toISOString(),
     source_status: options.sourceStatus ?? "ok",
@@ -148,7 +150,7 @@ export async function fetchCargillsCategory(
   if (categoryId === undefined) {
     return {
       provider: "cargills",
-      category: "meat",
+      category,
       extraction_mode: "worker_fetch",
       captured_at: new Date().toISOString(),
       source_status: "not_found",
@@ -162,7 +164,7 @@ export async function fetchCargillsCategory(
   } catch {
     return {
       provider: "cargills",
-      category: "meat",
+      category,
       extraction_mode: "worker_fetch",
       captured_at: new Date().toISOString(),
       source_status: "blocked_or_unstable",
@@ -186,7 +188,7 @@ export async function fetchCargillsCategory(
   if (!response.ok) {
     return {
       provider: "cargills",
-      category: "meat",
+      category,
       extraction_mode: "worker_fetch",
       captured_at: new Date().toISOString(),
       source_status: "blocked_or_unstable",
@@ -200,7 +202,7 @@ export async function fetchCargillsCategory(
   } catch {
     return {
       provider: "cargills",
-      category: "meat",
+      category,
       extraction_mode: "worker_fetch",
       captured_at: new Date().toISOString(),
       source_status: "blocked_or_unstable",
@@ -211,7 +213,7 @@ export async function fetchCargillsCategory(
   if (!Array.isArray(rawProducts) || rawProducts.length === 0) {
     return {
       provider: "cargills",
-      category: "meat",
+      category,
       extraction_mode: "worker_fetch",
       captured_at: new Date().toISOString(),
       source_status: "not_found",
@@ -219,5 +221,5 @@ export async function fetchCargillsCategory(
     };
   }
 
-  return transformCargillsProducts(rawProducts);
+  return transformCargillsProducts(rawProducts, { category });
 }

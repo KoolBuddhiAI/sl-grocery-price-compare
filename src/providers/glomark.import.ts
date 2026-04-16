@@ -31,7 +31,7 @@ export function parseGlomarkImportedSnapshot(value: unknown): GlomarkImportedSna
   if (
     !isRecord(value) ||
     value.provider !== "glomark" ||
-    value.category !== "meat" ||
+    typeof value.category !== "string" ||
     typeof value.extraction_mode !== "string" ||
     typeof value.captured_at !== "string" ||
     !["ok", "partial", "blocked_or_unstable", "not_found"].includes(String(value.source_status)) ||
@@ -57,6 +57,7 @@ export function normalizeGlomarkImportedSnapshot(snapshot: GlomarkImportedSnapsh
       in_stock: item.in_stock,
       raw_size_text: item.raw_size_text,
       notes: item.notes ?? "Imported from Glomark worker fetch snapshot.",
+      category: snapshot.category,
     })
   );
 }

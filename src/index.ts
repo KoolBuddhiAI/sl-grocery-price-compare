@@ -8,6 +8,8 @@ import { getSnapshotFromKV, snapshotKey, isValidProvider, putSnapshotToKV, appen
 import type { Env } from "./kv-helpers.ts";
 import type { NormalizedProduct } from "./schema.ts";
 
+const CATEGORIES = ["meat", "seafood", "vegetables", "fruits"] as const;
+
 const CORS_HEADERS: Record<string, string> = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
@@ -24,9 +26,9 @@ function json(data: unknown, init?: ResponseInit): Response {
   });
 }
 
-async function getKeellsProducts(env?: Env) {
+async function getKeellsProducts(env?: Env, category: string = "meat") {
   // Try KV first
-  const kvData = await getSnapshotFromKV(env, snapshotKey("keells", "meat"));
+  const kvData = await getSnapshotFromKV(env, snapshotKey("keells", category));
   const kvSnapshot = kvData ? parseKeellsImportedSnapshot(kvData) : null;
 
   if (kvSnapshot && kvSnapshot.items.length > 0) {
@@ -42,24 +44,38 @@ async function getKeellsProducts(env?: Env) {
     };
   }
 
-  // Fall back to static imports
-  const imported = getImportedKeellsMeatProducts();
-  const meta = getImportedKeellsSnapshotMeta();
+  // Fall back to static imports (only available for meat)
+  if (category === "meat") {
+    const imported = getImportedKeellsMeatProducts();
+    const meta = getImportedKeellsSnapshotMeta();
+    return {
+      products: imported ?? getSeededKeellsMeatProducts(),
+      meta: {
+        store: "keells" as const,
+        mode: imported ? "imported_snapshot" as const : "seeded" as const,
+        source_status: meta?.source_status ?? "partial",
+        captured_at: meta?.captured_at ?? "2026-04-12T00:00:00.000Z",
+        extraction_mode: meta?.extraction_mode ?? null,
+      },
+    };
+  }
+
+  // No static fallback for non-meat categories
   return {
-    products: imported ?? getSeededKeellsMeatProducts(),
+    products: [],
     meta: {
       store: "keells" as const,
-      mode: imported ? "imported_snapshot" as const : "seeded" as const,
-      source_status: meta?.source_status ?? "partial",
-      captured_at: meta?.captured_at ?? "2026-04-12T00:00:00.000Z",
-      extraction_mode: meta?.extraction_mode ?? null,
+      mode: "none" as const,
+      source_status: "not_found" as const,
+      captured_at: null,
+      extraction_mode: null,
     },
   };
 }
 
-async function getGlomarkProducts(env?: Env) {
+async function getGlomarkProducts(env?: Env, category: string = "meat") {
   // Try KV first
-  const kvData = await getSnapshotFromKV(env, snapshotKey("glomark", "meat"));
+  const kvData = await getSnapshotFromKV(env, snapshotKey("glomark", category));
   const kvSnapshot = kvData ? parseGlomarkImportedSnapshot(kvData) : null;
 
   if (kvSnapshot && kvSnapshot.items.length > 0) {
@@ -75,24 +91,38 @@ async function getGlomarkProducts(env?: Env) {
     };
   }
 
-  // Fall back to static imports
-  const imported = getImportedGlomarkMeatProducts();
-  const meta = getImportedGlomarkSnapshotMeta();
+  // Fall back to static imports (only available for meat)
+  if (category === "meat") {
+    const imported = getImportedGlomarkMeatProducts();
+    const meta = getImportedGlomarkSnapshotMeta();
+    return {
+      products: imported ?? [],
+      meta: {
+        store: "glomark" as const,
+        mode: imported ? "imported_snapshot" as const : "none" as const,
+        source_status: meta?.source_status ?? "not_found",
+        captured_at: meta?.captured_at ?? null,
+        extraction_mode: meta?.extraction_mode ?? null,
+      },
+    };
+  }
+
+  // No static fallback for non-meat categories
   return {
-    products: imported ?? [],
+    products: [],
     meta: {
       store: "glomark" as const,
-      mode: imported ? "imported_snapshot" as const : "none" as const,
-      source_status: meta?.source_status ?? "not_found",
-      captured_at: meta?.captured_at ?? null,
-      extraction_mode: meta?.extraction_mode ?? null,
+      mode: "none" as const,
+      source_status: "not_found" as const,
+      captured_at: null,
+      extraction_mode: null,
     },
   };
 }
 
-async function getCargillsProducts(env?: Env) {
+async function getCargillsProducts(env?: Env, category: string = "meat") {
   // Try KV first
-  const kvData = await getSnapshotFromKV(env, snapshotKey("cargills", "meat"));
+  const kvData = await getSnapshotFromKV(env, snapshotKey("cargills", category));
   const kvSnapshot = kvData ? parseCargillsImportedSnapshot(kvData) : null;
 
   if (kvSnapshot && kvSnapshot.items.length > 0) {
@@ -108,17 +138,31 @@ async function getCargillsProducts(env?: Env) {
     };
   }
 
-  // Fall back to static imports
-  const imported = getImportedCargillsMeatProducts();
-  const meta = getImportedCargillsSnapshotMeta();
+  // Fall back to static imports (only available for meat)
+  if (category === "meat") {
+    const imported = getImportedCargillsMeatProducts();
+    const meta = getImportedCargillsSnapshotMeta();
+    return {
+      products: imported ?? [],
+      meta: {
+        store: "cargills" as const,
+        mode: imported ? "imported_snapshot" as const : "none" as const,
+        source_status: meta?.source_status ?? "not_found",
+        captured_at: meta?.captured_at ?? null,
+        extraction_mode: meta?.extraction_mode ?? null,
+      },
+    };
+  }
+
+  // No static fallback for non-meat categories
   return {
-    products: imported ?? [],
+    products: [],
     meta: {
       store: "cargills" as const,
-      mode: imported ? "imported_snapshot" as const : "none" as const,
-      source_status: meta?.source_status ?? "not_found",
-      captured_at: meta?.captured_at ?? null,
-      extraction_mode: meta?.extraction_mode ?? null,
+      mode: "none" as const,
+      source_status: "not_found" as const,
+      captured_at: null,
+      extraction_mode: null,
     },
   };
 }
@@ -223,10 +267,11 @@ export default {
 
     if (request.method === "GET" && url.pathname === "/api/products") {
       const storeFilter = url.searchParams.get("store");
+      const categoryFilter = url.searchParams.get("category") || "meat";
 
-      const keells = storeFilter && storeFilter !== "keells" ? null : await getKeellsProducts(env);
-      const glomark = storeFilter && storeFilter !== "glomark" ? null : await getGlomarkProducts(env);
-      const cargills = storeFilter && storeFilter !== "cargills" ? null : await getCargillsProducts(env);
+      const keells = storeFilter && storeFilter !== "keells" ? null : await getKeellsProducts(env, categoryFilter);
+      const glomark = storeFilter && storeFilter !== "glomark" ? null : await getGlomarkProducts(env, categoryFilter);
+      const cargills = storeFilter && storeFilter !== "cargills" ? null : await getCargillsProducts(env, categoryFilter);
 
       const allProducts: NormalizedProduct[] = [
         ...(keells?.products ?? []),
@@ -240,7 +285,7 @@ export default {
       );
       const histories = new Map<string, Array<{ date: string; prices: Record<string, number | null> }>>();
       for (const s of storeNames) {
-        const h = await getPriceHistory(env, s, "meat");
+        const h = await getPriceHistory(env, s, categoryFilter);
         if (h.length > 0) histories.set(s, h);
       }
 
@@ -255,19 +300,20 @@ export default {
         data: enrichedProducts,
         meta: {
           total: enrichedProducts.length,
-          category: "meat",
+          category: categoryFilter,
           stores,
         },
       });
     }
 
     if (request.method === "GET" && url.pathname === "/api/cargills/fetch") {
-      const snapshot = await fetchCargillsCategory("meat");
+      const category = url.searchParams.get("category") || "meat";
+      const snapshot = await fetchCargillsCategory(category);
       return json({
         data: snapshot.items,
         meta: {
           store: "cargills",
-          category: "meat",
+          category,
           source_status: snapshot.source_status,
           captured_at: snapshot.captured_at,
           extraction_mode: snapshot.extraction_mode,
@@ -277,12 +323,13 @@ export default {
     }
 
     if (request.method === "GET" && url.pathname === "/api/glomark/fetch") {
-      const snapshot = await fetchGlomarkCategory("meat");
+      const category = url.searchParams.get("category") || "meat";
+      const snapshot = await fetchGlomarkCategory(category);
       return json({
         data: snapshot.items,
         meta: {
           store: "glomark",
-          category: "meat",
+          category,
           source_status: snapshot.source_status,
           captured_at: snapshot.captured_at,
           extraction_mode: snapshot.extraction_mode,
@@ -292,16 +339,23 @@ export default {
     }
 
     if (request.method === "GET" && url.pathname === "/api/health") {
-      const keells = await getKeellsProducts(env);
-      const glomark = await getGlomarkProducts(env);
-      const cargills = await getCargillsProducts(env);
+      const healthData: Record<string, unknown> = {};
 
-      return json({
-        stores: {
+      for (const category of CATEGORIES) {
+        const keells = await getKeellsProducts(env, category);
+        const glomark = await getGlomarkProducts(env, category);
+        const cargills = await getCargillsProducts(env, category);
+
+        healthData[category] = {
           keells: { ...keells.meta, count: keells.products.length },
           glomark: { ...glomark.meta, count: glomark.products.length },
           cargills: { ...cargills.meta, count: cargills.products.length },
-        },
+        };
+      }
+
+      return json({
+        categories: [...CATEGORIES],
+        stores: healthData,
       });
     }
 
@@ -309,18 +363,20 @@ export default {
   },
 
   async scheduled(_event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
-    // Fetch Glomark
-    const glomarkSnapshot = await fetchGlomarkCategory("meat");
-    if (glomarkSnapshot.items.length > 0) {
-      await env.SNAPSHOTS.put(snapshotKey("glomark", "meat"), JSON.stringify(glomarkSnapshot));
-      await appendPriceHistory(env, "glomark", "meat", glomarkSnapshot.items);
-    }
+    for (const category of CATEGORIES) {
+      // Fetch Glomark
+      const glomarkSnapshot = await fetchGlomarkCategory(category);
+      if (glomarkSnapshot.items.length > 0) {
+        await env.SNAPSHOTS.put(snapshotKey("glomark", category), JSON.stringify(glomarkSnapshot));
+        await appendPriceHistory(env, "glomark", category, glomarkSnapshot.items);
+      }
 
-    // Fetch Cargills
-    const cargillsSnapshot = await fetchCargillsCategory("meat");
-    if (cargillsSnapshot.items.length > 0) {
-      await env.SNAPSHOTS.put(snapshotKey("cargills", "meat"), JSON.stringify(cargillsSnapshot));
-      await appendPriceHistory(env, "cargills", "meat", cargillsSnapshot.items);
+      // Fetch Cargills
+      const cargillsSnapshot = await fetchCargillsCategory(category);
+      if (cargillsSnapshot.items.length > 0) {
+        await env.SNAPSHOTS.put(snapshotKey("cargills", category), JSON.stringify(cargillsSnapshot));
+        await appendPriceHistory(env, "cargills", category, cargillsSnapshot.items);
+      }
     }
   },
 };

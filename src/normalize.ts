@@ -12,6 +12,7 @@ type NormalizeInput = {
   raw_size_text?: string | null;
   notes?: string | null;
   price_is_per_kg?: boolean;
+  category?: string;
 };
 
 const PACK_SIZE_PATTERN = /^(?:per\s+)?(\d+(?:\.\d+)?)\s*(kg|g)(?:\(s\))?$/i;
@@ -66,7 +67,7 @@ function normalizeProduct(store: Store, input: NormalizeInput): NormalizedProduc
     store,
     source_url: input.source_url,
     source_product_id: input.source_product_id ?? null,
-    source_category: "meat",
+    source_category: input.category ?? "meat",
     captured_at: input.captured_at,
     source_status: input.source_status,
     name: input.name,

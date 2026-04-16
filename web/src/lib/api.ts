@@ -7,7 +7,7 @@ export type NormalizedProduct = {
   store: Store;
   source_url: string;
   source_product_id: string | null;
-  source_category: 'meat';
+  source_category: string;
   captured_at: string;
   source_status: string;
   name: string;
@@ -46,9 +46,10 @@ export type HealthResponse = {
   stores: Record<string, StoreMeta & { count: number }>;
 };
 
-export async function fetchProducts(store?: string): Promise<ProductsResponse> {
+export async function fetchProducts(store?: string, category?: string): Promise<ProductsResponse> {
   const url = new URL(`${API_BASE}/api/products`);
   if (store) url.searchParams.set('store', store);
+  if (category) url.searchParams.set('category', category);
   const res = await fetch(url);
   return res.json();
 }

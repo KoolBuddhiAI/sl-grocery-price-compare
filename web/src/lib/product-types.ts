@@ -45,6 +45,23 @@ export type GroupedProducts = {
   products: NormalizedProduct[];
 };
 
+export function groupProductsForCategory(products: NormalizedProduct[], category: string): GroupedProducts[] {
+  if (category === 'meat') {
+    return groupProductsByType(products);
+  }
+  // For other categories: single group with all products sorted by unit price
+  const sorted = [...products].sort((a, b) => {
+    if (a.price_per_kg_lkr === null && b.price_per_kg_lkr === null) return 0;
+    if (a.price_per_kg_lkr === null) return 1;
+    if (b.price_per_kg_lkr === null) return -1;
+    return a.price_per_kg_lkr - b.price_per_kg_lkr;
+  });
+  return [{
+    type: { id: 'all', label: category.charAt(0).toUpperCase() + category.slice(1), subcategory: 'All' },
+    products: sorted,
+  }];
+}
+
 export function groupProductsByType(products: NormalizedProduct[]): GroupedProducts[] {
   const typeMap = new Map<string, ProductType>();
   for (const t of data.types) {

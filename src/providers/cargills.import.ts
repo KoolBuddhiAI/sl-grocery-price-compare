@@ -31,7 +31,7 @@ export function parseCargillsImportedSnapshot(value: unknown): CargillsImportedS
   if (
     !isRecord(value) ||
     value.provider !== "cargills" ||
-    value.category !== "meat" ||
+    typeof value.category !== "string" ||
     typeof value.extraction_mode !== "string" ||
     typeof value.captured_at !== "string" ||
     !["ok", "partial", "blocked_or_unstable", "not_found"].includes(String(value.source_status)) ||
@@ -57,6 +57,7 @@ export function normalizeCargillsImportedSnapshot(snapshot: CargillsImportedSnap
       in_stock: item.in_stock,
       raw_size_text: item.raw_size_text,
       notes: item.notes ?? "Imported from Cargills worker fetch snapshot.",
+      category: snapshot.category,
     })
   );
 }

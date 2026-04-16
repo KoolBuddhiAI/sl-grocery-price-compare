@@ -5,6 +5,9 @@ const GLOMARK_BASE = "https://glomark.lk";
 const CATEGORY_PATHS: Record<string, string> = {
   meat: "/fresh/meat/c/144",
   fish: "/fresh/fish/c/146",
+  seafood: "/fresh/fish/c/146",       // alias
+  vegetables: "/fresh/vegetable/c/145",
+  fruits: "/fresh/fruits/c/147",
 };
 
 type GlomarkRawProduct = {
@@ -97,11 +100,11 @@ export function extractProductListFromHtml(html: string): GlomarkRawProduct[] {
 
 export function transformGlomarkProducts(
   rawProducts: GlomarkRawProduct[],
-  options: { capturedAt?: string; sourceStatus?: SourceStatus } = {}
+  options: { capturedAt?: string; sourceStatus?: SourceStatus; category?: string } = {}
 ): GlomarkImportedSnapshot {
   return {
     provider: "glomark",
-    category: "meat",
+    category: options.category ?? "meat",
     extraction_mode: "worker_fetch",
     captured_at: options.capturedAt ?? new Date().toISOString(),
     source_status: options.sourceStatus ?? "ok",
@@ -120,7 +123,7 @@ export async function fetchGlomarkCategory(
   if (!path) {
     return {
       provider: "glomark",
-      category: "meat",
+      category,
       extraction_mode: "worker_fetch",
       captured_at: new Date().toISOString(),
       source_status: "not_found",
@@ -136,7 +139,7 @@ export async function fetchGlomarkCategory(
   if (!response.ok) {
     return {
       provider: "glomark",
-      category: "meat",
+      category,
       extraction_mode: "worker_fetch",
       captured_at: new Date().toISOString(),
       source_status: "blocked_or_unstable",
@@ -150,7 +153,7 @@ export async function fetchGlomarkCategory(
   if (rawProducts.length === 0) {
     return {
       provider: "glomark",
-      category: "meat",
+      category,
       extraction_mode: "worker_fetch",
       captured_at: new Date().toISOString(),
       source_status: "not_found",
@@ -158,5 +161,5 @@ export async function fetchGlomarkCategory(
     };
   }
 
-  return transformGlomarkProducts(rawProducts);
+  return transformGlomarkProducts(rawProducts, { category });
 }
