@@ -1,0 +1,2009 @@
+{
+  "provider": "keells",
+  "category": "vegetables",
+  "extraction_mode": "browser_assisted",
+  "captured_at": "2026-04-16T11:18:28.239Z",
+  "source_status": "ok",
+  "items": [
+    {
+      "id": "912342-import",
+      "source_product_id": "912342",
+      "name": "Myco Farm Abalone Mushroom 200G",
+      "source_url": "https://www.keellssuper.com/product/912342",
+      "displayed_price_lkr": 250,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916002-import",
+      "source_product_id": "916002",
+      "name": "Ambarella",
+      "source_url": "https://www.keellssuper.com/product/916002",
+      "displayed_price_lkr": 420,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914000-import",
+      "source_product_id": "914000",
+      "name": "Ash Plantains",
+      "source_url": "https://www.keellssuper.com/product/914000",
+      "displayed_price_lkr": 160,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914004-import",
+      "source_product_id": "914004",
+      "name": "Batana",
+      "source_url": "https://www.keellssuper.com/product/914004",
+      "displayed_price_lkr": 420,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915002-import",
+      "source_product_id": "915002",
+      "name": "Beetroot",
+      "source_url": "https://www.keellssuper.com/product/915002",
+      "displayed_price_lkr": 220,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913005-import",
+      "source_product_id": "913005",
+      "name": "Bell Pepper Green",
+      "source_url": "https://www.keellssuper.com/product/913005",
+      "displayed_price_lkr": 520,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913006-import",
+      "source_product_id": "913006",
+      "name": "Bell Pepper Red",
+      "source_url": "https://www.keellssuper.com/product/913006",
+      "displayed_price_lkr": 790,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913007-import",
+      "source_product_id": "913007",
+      "name": "Bell Pepper Yellow",
+      "source_url": "https://www.keellssuper.com/product/913007",
+      "displayed_price_lkr": 780,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914006-import",
+      "source_product_id": "914006",
+      "name": "Big Onions",
+      "source_url": "https://www.keellssuper.com/product/914006",
+      "displayed_price_lkr": 230,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914007-import",
+      "source_product_id": "914007",
+      "name": "Bitter Gourd",
+      "source_url": "https://www.keellssuper.com/product/914007",
+      "displayed_price_lkr": 280,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914008-import",
+      "source_product_id": "914008",
+      "name": "Brinjals",
+      "source_url": "https://www.keellssuper.com/product/914008",
+      "displayed_price_lkr": 230,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913008-import",
+      "source_product_id": "913008",
+      "name": "Broccoli",
+      "source_url": "https://www.keellssuper.com/product/913008",
+      "displayed_price_lkr": 1440,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915005-import",
+      "source_product_id": "915005",
+      "name": "Cabbage",
+      "source_url": "https://www.keellssuper.com/product/915005",
+      "displayed_price_lkr": 130,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913012-import",
+      "source_product_id": "913012",
+      "name": "Cabbage Leaves",
+      "source_url": "https://www.keellssuper.com/product/913012",
+      "displayed_price_lkr": 380,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915006-import",
+      "source_product_id": "915006",
+      "name": "Capsicum",
+      "source_url": "https://www.keellssuper.com/product/915006",
+      "displayed_price_lkr": 690,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915007-import",
+      "source_product_id": "915007",
+      "name": "Carrot",
+      "source_url": "https://www.keellssuper.com/product/915007",
+      "displayed_price_lkr": 530,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913014-import",
+      "source_product_id": "913014",
+      "name": "Cauliflower",
+      "source_url": "https://www.keellssuper.com/product/913014",
+      "displayed_price_lkr": 640,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913016-import",
+      "source_product_id": "913016",
+      "name": "Cherry Tomato",
+      "source_url": "https://www.keellssuper.com/product/913016",
+      "displayed_price_lkr": 3010,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913017-import",
+      "source_product_id": "913017",
+      "name": "Chinese Cabbage",
+      "source_url": "https://www.keellssuper.com/product/913017",
+      "displayed_price_lkr": 460,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912005-import",
+      "source_product_id": "912005",
+      "name": "Coconut",
+      "source_url": "https://www.keellssuper.com/product/912005",
+      "displayed_price_lkr": 155,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914009-import",
+      "source_product_id": "914009",
+      "name": "Cucumber",
+      "source_url": "https://www.keellssuper.com/product/914009",
+      "displayed_price_lkr": 260,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914010-import",
+      "source_product_id": "914010",
+      "name": "Curry Leaves",
+      "source_url": "https://www.keellssuper.com/product/914010",
+      "displayed_price_lkr": 520,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912115-import",
+      "source_product_id": "912115",
+      "name": "Dill Leaves 25g",
+      "source_url": "https://www.keellssuper.com/product/912115",
+      "displayed_price_lkr": 70,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914013-import",
+      "source_product_id": "914013",
+      "name": "Egg Plants",
+      "source_url": "https://www.keellssuper.com/product/914013",
+      "displayed_price_lkr": 360,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912116-import",
+      "source_product_id": "912116",
+      "name": "Fennel Leaves 25g",
+      "source_url": "https://www.keellssuper.com/product/912116",
+      "displayed_price_lkr": 65,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912019-import",
+      "source_product_id": "912019",
+      "name": "Fresh Leaf Chopped Gotukola 100g",
+      "source_url": "https://www.keellssuper.com/product/912019",
+      "displayed_price_lkr": 150,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912020-import",
+      "source_product_id": "912020",
+      "name": "Fresh Leaf Chopped Mukunuwenna 150g",
+      "source_url": "https://www.keellssuper.com/product/912020",
+      "displayed_price_lkr": 150,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914014-import",
+      "source_product_id": "914014",
+      "name": "Garlic",
+      "source_url": "https://www.keellssuper.com/product/914014",
+      "displayed_price_lkr": 890,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914016-import",
+      "source_product_id": "914016",
+      "name": "Ginger",
+      "source_url": "https://www.keellssuper.com/product/914016",
+      "displayed_price_lkr": 800,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912272-import",
+      "source_product_id": "912272",
+      "name": "Globle Green Button Mushroom 200g",
+      "source_url": "https://www.keellssuper.com/product/912272",
+      "displayed_price_lkr": 595,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915008-import",
+      "source_product_id": "915008",
+      "name": "Green Beans",
+      "source_url": "https://www.keellssuper.com/product/915008",
+      "displayed_price_lkr": 620,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914017-import",
+      "source_product_id": "914017",
+      "name": "Green Chilies",
+      "source_url": "https://www.keellssuper.com/product/914017",
+      "displayed_price_lkr": 420,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912332-import",
+      "source_product_id": "912332",
+      "name": "Green Hills Gotukola 100g",
+      "source_url": "https://www.keellssuper.com/product/912332",
+      "displayed_price_lkr": 160,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912333-import",
+      "source_product_id": "912333",
+      "name": "Green Hills Gotukola 100g",
+      "source_url": "https://www.keellssuper.com/product/912333",
+      "displayed_price_lkr": 160,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913040-import",
+      "source_product_id": "913040",
+      "name": "Green House Tomatoes",
+      "source_url": "https://www.keellssuper.com/product/913040",
+      "displayed_price_lkr": 360,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913042-import",
+      "source_product_id": "913042",
+      "name": "Iceberg Lettuce",
+      "source_url": "https://www.keellssuper.com/product/913042",
+      "displayed_price_lkr": 340,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913072-import",
+      "source_product_id": "913072",
+      "name": "Jagro Bell Pepper Assorted",
+      "source_url": "https://www.keellssuper.com/product/913072",
+      "displayed_price_lkr": 2950,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913163-import",
+      "source_product_id": "913163",
+      "name": "Jagro Fresh Rosemary (25G)",
+      "source_url": "https://www.keellssuper.com/product/913163",
+      "displayed_price_lkr": 200,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914054-import",
+      "source_product_id": "914054",
+      "name": "Jagro Lemon",
+      "source_url": "https://www.keellssuper.com/product/914054",
+      "displayed_price_lkr": 875,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915009-import",
+      "source_product_id": "915009",
+      "name": "Japanese Leeks",
+      "source_url": "https://www.keellssuper.com/product/915009",
+      "displayed_price_lkr": 720,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916018-import",
+      "source_product_id": "916018",
+      "name": "Kankun",
+      "source_url": "https://www.keellssuper.com/product/916018",
+      "displayed_price_lkr": 79,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914021-import",
+      "source_product_id": "914021",
+      "name": "Kekiri",
+      "source_url": "https://www.keellssuper.com/product/914021",
+      "displayed_price_lkr": 110,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914023-import",
+      "source_product_id": "914023",
+      "name": "Kiriala",
+      "source_url": "https://www.keellssuper.com/product/914023",
+      "displayed_price_lkr": 1000,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915010-import",
+      "source_product_id": "915010",
+      "name": "Knol Khol",
+      "source_url": "https://www.keellssuper.com/product/915010",
+      "displayed_price_lkr": 200,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914024-import",
+      "source_product_id": "914024",
+      "name": "Kohila",
+      "source_url": "https://www.keellssuper.com/product/914024",
+      "displayed_price_lkr": 740,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913053-import",
+      "source_product_id": "913053",
+      "name": "Korean (Long) Raddish",
+      "source_url": "https://www.keellssuper.com/product/913053",
+      "displayed_price_lkr": 340,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914026-import",
+      "source_product_id": "914026",
+      "name": "Ladies Fingers",
+      "source_url": "https://www.keellssuper.com/product/914026",
+      "displayed_price_lkr": 220,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916084-import",
+      "source_product_id": "916084",
+      "name": "Lassana Agri Cherry Tomato 200g",
+      "source_url": "https://www.keellssuper.com/product/916084",
+      "displayed_price_lkr": 635,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916074-import",
+      "source_product_id": "916074",
+      "name": "Lassana Agri Green Batavia Lettuce 150g",
+      "source_url": "https://www.keellssuper.com/product/916074",
+      "displayed_price_lkr": 460,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916077-import",
+      "source_product_id": "916077",
+      "name": "Lassana Agri Red Coral Lettuce 100g",
+      "source_url": "https://www.keellssuper.com/product/916077",
+      "displayed_price_lkr": 500,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915011-import",
+      "source_product_id": "915011",
+      "name": "Leeks",
+      "source_url": "https://www.keellssuper.com/product/915011",
+      "displayed_price_lkr": 300,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914028-import",
+      "source_product_id": "914028",
+      "name": "Lemon Grass",
+      "source_url": "https://www.keellssuper.com/product/914028",
+      "displayed_price_lkr": 1560,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914029-import",
+      "source_product_id": "914029",
+      "name": "Lime",
+      "source_url": "https://www.keellssuper.com/product/914029",
+      "displayed_price_lkr": 600,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914030-import",
+      "source_product_id": "914030",
+      "name": "Long Beans",
+      "source_url": "https://www.keellssuper.com/product/914030",
+      "displayed_price_lkr": 260,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916028-import",
+      "source_product_id": "916028",
+      "name": "Mango Curry",
+      "source_url": "https://www.keellssuper.com/product/916028",
+      "displayed_price_lkr": 360,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916029-import",
+      "source_product_id": "916029",
+      "name": "Manioc",
+      "source_url": "https://www.keellssuper.com/product/916029",
+      "displayed_price_lkr": 260,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913055-import",
+      "source_product_id": "913055",
+      "name": "Minchi Leaves",
+      "source_url": "https://www.keellssuper.com/product/913055",
+      "displayed_price_lkr": 500,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916032-import",
+      "source_product_id": "916032",
+      "name": "Mukunuwenna",
+      "source_url": "https://www.keellssuper.com/product/916032",
+      "displayed_price_lkr": 98,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912228-import",
+      "source_product_id": "912228",
+      "name": "Onesh Baby Corn 150g",
+      "source_url": "https://www.keellssuper.com/product/912228",
+      "displayed_price_lkr": 360,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912057-import",
+      "source_product_id": "912057",
+      "name": "Onesh Baby Corn Chopped 150g",
+      "source_url": "https://www.keellssuper.com/product/912057",
+      "displayed_price_lkr": 290,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914036-import",
+      "source_product_id": "914036",
+      "name": "Onion Leaves",
+      "source_url": "https://www.keellssuper.com/product/914036",
+      "displayed_price_lkr": 400,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "911020-import",
+      "source_product_id": "911020",
+      "name": "Organic Carrot",
+      "source_url": "https://www.keellssuper.com/product/911020",
+      "displayed_price_lkr": 690,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "911041-import",
+      "source_product_id": "911041",
+      "name": "Organic Green Beans",
+      "source_url": "https://www.keellssuper.com/product/911041",
+      "displayed_price_lkr": 920,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "911042-import",
+      "source_product_id": "911042",
+      "name": "Organic Green Chilies",
+      "source_url": "https://www.keellssuper.com/product/911042",
+      "displayed_price_lkr": 710,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913056-import",
+      "source_product_id": "913056",
+      "name": "Pakchoi",
+      "source_url": "https://www.keellssuper.com/product/913056",
+      "displayed_price_lkr": 600,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912187-import",
+      "source_product_id": "912187",
+      "name": "Paradise Oyster Mushroom 200g",
+      "source_url": "https://www.keellssuper.com/product/912187",
+      "displayed_price_lkr": 195,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913057-import",
+      "source_product_id": "913057",
+      "name": "Parsley",
+      "source_url": "https://www.keellssuper.com/product/913057",
+      "displayed_price_lkr": 440,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915025-import",
+      "source_product_id": "915025",
+      "name": "Perfectly Imperfect Big Onions",
+      "source_url": "https://www.keellssuper.com/product/915025",
+      "displayed_price_lkr": 170,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916060-import",
+      "source_product_id": "916060",
+      "name": "Perfectly Imperfect Capsicum",
+      "source_url": "https://www.keellssuper.com/product/916060",
+      "displayed_price_lkr": 500,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916058-import",
+      "source_product_id": "916058",
+      "name": "Perfectly Imperfect Carrots",
+      "source_url": "https://www.keellssuper.com/product/916058",
+      "displayed_price_lkr": 390,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916067-import",
+      "source_product_id": "916067",
+      "name": "Perfectly Imperfect Cucumber",
+      "source_url": "https://www.keellssuper.com/product/916067",
+      "displayed_price_lkr": 200,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916061-import",
+      "source_product_id": "916061",
+      "name": "Perfectly Imperfect Garlic",
+      "source_url": "https://www.keellssuper.com/product/916061",
+      "displayed_price_lkr": 650,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916069-import",
+      "source_product_id": "916069",
+      "name": "Perfectly Imperfect Salad Cucumber",
+      "source_url": "https://www.keellssuper.com/product/916069",
+      "displayed_price_lkr": 400,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916064-import",
+      "source_product_id": "916064",
+      "name": "Perfectly Imperfect Tomatoes",
+      "source_url": "https://www.keellssuper.com/product/916064",
+      "displayed_price_lkr": 190,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912363-import",
+      "source_product_id": "912363",
+      "name": "Piyakaru Cooking Cashew 100g",
+      "source_url": "https://www.keellssuper.com/product/912363",
+      "displayed_price_lkr": 1078,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912364-import",
+      "source_product_id": "912364",
+      "name": "Piyakaru Cooking Cashewâ  250G",
+      "source_url": "https://www.keellssuper.com/product/912364",
+      "displayed_price_lkr": 2675,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914038-import",
+      "source_product_id": "914038",
+      "name": "Plantain Flower",
+      "source_url": "https://www.keellssuper.com/product/914038",
+      "displayed_price_lkr": 260,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912351-import",
+      "source_product_id": "912351",
+      "name": "Pm Dry Mushroom 50g",
+      "source_url": "https://www.keellssuper.com/product/912351",
+      "displayed_price_lkr": 475,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916038-import",
+      "source_product_id": "916038",
+      "name": "Polos",
+      "source_url": "https://www.keellssuper.com/product/916038",
+      "displayed_price_lkr": 310,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915013-import",
+      "source_product_id": "915013",
+      "name": "Potatoes",
+      "source_url": "https://www.keellssuper.com/product/915013",
+      "displayed_price_lkr": 330,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914015-import",
+      "source_product_id": "914015",
+      "name": "Pre-Packed Garlic",
+      "source_url": "https://www.keellssuper.com/product/914015",
+      "displayed_price_lkr": 900,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915014-import",
+      "source_product_id": "915014",
+      "name": "Pre-Packed Potatoes",
+      "source_url": "https://www.keellssuper.com/product/915014",
+      "displayed_price_lkr": 390,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914042-import",
+      "source_product_id": "914042",
+      "name": "Pre-Packed Red Onions",
+      "source_url": "https://www.keellssuper.com/product/914042",
+      "displayed_price_lkr": 380,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914039-import",
+      "source_product_id": "914039",
+      "name": "Pumpkin",
+      "source_url": "https://www.keellssuper.com/product/914039",
+      "displayed_price_lkr": 80,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915015-import",
+      "source_product_id": "915015",
+      "name": "Raddish",
+      "source_url": "https://www.keellssuper.com/product/915015",
+      "displayed_price_lkr": 200,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916039-import",
+      "source_product_id": "916039",
+      "name": "Rajala",
+      "source_url": "https://www.keellssuper.com/product/916039",
+      "displayed_price_lkr": 650,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916040-import",
+      "source_product_id": "916040",
+      "name": "Rampe",
+      "source_url": "https://www.keellssuper.com/product/916040",
+      "displayed_price_lkr": 70,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913059-import",
+      "source_product_id": "913059",
+      "name": "Red Cabbage",
+      "source_url": "https://www.keellssuper.com/product/913059",
+      "displayed_price_lkr": 580,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914043-import",
+      "source_product_id": "914043",
+      "name": "Red Onions",
+      "source_url": "https://www.keellssuper.com/product/914043",
+      "displayed_price_lkr": 360,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914044-import",
+      "source_product_id": "914044",
+      "name": "Ribbed Gourd",
+      "source_url": "https://www.keellssuper.com/product/914044",
+      "displayed_price_lkr": 420,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913067-import",
+      "source_product_id": "913067",
+      "name": "Salad Leaves",
+      "source_url": "https://www.keellssuper.com/product/913067",
+      "displayed_price_lkr": 210,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914047-import",
+      "source_product_id": "914047",
+      "name": "Snake Gourd",
+      "source_url": "https://www.keellssuper.com/product/914047",
+      "displayed_price_lkr": 220,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912241-import",
+      "source_product_id": "912241",
+      "name": "Star Dehydrated Mushroom 50g",
+      "source_url": "https://www.keellssuper.com/product/912241",
+      "displayed_price_lkr": 380,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916047-import",
+      "source_product_id": "916047",
+      "name": "Thebbu",
+      "source_url": "https://www.keellssuper.com/product/916047",
+      "displayed_price_lkr": 98,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912349-import",
+      "source_product_id": "912349",
+      "name": "Three Star  Spinach 150G",
+      "source_url": "https://www.keellssuper.com/product/912349",
+      "displayed_price_lkr": 130,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912092-import",
+      "source_product_id": "912092",
+      "name": "Three Star Cut Gotukola 100g",
+      "source_url": "https://www.keellssuper.com/product/912092",
+      "displayed_price_lkr": 150,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912094-import",
+      "source_product_id": "912094",
+      "name": "Three Star Cut Mukunuwanna 150g",
+      "source_url": "https://www.keellssuper.com/product/912094",
+      "displayed_price_lkr": 150,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912098-import",
+      "source_product_id": "912098",
+      "name": "Three Star Gotukola Pkt 100g",
+      "source_url": "https://www.keellssuper.com/product/912098",
+      "displayed_price_lkr": 150,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912367-import",
+      "source_product_id": "912367",
+      "name": "Three Star Organic Soya Bean Curd",
+      "source_url": "https://www.keellssuper.com/product/912367",
+      "displayed_price_lkr": 250,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914051-import",
+      "source_product_id": "914051",
+      "name": "Thumba Karawila",
+      "source_url": "https://www.keellssuper.com/product/914051",
+      "displayed_price_lkr": 1350,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912118-import",
+      "source_product_id": "912118",
+      "name": "Thyme 25g",
+      "source_url": "https://www.keellssuper.com/product/912118",
+      "displayed_price_lkr": 70,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915016-import",
+      "source_product_id": "915016",
+      "name": "Tomatoes",
+      "source_url": "https://www.keellssuper.com/product/915016",
+      "displayed_price_lkr": 250,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912108-import",
+      "source_product_id": "912108",
+      "name": "White Wave Tofu( Bean Curd )250g",
+      "source_url": "https://www.keellssuper.com/product/912108",
+      "displayed_price_lkr": 290,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913070-import",
+      "source_product_id": "913070",
+      "name": "Yellow Zucchini",
+      "source_url": "https://www.keellssuper.com/product/913070",
+      "displayed_price_lkr": 400,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913071-import",
+      "source_product_id": "913071",
+      "name": "Zucchini",
+      "source_url": "https://www.keellssuper.com/product/913071",
+      "displayed_price_lkr": 440,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912343-import",
+      "source_product_id": "912343",
+      "name": "Myco Farm Bhutan Mushroom 200G",
+      "source_url": "https://www.keellssuper.com/product/912343",
+      "displayed_price_lkr": 225,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912341-import",
+      "source_product_id": "912341",
+      "name": "Myco Farm Oyster Mushroom 200G",
+      "source_url": "https://www.keellssuper.com/product/912341",
+      "displayed_price_lkr": 195,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912000-import",
+      "source_product_id": "912000",
+      "name": "A.S Abalone Mushroom 200g",
+      "source_url": "https://www.keellssuper.com/product/912000",
+      "displayed_price_lkr": 280,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912001-import",
+      "source_product_id": "912001",
+      "name": "A.S Oyster Mushroom 200g",
+      "source_url": "https://www.keellssuper.com/product/912001",
+      "displayed_price_lkr": 200,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916001-import",
+      "source_product_id": "916001",
+      "name": "Aguna Leaves",
+      "source_url": "https://www.keellssuper.com/product/916001",
+      "displayed_price_lkr": 80,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915000-import",
+      "source_product_id": "915000",
+      "name": "Baby Carrots",
+      "source_url": "https://www.keellssuper.com/product/915000",
+      "displayed_price_lkr": 700,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915001-import",
+      "source_product_id": "915001",
+      "name": "Baby Potatoes",
+      "source_url": "https://www.keellssuper.com/product/915001",
+      "displayed_price_lkr": 800,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912113-import",
+      "source_product_id": "912113",
+      "name": "Basil Leaves 50g",
+      "source_url": "https://www.keellssuper.com/product/912113",
+      "displayed_price_lkr": 100,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916005-import",
+      "source_product_id": "916005",
+      "name": "Bovitiya Leaves",
+      "source_url": "https://www.keellssuper.com/product/916005",
+      "displayed_price_lkr": 95,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916006-import",
+      "source_product_id": "916006",
+      "name": "Bread Fruit",
+      "source_url": "https://www.keellssuper.com/product/916006",
+      "displayed_price_lkr": 390,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "915004-import",
+      "source_product_id": "915004",
+      "name": "Butter Beans",
+      "source_url": "https://www.keellssuper.com/product/915004",
+      "displayed_price_lkr": 720,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913015-import",
+      "source_product_id": "913015",
+      "name": "Celery",
+      "source_url": "https://www.keellssuper.com/product/913015",
+      "displayed_price_lkr": 640,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913019-import",
+      "source_product_id": "913019",
+      "name": "Chow Chow",
+      "source_url": "https://www.keellssuper.com/product/913019",
+      "displayed_price_lkr": 380,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913020-import",
+      "source_product_id": "913020",
+      "name": "Coriander Leaves",
+      "source_url": "https://www.keellssuper.com/product/913020",
+      "displayed_price_lkr": 860,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912006-import",
+      "source_product_id": "912006",
+      "name": "Corn (Bada Iringu)",
+      "source_url": "https://www.keellssuper.com/product/912006",
+      "displayed_price_lkr": 123,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914011-import",
+      "source_product_id": "914011",
+      "name": "Dambala",
+      "source_url": "https://www.keellssuper.com/product/914011",
+      "displayed_price_lkr": 480,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914012-import",
+      "source_product_id": "914012",
+      "name": "Drumsticks",
+      "source_url": "https://www.keellssuper.com/product/914012",
+      "displayed_price_lkr": 1080,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916008-import",
+      "source_product_id": "916008",
+      "name": "Eramusu",
+      "source_url": "https://www.keellssuper.com/product/916008",
+      "displayed_price_lkr": 95,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916087-import",
+      "source_product_id": "916087",
+      "name": "Farmhouse Oyster Mushroom 200g",
+      "source_url": "https://www.keellssuper.com/product/916087",
+      "displayed_price_lkr": 200,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912022-import",
+      "source_product_id": "912022",
+      "name": "Fresh Leaf Gotukola 100g",
+      "source_url": "https://www.keellssuper.com/product/912022",
+      "displayed_price_lkr": 150,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912024-import",
+      "source_product_id": "912024",
+      "name": "Fresh Leaf Kankun 150g",
+      "source_url": "https://www.keellssuper.com/product/912024",
+      "displayed_price_lkr": 150,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912126-import",
+      "source_product_id": "912126",
+      "name": "Fresh Leaf Kathurumurunga 125g",
+      "source_url": "https://www.keellssuper.com/product/912126",
+      "displayed_price_lkr": 150,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912025-import",
+      "source_product_id": "912025",
+      "name": "Fresh Leaf Mukunuwanna 150g",
+      "source_url": "https://www.keellssuper.com/product/912025",
+      "displayed_price_lkr": 150,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912027-import",
+      "source_product_id": "912027",
+      "name": "Fresh Leaf Sarana 150g",
+      "source_url": "https://www.keellssuper.com/product/912027",
+      "displayed_price_lkr": 150,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912156-import",
+      "source_product_id": "912156",
+      "name": "Globle Green Abalone Mushroom 200g",
+      "source_url": "https://www.keellssuper.com/product/912156",
+      "displayed_price_lkr": 250,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912153-import",
+      "source_product_id": "912153",
+      "name": "Globle Green Organic Oys/Mushrm 200g",
+      "source_url": "https://www.keellssuper.com/product/912153",
+      "displayed_price_lkr": 198,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916009-import",
+      "source_product_id": "916009",
+      "name": "Gonica Kola",
+      "source_url": "https://www.keellssuper.com/product/916009",
+      "displayed_price_lkr": 95,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916010-import",
+      "source_product_id": "916010",
+      "name": "Gotukola",
+      "source_url": "https://www.keellssuper.com/product/916010",
+      "displayed_price_lkr": 128,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914018-import",
+      "source_product_id": "914018",
+      "name": "Green Cucumber",
+      "source_url": "https://www.keellssuper.com/product/914018",
+      "displayed_price_lkr": 360,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912357-import",
+      "source_product_id": "912357",
+      "name": "Green Hills Chopped Mukunuwanna 150g",
+      "source_url": "https://www.keellssuper.com/product/912357",
+      "displayed_price_lkr": 160,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912350-import",
+      "source_product_id": "912350",
+      "name": "Green Hills Kankun 150g",
+      "source_url": "https://www.keellssuper.com/product/912350",
+      "displayed_price_lkr": 160,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912355-import",
+      "source_product_id": "912355",
+      "name": "Green Plus Agri Abalone Mushroom",
+      "source_url": "https://www.keellssuper.com/product/912355",
+      "displayed_price_lkr": 240,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912354-import",
+      "source_product_id": "912354",
+      "name": "Green Plus Agri American Oyster Mushroom",
+      "source_url": "https://www.keellssuper.com/product/912354",
+      "displayed_price_lkr": 210,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912356-import",
+      "source_product_id": "912356",
+      "name": "Green Plus Agri Sun Dried Mushroom",
+      "source_url": "https://www.keellssuper.com/product/912356",
+      "displayed_price_lkr": 330,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912375-import",
+      "source_product_id": "912375",
+      "name": "Greensence Packeted Gotukola",
+      "source_url": "https://www.keellssuper.com/product/912375",
+      "displayed_price_lkr": 160,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912374-import",
+      "source_product_id": "912374",
+      "name": "Greensence Packeted Kankun",
+      "source_url": "https://www.keellssuper.com/product/912374",
+      "displayed_price_lkr": 160,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912376-import",
+      "source_product_id": "912376",
+      "name": "Greensence Packeted Mukunuwenna",
+      "source_url": "https://www.keellssuper.com/product/912376",
+      "displayed_price_lkr": 160,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912377-import",
+      "source_product_id": "912377",
+      "name": "Greensence Packeted Thebbu",
+      "source_url": "https://www.keellssuper.com/product/912377",
+      "displayed_price_lkr": 160,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912379-import",
+      "source_product_id": "912379",
+      "name": "Happy Leaf Gotukola 125g",
+      "source_url": "https://www.keellssuper.com/product/912379",
+      "displayed_price_lkr": 135,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912378-import",
+      "source_product_id": "912378",
+      "name": "Happy Leaf Kankun 150g",
+      "source_url": "https://www.keellssuper.com/product/912378",
+      "displayed_price_lkr": 135,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912380-import",
+      "source_product_id": "912380",
+      "name": "Happy Leaf Katurumurunga 150g",
+      "source_url": "https://www.keellssuper.com/product/912380",
+      "displayed_price_lkr": 135,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916095-import",
+      "source_product_id": "916095",
+      "name": "Happy Leaf Mukunuwenna 150g",
+      "source_url": "https://www.keellssuper.com/product/916095",
+      "displayed_price_lkr": 135,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912124-import",
+      "source_product_id": "912124",
+      "name": "Haritha Bean Sprout 200g",
+      "source_url": "https://www.keellssuper.com/product/912124",
+      "displayed_price_lkr": 285,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916011-import",
+      "source_product_id": "916011",
+      "name": "Hathawariya",
+      "source_url": "https://www.keellssuper.com/product/916011",
+      "displayed_price_lkr": 150,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916086-import",
+      "source_product_id": "916086",
+      "name": "Heavenly Baby Corn 150g",
+      "source_url": "https://www.keellssuper.com/product/916086",
+      "displayed_price_lkr": 490,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916012-import",
+      "source_product_id": "916012",
+      "name": "Higurala",
+      "source_url": "https://www.keellssuper.com/product/916012",
+      "displayed_price_lkr": 540,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914066-import",
+      "source_product_id": "914066",
+      "name": "Honest Green Frilly Iceberg 225g",
+      "source_url": "https://www.keellssuper.com/product/914066",
+      "displayed_price_lkr": 785,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914067-import",
+      "source_product_id": "914067",
+      "name": "Honest Green Green Oak Lettuce 225g",
+      "source_url": "https://www.keellssuper.com/product/914067",
+      "displayed_price_lkr": 785,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916081-import",
+      "source_product_id": "916081",
+      "name": "Honest Green Rasa Kola Healthy Salad Mix",
+      "source_url": "https://www.keellssuper.com/product/916081",
+      "displayed_price_lkr": 300,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913148-import",
+      "source_product_id": "913148",
+      "name": "Honest Greens Lettuce Mix",
+      "source_url": "https://www.keellssuper.com/product/913148",
+      "displayed_price_lkr": 660,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913149-import",
+      "source_product_id": "913149",
+      "name": "Honest Greens Supergreens Mix 100g",
+      "source_url": "https://www.keellssuper.com/product/913149",
+      "displayed_price_lkr": 745,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913044-import",
+      "source_product_id": "913044",
+      "name": "Jagro Cherry Tomatoes",
+      "source_url": "https://www.keellssuper.com/product/913044",
+      "displayed_price_lkr": 2000,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913165-import",
+      "source_product_id": "913165",
+      "name": "Jagro Corriander (25G)",
+      "source_url": "https://www.keellssuper.com/product/913165",
+      "displayed_price_lkr": 200,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913172-import",
+      "source_product_id": "913172",
+      "name": "Jagro Fresh Basil",
+      "source_url": "https://www.keellssuper.com/product/913172",
+      "displayed_price_lkr": 200,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913164-import",
+      "source_product_id": "913164",
+      "name": "Jagro Fresh Mint (25G)",
+      "source_url": "https://www.keellssuper.com/product/913164",
+      "displayed_price_lkr": 200,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914084-import",
+      "source_product_id": "914084",
+      "name": "Jagro Fresh Tyme 15g",
+      "source_url": "https://www.keellssuper.com/product/914084",
+      "displayed_price_lkr": 200,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913045-import",
+      "source_product_id": "913045",
+      "name": "Jagro Green Batavia Lettuce",
+      "source_url": "https://www.keellssuper.com/product/913045",
+      "displayed_price_lkr": 1780,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913046-import",
+      "source_product_id": "913046",
+      "name": "Jagro Green Oak Lettuce",
+      "source_url": "https://www.keellssuper.com/product/913046",
+      "displayed_price_lkr": 1780,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913147-import",
+      "source_product_id": "913147",
+      "name": "Jagro Iceberg Lettuce",
+      "source_url": "https://www.keellssuper.com/product/913147",
+      "displayed_price_lkr": 4450,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913048-import",
+      "source_product_id": "913048",
+      "name": "Jagro Leaf Lettuce",
+      "source_url": "https://www.keellssuper.com/product/913048",
+      "displayed_price_lkr": 535,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913173-import",
+      "source_product_id": "913173",
+      "name": "Jagro Oregano 25g",
+      "source_url": "https://www.keellssuper.com/product/913173",
+      "displayed_price_lkr": 200,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913050-import",
+      "source_product_id": "913050",
+      "name": "Jagro Red Batavia Lettuce",
+      "source_url": "https://www.keellssuper.com/product/913050",
+      "displayed_price_lkr": 1780,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913051-import",
+      "source_product_id": "913051",
+      "name": "Jagro Red Oak Lettuce",
+      "source_url": "https://www.keellssuper.com/product/913051",
+      "displayed_price_lkr": 1780,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913091-import",
+      "source_product_id": "913091",
+      "name": "Jagro Rocket Lettuce 50g",
+      "source_url": "https://www.keellssuper.com/product/913091",
+      "displayed_price_lkr": 157.5,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "913167-import",
+      "source_product_id": "913167",
+      "name": "Jagro Spinach",
+      "source_url": "https://www.keellssuper.com/product/913167",
+      "displayed_price_lkr": 3150,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912029-import",
+      "source_product_id": "912029",
+      "name": "Janitha Abalone Mushroom 200g",
+      "source_url": "https://www.keellssuper.com/product/912029",
+      "displayed_price_lkr": 250,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912030-import",
+      "source_product_id": "912030",
+      "name": "Janitha Ameri. Oyster Mushroom 200g",
+      "source_url": "https://www.keellssuper.com/product/912030",
+      "displayed_price_lkr": 210,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916017-import",
+      "source_product_id": "916017",
+      "name": "Kalawan Pala",
+      "source_url": "https://www.keellssuper.com/product/916017",
+      "displayed_price_lkr": 85,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916019-import",
+      "source_product_id": "916019",
+      "name": "Kathurumurunga",
+      "source_url": "https://www.keellssuper.com/product/916019",
+      "displayed_price_lkr": 95,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916022-import",
+      "source_product_id": "916022",
+      "name": "Kohila Dalu",
+      "source_url": "https://www.keellssuper.com/product/916022",
+      "displayed_price_lkr": 98,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912048-import",
+      "source_product_id": "912048",
+      "name": "Lahiru Abalone Fresh Mushroom 200g",
+      "source_url": "https://www.keellssuper.com/product/912048",
+      "displayed_price_lkr": 230,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912049-import",
+      "source_product_id": "912049",
+      "name": "Lahiru Oyster Fresh Mushroom 200g",
+      "source_url": "https://www.keellssuper.com/product/912049",
+      "displayed_price_lkr": 200,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916078-import",
+      "source_product_id": "916078",
+      "name": "Lassana Agri Green Coral Lettuce 120g",
+      "source_url": "https://www.keellssuper.com/product/916078",
+      "displayed_price_lkr": 460,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916080-import",
+      "source_product_id": "916080",
+      "name": "Lassana Agri Green Oak Lettuce 80g",
+      "source_url": "https://www.keellssuper.com/product/916080",
+      "displayed_price_lkr": 395,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916146-import",
+      "source_product_id": "916146",
+      "name": "Lassana Agri Hydroponic Basil 30g",
+      "source_url": "https://www.keellssuper.com/product/916146",
+      "displayed_price_lkr": 290,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916151-import",
+      "source_product_id": "916151",
+      "name": "Lassana Agri Hydroponic Wild Roket 30g",
+      "source_url": "https://www.keellssuper.com/product/916151",
+      "displayed_price_lkr": 250,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916076-import",
+      "source_product_id": "916076",
+      "name": "Lassana Agri Red Batavia Lettuce 120g",
+      "source_url": "https://www.keellssuper.com/product/916076",
+      "displayed_price_lkr": 460,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916079-import",
+      "source_product_id": "916079",
+      "name": "Lassana Agri Red Oak Lettuce 80g",
+      "source_url": "https://www.keellssuper.com/product/916079",
+      "displayed_price_lkr": 395,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916073-import",
+      "source_product_id": "916073",
+      "name": "Lassana Agri Romain Lettuce 130g",
+      "source_url": "https://www.keellssuper.com/product/916073",
+      "displayed_price_lkr": 395,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914027-import",
+      "source_product_id": "914027",
+      "name": "Lemon",
+      "source_url": "https://www.keellssuper.com/product/914027",
+      "displayed_price_lkr": 340,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914031-import",
+      "source_product_id": "914031",
+      "name": "Lotus Yam",
+      "source_url": "https://www.keellssuper.com/product/914031",
+      "displayed_price_lkr": 1500,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916026-import",
+      "source_product_id": "916026",
+      "name": "Lunuiwila Leaves",
+      "source_url": "https://www.keellssuper.com/product/916026",
+      "displayed_price_lkr": 85,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916030-import",
+      "source_product_id": "916030",
+      "name": "Maniok Leaves",
+      "source_url": "https://www.keellssuper.com/product/916030",
+      "displayed_price_lkr": 98,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912232-import",
+      "source_product_id": "912232",
+      "name": "Maridi Abalon Mushroom 200g",
+      "source_url": "https://www.keellssuper.com/product/912232",
+      "displayed_price_lkr": 220,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912233-import",
+      "source_product_id": "912233",
+      "name": "Maridi Oyster Mushroom 200g",
+      "source_url": "https://www.keellssuper.com/product/912233",
+      "displayed_price_lkr": 195,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916031-import",
+      "source_product_id": "916031",
+      "name": "Mellakola",
+      "source_url": "https://www.keellssuper.com/product/916031",
+      "displayed_price_lkr": 100,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912056-import",
+      "source_product_id": "912056",
+      "name": "Nature Harvest Button Mushroom 200g",
+      "source_url": "https://www.keellssuper.com/product/912056",
+      "displayed_price_lkr": 412,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "916034-import",
+      "source_product_id": "916034",
+      "name": "Neeramulliya",
+      "source_url": "https://www.keellssuper.com/product/916034",
+      "displayed_price_lkr": 95,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914034-import",
+      "source_product_id": "914034",
+      "name": "Nivithi",
+      "source_url": "https://www.keellssuper.com/product/914034",
+      "displayed_price_lkr": 180,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912373-import",
+      "source_product_id": "912373",
+      "name": "Omeeto  Cooking Cashew 100g",
+      "source_url": "https://www.keellssuper.com/product/912373",
+      "displayed_price_lkr": 995,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912369-import",
+      "source_product_id": "912369",
+      "name": "Omeeto Cooking Cashew 200g",
+      "source_url": "https://www.keellssuper.com/product/912369",
+      "displayed_price_lkr": 1995,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "912370-import",
+      "source_product_id": "912370",
+      "name": "Omeeto Cooking Cashew 500g",
+      "source_url": "https://www.keellssuper.com/product/912370",
+      "displayed_price_lkr": 4595,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "914035-import",
+      "source_product_id": "914035",
+      "name": "Onion Flowers",
+      "source_url": "https://www.keellssuper.com/product/914035",
+      "displayed_price_lkr": 480,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "911112-import",
+      "source_product_id": "911112",
+      "name": "Organic Aguna Kola",
+      "source_url": "https://www.keellssuper.com/product/911112",
+      "displayed_price_lkr": 140,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "911003-import",
+      "source_product_id": "911003",
+      "name": "Organic Baby Carrots",
+      "source_url": "https://www.keellssuper.com/product/911003",
+      "displayed_price_lkr": 940,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    }
+  ]
+}

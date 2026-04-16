@@ -2,7 +2,7 @@
   "provider": "keells",
   "category": "meat",
   "extraction_mode": "browser_assisted",
-  "captured_at": "2026-04-16T04:10:50.445Z",
+  "captured_at": "2026-04-16T11:17:58.832Z",
   "source_status": "ok",
   "items": [
     {
@@ -21,16 +21,6 @@
       "name": "Bairaha Whole Chicken",
       "source_url": "https://www.keellssuper.com/product/937001",
       "displayed_price_lkr": 1250,
-      "raw_size_text": null,
-      "in_stock": true,
-      "notes": "Captured from Keells API via automated Puppeteer session."
-    },
-    {
-      "id": "931006-import",
-      "source_product_id": "931006",
-      "name": "Beef Topside Premium",
-      "source_url": "https://www.keellssuper.com/product/931006",
-      "displayed_price_lkr": 3700,
       "raw_size_text": null,
       "in_stock": true,
       "notes": "Captured from Keells API via automated Puppeteer session."
@@ -551,6 +541,16 @@
       "name": "Beef Fillet",
       "source_url": "https://www.keellssuper.com/product/931005",
       "displayed_price_lkr": 4500,
+      "raw_size_text": null,
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "931006-import",
+      "source_product_id": "931006",
+      "name": "Beef Topside Premium",
+      "source_url": "https://www.keellssuper.com/product/931006",
+      "displayed_price_lkr": 3700,
       "raw_size_text": null,
       "in_stock": true,
       "notes": "Captured from Keells API via automated Puppeteer session."

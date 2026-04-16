@@ -1,5 +1,5 @@
 import { getSeededKeellsMeatProducts } from "./adapters/keells.seed.ts";
-import { getImportedKeellsMeatProducts, getImportedKeellsSnapshotMeta, parseKeellsImportedSnapshot, normalizeKeellsImportedSnapshot } from "./providers/keells.import.ts";
+import { getImportedKeellsProducts, getImportedKeellsMeatProducts, getImportedKeellsSnapshotMeta, parseKeellsImportedSnapshot, normalizeKeellsImportedSnapshot } from "./providers/keells.import.ts";
 import { getImportedGlomarkMeatProducts, getImportedGlomarkSnapshotMeta, parseGlomarkImportedSnapshot, normalizeGlomarkImportedSnapshot } from "./providers/glomark.import.ts";
 import { getImportedCargillsMeatProducts, getImportedCargillsSnapshotMeta, parseCargillsImportedSnapshot, normalizeCargillsImportedSnapshot } from "./providers/cargills.import.ts";
 import { fetchGlomarkCategory } from "./adapters/glomark.fetch.ts";
@@ -44,15 +44,16 @@ async function getKeellsProducts(env?: Env, category: string = "meat") {
     };
   }
 
-  // Fall back to static imports (only available for meat)
-  if (category === "meat") {
-    const imported = getImportedKeellsMeatProducts();
-    const meta = getImportedKeellsSnapshotMeta();
+  // Fall back to static imports
+  const imported = getImportedKeellsProducts(category);
+  const meta = getImportedKeellsSnapshotMeta(category);
+
+  if (imported && imported.length > 0) {
     return {
-      products: imported ?? getSeededKeellsMeatProducts(),
+      products: imported,
       meta: {
         store: "keells" as const,
-        mode: imported ? "imported_snapshot" as const : "seeded" as const,
+        mode: "imported_snapshot" as const,
         source_status: meta?.source_status ?? "partial",
         captured_at: meta?.captured_at ?? "2026-04-12T00:00:00.000Z",
         extraction_mode: meta?.extraction_mode ?? null,
@@ -60,7 +61,20 @@ async function getKeellsProducts(env?: Env, category: string = "meat") {
     };
   }
 
-  // No static fallback for non-meat categories
+  // Last resort: seed data for meat only
+  if (category === "meat") {
+    return {
+      products: getSeededKeellsMeatProducts(),
+      meta: {
+        store: "keells" as const,
+        mode: "seeded" as const,
+        source_status: "partial",
+        captured_at: "2026-04-12T00:00:00.000Z",
+        extraction_mode: null,
+      },
+    };
+  }
+
   return {
     products: [],
     meta: {

@@ -1,4 +1,7 @@
-import importedSnapshot from "../../data/keells.meat.import.json" with { type: "json" };
+import importedMeatSnapshot from "../../data/keells.meat.import.json" with { type: "json" };
+import importedSeafoodSnapshot from "../../data/keells.seafood.import.json" with { type: "json" };
+import importedVegetablesSnapshot from "../../data/keells.vegetables.import.json" with { type: "json" };
+import importedFruitsSnapshot from "../../data/keells.fruits.import.json" with { type: "json" };
 
 import { normalizeKeellsProduct } from "../normalize.ts";
 import type { KeellsImportedSnapshot, KeellsImportedSnapshotItem, NormalizedProduct } from "../schema.ts";
@@ -71,23 +74,36 @@ export function normalizeKeellsImportedSnapshot(snapshot: KeellsImportedSnapshot
   );
 }
 
-export function getImportedKeellsMeatProducts(): NormalizedProduct[] | null {
-  const snapshot = parseKeellsImportedSnapshot(importedSnapshot);
+const CATEGORY_SNAPSHOTS: Record<string, unknown> = {
+  meat: importedMeatSnapshot,
+  seafood: importedSeafoodSnapshot,
+  vegetables: importedVegetablesSnapshot,
+  fruits: importedFruitsSnapshot,
+};
 
-  if (!snapshot || snapshot.items.length === 0) {
-    return null;
-  }
+export function getImportedKeellsProducts(category: string = "meat"): NormalizedProduct[] | null {
+  const raw = CATEGORY_SNAPSHOTS[category];
+  if (!raw) return null;
+
+  const snapshot = parseKeellsImportedSnapshot(raw);
+  if (!snapshot || snapshot.items.length === 0) return null;
 
   return normalizeKeellsImportedSnapshot(snapshot);
 }
 
-export function getImportedKeellsSnapshotMeta():
+/** @deprecated Use getImportedKeellsProducts("meat") */
+export function getImportedKeellsMeatProducts(): NormalizedProduct[] | null {
+  return getImportedKeellsProducts("meat");
+}
+
+export function getImportedKeellsSnapshotMeta(category: string = "meat"):
   | Pick<KeellsImportedSnapshot, "captured_at" | "extraction_mode" | "source_status">
   | null {
-  const snapshot = parseKeellsImportedSnapshot(importedSnapshot);
-  if (!snapshot || snapshot.items.length === 0) {
-    return null;
-  }
+  const raw = CATEGORY_SNAPSHOTS[category];
+  if (!raw) return null;
+
+  const snapshot = parseKeellsImportedSnapshot(raw);
+  if (!snapshot || snapshot.items.length === 0) return null;
 
   return {
     captured_at: snapshot.captured_at,
