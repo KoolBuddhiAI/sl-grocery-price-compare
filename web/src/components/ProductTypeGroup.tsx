@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import type { NormalizedProduct, Store } from '../lib/api';
 import type { ProductType } from '../lib/product-types';
 import StoreBadge from './StoreBadge';
@@ -94,9 +94,8 @@ export default function ProductTypeGroup({ type, products, enabledStores, apiUrl
               {filtered.map((product, idx) => {
                 const isCheapest = product.price_per_kg_lkr !== null && product.price_per_kg_lkr === cheapest;
                 return (
-                  <>
+                  <React.Fragment key={product.id}>
                     <tr
-                      key={product.id}
                       onClick={() => setExpandedProductId(expandedProductId === product.id ? null : product.id)}
                       className={`cursor-pointer border-t border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 ${
                         isCheapest
@@ -172,7 +171,7 @@ export default function ProductTypeGroup({ type, products, enabledStores, apiUrl
                         </td>
                       </tr>
                     )}
-                  </>
+                  </React.Fragment>
                 );
               })}
             </tbody>
