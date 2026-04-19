@@ -5,18 +5,27 @@ interface PriceChartProps {
   store: string;
   currentPrice: number | null;
   apiUrl: string;
+  // Optional pre-fetched history points (oldest first). If provided, skip fetch.
+  history?: Array<{ date: string; price: number | null }>;
+  category?: string;
 }
 
-export default function PriceChart({ productId, store, currentPrice, apiUrl }: PriceChartProps) {
-  const [history, setHistory] = useState<Array<{ date: string; price: number | null }>>([]);
-  const [loading, setLoading] = useState(true);
+export default function PriceChart({ productId, store, currentPrice, apiUrl, history: externalHistory, category = 'meat' }: PriceChartProps) {
+  const [history, setHistory] = useState<Array<{ date: string; price: number | null }>>(externalHistory ?? []);
+  const [loading, setLoading] = useState(!externalHistory);
 
   useEffect(() => {
-    fetch(`${apiUrl}/api/history?store=${store}&category=meat`)
+    if (externalHistory) {
+      setHistory(externalHistory);
+      setLoading(false);
+      return;
+    }
+    fetch(`${apiUrl}/api/history?store=${store}&category=${category}`)
       .then(res => res.json())
       .then(data => {
-        // Extract this product's prices over time
-        const points = (data || [])
+        // Response is { data: HistoryEntry[] }
+        const entries = Array.isArray(data) ? data : (data?.data ?? []);
+        const points = entries
           .map((entry: any) => ({
             date: entry.date,
             price: entry.prices?.[productId] ?? null,
@@ -27,10 +36,10 @@ export default function PriceChart({ productId, store, currentPrice, apiUrl }: P
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [productId, store, apiUrl]);
+  }, [productId, store, apiUrl, externalHistory, category]);
 
   if (loading) return <div className="text-sm text-gray-500 py-2">Loading history...</div>;
-  if (history.length < 2) return <div className="text-sm text-gray-500 py-2">Not enough history data yet</div>;
+  if (history.length < 3) return null;
 
   // SVG sparkline
   const prices = history.map(h => h.price!);

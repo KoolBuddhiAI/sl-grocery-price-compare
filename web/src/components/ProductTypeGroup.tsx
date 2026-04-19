@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import type { NormalizedProduct, Store } from '../lib/api';
 import type { ProductType } from '../lib/product-types';
 import StoreBadge from './StoreBadge';
-import PriceChart from './PriceChart';
+import ProductHistoryPanel from './ProductHistoryPanel';
 
 type Props = {
   type: ProductType;
@@ -142,6 +142,12 @@ export default function ProductTypeGroup({ type, products, enabledStores, apiUrl
                               {formatPrice(product.price_per_kg_lkr)}
                             </span>
                             <span className="text-gray-400 dark:text-gray-500 text-xs">/kg</span>
+                            {product.price_per_kg_direction === "down" && (
+                              <span className="text-green-600 ml-1 cursor-help" title={`Was Rs ${product.previous_price_per_kg_lkr}/kg`}>&#9660;</span>
+                            )}
+                            {product.price_per_kg_direction === "up" && (
+                              <span className="text-red-500 ml-1 cursor-help" title={`Was Rs ${product.previous_price_per_kg_lkr}/kg`}>&#9650;</span>
+                            )}
                           </>
                         ) : (
                           <span className="text-gray-400 dark:text-gray-500 text-xs" title="Weight unknown — cannot compute per-kg price">
@@ -192,11 +198,10 @@ export default function ProductTypeGroup({ type, products, enabledStores, apiUrl
                     {expandedProductId === product.id && (
                       <tr key={`${product.id}-chart`}>
                         <td colSpan={6}>
-                          <PriceChart
-                            productId={product.id}
-                            store={product.store}
-                            currentPrice={product.displayed_price_lkr}
+                          <ProductHistoryPanel
+                            product={product}
                             apiUrl={apiUrl}
+                            category={product.source_category}
                           />
                         </td>
                       </tr>

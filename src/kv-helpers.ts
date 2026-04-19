@@ -43,31 +43,41 @@ export async function putSnapshotToKV(
   await env.SNAPSHOTS.put(key, JSON.stringify(data));
 }
 
+export type HistoryEntry = {
+  date: string;
+  prices: Record<string, number | null>;
+  prices_per_kg?: Record<string, number | null>;
+};
+
 export async function appendPriceHistory(
   env: Env,
   provider: string,
   category: string,
-  items: Array<{ id: string; displayed_price_lkr: number | null }>
+  items: Array<{ id: string; displayed_price_lkr: number | null; price_per_kg_lkr?: number | null }>
 ): Promise<void> {
   const key = `history:${provider}:${category}`;
   const today = new Date().toISOString().slice(0, 10);
 
-  let history: Array<{ date: string; prices: Record<string, number | null> }> = [];
+  let history: HistoryEntry[] = [];
   try {
     const raw = await env.SNAPSHOTS.get(key);
     if (raw) history = JSON.parse(raw);
   } catch {}
 
   const prices: Record<string, number | null> = {};
+  const prices_per_kg: Record<string, number | null> = {};
   for (const item of items) {
     prices[item.id] = item.displayed_price_lkr;
+    prices_per_kg[item.id] = item.price_per_kg_lkr ?? null;
   }
+
+  const entry: HistoryEntry = { date: today, prices, prices_per_kg };
 
   const existingIndex = history.findIndex(h => h.date === today);
   if (existingIndex >= 0) {
-    history[existingIndex] = { date: today, prices };
+    history[existingIndex] = entry;
   } else {
-    history.unshift({ date: today, prices });
+    history.unshift(entry);
   }
 
   // Keep last 30 days only
@@ -80,7 +90,7 @@ export async function getPriceHistory(
   env: Env | undefined,
   provider: string,
   category: string
-): Promise<Array<{ date: string; prices: Record<string, number | null> }>> {
+): Promise<HistoryEntry[]> {
   if (!env?.SNAPSHOTS) return [];
   try {
     const raw = await env.SNAPSHOTS.get(`history:${provider}:${category}`);

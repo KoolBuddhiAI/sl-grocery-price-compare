@@ -15,6 +15,8 @@ export type NormalizedProduct = {
   displayed_currency: 'LKR';
   price_direction: 'up' | 'down' | 'same' | null;
   previous_price_lkr: number | null;
+  price_per_kg_direction: 'up' | 'down' | 'same' | null;
+  previous_price_per_kg_lkr: number | null;
   in_stock: boolean | null;
   pack_qty: number | null;
   pack_unit: string;
