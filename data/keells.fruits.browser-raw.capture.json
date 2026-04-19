@@ -4,6 +4,7 @@
     "name": "Al-Madina Almond Dates 270g",
     "url": "https://www.keellssuper.com/product/923120",
     "price": 1100,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -12,6 +13,7 @@
     "name": "Al-Madina Cashew Dates 270g",
     "url": "https://www.keellssuper.com/product/923119",
     "price": 1150,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -20,190 +22,7 @@
     "name": "Al-Madina Seedless Dates 500g",
     "url": "https://www.keellssuper.com/product/923118",
     "price": 1100,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923002",
-    "name": "Avocado",
-    "url": "https://www.keellssuper.com/product/923002",
-    "price": 740,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923003",
-    "name": "Banana - Ambul",
-    "url": "https://www.keellssuper.com/product/923003",
-    "price": 230,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923007",
-    "name": "Banana - Kolikuttu",
-    "url": "https://www.keellssuper.com/product/923007",
-    "price": 490,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923010",
-    "name": "Banana - Seeni",
-    "url": "https://www.keellssuper.com/product/923010",
-    "price": 210,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923011",
-    "name": "Beli",
-    "url": "https://www.keellssuper.com/product/923011",
-    "price": 480,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "924017",
-    "name": "Grapes - Black",
-    "url": "https://www.keellssuper.com/product/924017",
-    "price": 2990,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923115",
-    "name": "Khalas Premium Dates 250g",
-    "url": "https://www.keellssuper.com/product/923115",
-    "price": 650,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923116",
-    "name": "Khalas Premium Dates 500g",
-    "url": "https://www.keellssuper.com/product/923116",
-    "price": 1100,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "924022",
-    "name": "Mandarin - (Honey) Small",
-    "url": "https://www.keellssuper.com/product/924022",
-    "price": 2250,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923046",
-    "name": "Mango - Bud",
-    "url": "https://www.keellssuper.com/product/923046",
-    "price": 460,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923057",
-    "name": "Melon - Cantaloupe",
-    "url": "https://www.keellssuper.com/product/923057",
-    "price": 590,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923059",
-    "name": "Melon - Dark Bell",
-    "url": "https://www.keellssuper.com/product/923059",
-    "price": 160,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923063",
-    "name": "Melon - Red Fantasy",
-    "url": "https://www.keellssuper.com/product/923063",
-    "price": 160,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923134",
-    "name": "New Ctc Our Dates Natural 500g",
-    "url": "https://www.keellssuper.com/product/923134",
-    "price": 975,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923133",
-    "name": "New Ctc Saffari Dates Organic 600g",
-    "url": "https://www.keellssuper.com/product/923133",
-    "price": 980,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "921032",
-    "name": "Organic Pineapple",
-    "url": "https://www.keellssuper.com/product/921032",
-    "price": 430,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923072",
-    "name": "Papaya",
-    "url": "https://www.keellssuper.com/product/923072",
-    "price": 300,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "924030",
-    "name": "Pears - Yellow",
-    "url": "https://www.keellssuper.com/product/924030",
-    "price": 2730,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923076",
-    "name": "Pineapple",
-    "url": "https://www.keellssuper.com/product/923076",
-    "price": 310,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "924032",
-    "name": "Pomegranate (Delum)",
-    "url": "https://www.keellssuper.com/product/924032",
-    "price": 3030,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923086",
-    "name": "Woodapple",
-    "url": "https://www.keellssuper.com/product/923086",
-    "price": 660,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923132",
-    "name": "Al-Madina Chocolate Covered Dates With Almonds 250g",
-    "url": "https://www.keellssuper.com/product/923132",
-    "price": 1450,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "924000",
-    "name": "Apple - Fuji",
-    "url": "https://www.keellssuper.com/product/924000",
-    "price": 2550,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -212,6 +31,7 @@
     "name": "Apple - Green",
     "url": "https://www.keellssuper.com/product/924001",
     "price": 1800,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -220,70 +40,52 @@
     "name": "Apple - Red",
     "url": "https://www.keellssuper.com/product/924007",
     "price": 2590,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "924006",
-    "name": "Apple - Red Royal Gala",
-    "url": "https://www.keellssuper.com/product/924006",
-    "price": 2160,
+    "productId": "923002",
+    "name": "Avocado",
+    "url": "https://www.keellssuper.com/product/923002",
+    "price": 700,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "924009",
-    "name": "Apple - Yellow",
-    "url": "https://www.keellssuper.com/product/924009",
-    "price": 2230,
+    "productId": "923003",
+    "name": "Banana - Ambul",
+    "url": "https://www.keellssuper.com/product/923003",
+    "price": 220,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "923004",
-    "name": "Banana - Ambun",
-    "url": "https://www.keellssuper.com/product/923004",
-    "price": 550,
+    "productId": "923007",
+    "name": "Banana - Kolikuttu",
+    "url": "https://www.keellssuper.com/product/923007",
+    "price": 480,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "923005",
-    "name": "Banana - Cavendish",
-    "url": "https://www.keellssuper.com/product/923005",
-    "price": 340,
+    "productId": "923010",
+    "name": "Banana - Seeni",
+    "url": "https://www.keellssuper.com/product/923010",
+    "price": 230,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "923006",
-    "name": "Banana - Cic Quality",
-    "url": "https://www.keellssuper.com/product/923006",
-    "price": 640,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923106",
-    "name": "Berry Much Fresh Blackberry 125g",
-    "url": "https://www.keellssuper.com/product/923106",
-    "price": 1650,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923124",
-    "name": "Berry Much Fresh Blueberry 125g",
-    "url": "https://www.keellssuper.com/product/923124",
-    "price": 2850,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923105",
-    "name": "Berry Much Fresh Raspberry 125g",
-    "url": "https://www.keellssuper.com/product/923105",
-    "price": 1850,
+    "productId": "923011",
+    "name": "Beli",
+    "url": "https://www.keellssuper.com/product/923011",
+    "price": 510,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -292,14 +94,7 @@
     "name": "Berry Much Fresh Strawberry 125g",
     "url": "https://www.keellssuper.com/product/923067",
     "price": 800,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923068",
-    "name": "Berry Much Fresh Strawberry 250g",
-    "url": "https://www.keellssuper.com/product/923068",
-    "price": 1450,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -308,6 +103,7 @@
     "name": "Delum (Local)",
     "url": "https://www.keellssuper.com/product/923015",
     "price": 1490,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -316,22 +112,7 @@
     "name": "Dole Cavendish Sixes Pack",
     "url": "https://www.keellssuper.com/product/923017",
     "price": 900,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923018",
-    "name": "Dragon Fruit",
-    "url": "https://www.keellssuper.com/product/923018",
-    "price": 2390,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923019",
-    "name": "Durian",
-    "url": "https://www.keellssuper.com/product/923019",
-    "price": 1140,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -339,7 +120,8 @@
     "productId": "924019",
     "name": "Grapes - Red",
     "url": "https://www.keellssuper.com/product/924019",
-    "price": 3360,
+    "price": 2990,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -347,47 +129,26 @@
     "productId": "923028",
     "name": "Guava",
     "url": "https://www.keellssuper.com/product/923028",
-    "price": 490,
+    "price": 780,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "923030",
-    "name": "Jagro Strawberries Sun Grown 125g",
-    "url": "https://www.keellssuper.com/product/923030",
-    "price": 750,
+    "productId": "923115",
+    "name": "Khalas Premium Dates 250g",
+    "url": "https://www.keellssuper.com/product/923115",
+    "price": 650,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "923031",
-    "name": "Jagro Strawberries Sun Grown 250g",
-    "url": "https://www.keellssuper.com/product/923031",
-    "price": 1330,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923032",
-    "name": "Jagro Strawberry Fields 250g",
-    "url": "https://www.keellssuper.com/product/923032",
-    "price": 1350,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923034",
-    "name": "Jambola",
-    "url": "https://www.keellssuper.com/product/923034",
-    "price": 220,
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "923038",
-    "name": "Katu Anoda",
-    "url": "https://www.keellssuper.com/product/923038",
-    "price": 450,
+    "productId": "923116",
+    "name": "Khalas Premium Dates 500g",
+    "url": "https://www.keellssuper.com/product/923116",
+    "price": 1100,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -395,7 +156,17 @@
     "productId": "924020",
     "name": "Kiwi Fruits",
     "url": "https://www.keellssuper.com/product/924020",
-    "price": 3210,
+    "price": 3330,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "924022",
+    "name": "Mandarin - (Honey) Small",
+    "url": "https://www.keellssuper.com/product/924022",
+    "price": 2490,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -404,46 +175,61 @@
     "name": "Mandarin - Local (Jama Naran)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ",
     "url": "https://www.keellssuper.com/product/923043",
     "price": 390,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "924023",
-    "name": "Mandarin Imported",
-    "url": "https://www.keellssuper.com/product/924023",
-    "price": 560,
+    "productId": "923046",
+    "name": "Mango - Bud",
+    "url": "https://www.keellssuper.com/product/923046",
+    "price": 480,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "923048",
-    "name": "Mango - K/C",
-    "url": "https://www.keellssuper.com/product/923048",
-    "price": 450,
+    "productId": "923057",
+    "name": "Melon - Cantaloupe",
+    "url": "https://www.keellssuper.com/product/923057",
+    "price": 590,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "923053",
-    "name": "Mango - Tjc",
-    "url": "https://www.keellssuper.com/product/923053",
-    "price": 1550,
+    "productId": "923059",
+    "name": "Melon - Dark Bell",
+    "url": "https://www.keellssuper.com/product/923059",
+    "price": 160,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "923055",
-    "name": "Mango - Vilad",
-    "url": "https://www.keellssuper.com/product/923055",
-    "price": 490,
+    "productId": "923063",
+    "name": "Melon - Red Fantasy",
+    "url": "https://www.keellssuper.com/product/923063",
+    "price": 140,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "923056",
-    "name": "Mangosteen",
-    "url": "https://www.keellssuper.com/product/923056",
-    "price": 1200,
+    "productId": "923134",
+    "name": "New Ctc Our Dates Natural 500g",
+    "url": "https://www.keellssuper.com/product/923134",
+    "price": 975,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923133",
+    "name": "New Ctc Saffari Dates Organic 600g",
+    "url": "https://www.keellssuper.com/product/923133",
+    "price": 980,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -452,6 +238,7 @@
     "name": "Orange - Local",
     "url": "https://www.keellssuper.com/product/923070",
     "price": 290,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -459,7 +246,260 @@
     "productId": "924025",
     "name": "Orange Imported",
     "url": "https://www.keellssuper.com/product/924025",
-    "price": 1950,
+    "price": 2640,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "921032",
+    "name": "Organic Pineapple",
+    "url": "https://www.keellssuper.com/product/921032",
+    "price": 430,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923072",
+    "name": "Papaya",
+    "url": "https://www.keellssuper.com/product/923072",
+    "price": 220,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923076",
+    "name": "Pineapple",
+    "url": "https://www.keellssuper.com/product/923076",
+    "price": 330,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923086",
+    "name": "Woodapple",
+    "url": "https://www.keellssuper.com/product/923086",
+    "price": 510,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923132",
+    "name": "Al-Madina Chocolate Covered Dates With Almonds 250g",
+    "url": "https://www.keellssuper.com/product/923132",
+    "price": 1450,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "924000",
+    "name": "Apple - Fuji",
+    "url": "https://www.keellssuper.com/product/924000",
+    "price": 2550,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "924006",
+    "name": "Apple - Red Royal Gala",
+    "url": "https://www.keellssuper.com/product/924006",
+    "price": 2310,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "924009",
+    "name": "Apple - Yellow",
+    "url": "https://www.keellssuper.com/product/924009",
+    "price": 2230,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923004",
+    "name": "Banana - Ambun",
+    "url": "https://www.keellssuper.com/product/923004",
+    "price": 550,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923005",
+    "name": "Banana - Cavendish",
+    "url": "https://www.keellssuper.com/product/923005",
+    "price": 320,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923006",
+    "name": "Banana - Cic Quality",
+    "url": "https://www.keellssuper.com/product/923006",
+    "price": 640,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923106",
+    "name": "Berry Much Fresh Blackberry 125g",
+    "url": "https://www.keellssuper.com/product/923106",
+    "price": 1650,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923124",
+    "name": "Berry Much Fresh Blueberry 125g",
+    "url": "https://www.keellssuper.com/product/923124",
+    "price": 2850,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923105",
+    "name": "Berry Much Fresh Raspberry 125g",
+    "url": "https://www.keellssuper.com/product/923105",
+    "price": 1850,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923068",
+    "name": "Berry Much Fresh Strawberry 250g",
+    "url": "https://www.keellssuper.com/product/923068",
+    "price": 1450,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923018",
+    "name": "Dragon Fruit",
+    "url": "https://www.keellssuper.com/product/923018",
+    "price": 2390,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923019",
+    "name": "Durian",
+    "url": "https://www.keellssuper.com/product/923019",
+    "price": 1140,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "924017",
+    "name": "Grapes - Black",
+    "url": "https://www.keellssuper.com/product/924017",
+    "price": 2250,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923030",
+    "name": "Jagro Strawberries Sun Grown 125g",
+    "url": "https://www.keellssuper.com/product/923030",
+    "price": 750,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923031",
+    "name": "Jagro Strawberries Sun Grown 250g",
+    "url": "https://www.keellssuper.com/product/923031",
+    "price": 1330,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923032",
+    "name": "Jagro Strawberry Fields 250g",
+    "url": "https://www.keellssuper.com/product/923032",
+    "price": 1350,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923034",
+    "name": "Jambola",
+    "url": "https://www.keellssuper.com/product/923034",
+    "price": 190,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923038",
+    "name": "Katu Anoda",
+    "url": "https://www.keellssuper.com/product/923038",
+    "price": 450,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "924023",
+    "name": "Mandarin Imported",
+    "url": "https://www.keellssuper.com/product/924023",
+    "price": 1980,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923048",
+    "name": "Mango - K/C",
+    "url": "https://www.keellssuper.com/product/923048",
+    "price": 390,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923053",
+    "name": "Mango - Tjc",
+    "url": "https://www.keellssuper.com/product/923053",
+    "price": 1550,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923055",
+    "name": "Mango - Vilad",
+    "url": "https://www.keellssuper.com/product/923055",
+    "price": 490,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "923056",
+    "name": "Mangosteen",
+    "url": "https://www.keellssuper.com/product/923056",
+    "price": 1200,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -467,7 +507,8 @@
     "productId": "921022",
     "name": "Organic Mango Tjc",
     "url": "https://www.keellssuper.com/product/921022",
-    "price": 2170,
+    "price": 2200,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -475,7 +516,8 @@
     "productId": "921025",
     "name": "Organic Melon - Dark Bell",
     "url": "https://www.keellssuper.com/product/921025",
-    "price": 210,
+    "price": 220,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -483,7 +525,8 @@
     "productId": "921026",
     "name": "Organic Melon - Red Fantasy",
     "url": "https://www.keellssuper.com/product/921026",
-    "price": 220,
+    "price": 210,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -491,7 +534,8 @@
     "productId": "921029",
     "name": "Organic Papaya",
     "url": "https://www.keellssuper.com/product/921029",
-    "price": 410,
+    "price": 430,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -499,7 +543,8 @@
     "productId": "923074",
     "name": "Passion Fruit",
     "url": "https://www.keellssuper.com/product/923074",
-    "price": 590,
+    "price": 740,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -508,6 +553,7 @@
     "name": "Pears - Green",
     "url": "https://www.keellssuper.com/product/924028",
     "price": 2190,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -516,6 +562,7 @@
     "name": "Pears - Local",
     "url": "https://www.keellssuper.com/product/923075",
     "price": 1200,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -524,6 +571,16 @@
     "name": "Pears - Red",
     "url": "https://www.keellssuper.com/product/924029",
     "price": 2390,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "924030",
+    "name": "Pears - Yellow",
+    "url": "https://www.keellssuper.com/product/924030",
+    "price": 2760,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -532,6 +589,7 @@
     "name": "Perfectly Imperfect Tjc Mango",
     "url": "https://www.keellssuper.com/product/923102",
     "price": 1160,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -539,7 +597,17 @@
     "productId": "924031",
     "name": "Plums",
     "url": "https://www.keellssuper.com/product/924031",
-    "price": 5490,
+    "price": 5340,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "924032",
+    "name": "Pomegranate (Delum)",
+    "url": "https://www.keellssuper.com/product/924032",
+    "price": 2590,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -548,6 +616,7 @@
     "name": "Rambutan",
     "url": "https://www.keellssuper.com/product/923078",
     "price": 1590,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -556,6 +625,7 @@
     "name": "Rose Apple ( Jumbu )",
     "url": "https://www.keellssuper.com/product/923079",
     "price": 520,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   }

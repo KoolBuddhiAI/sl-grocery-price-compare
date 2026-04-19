@@ -2,7 +2,7 @@
   "provider": "keells",
   "category": "meat",
   "extraction_mode": "browser_assisted",
-  "captured_at": "2026-04-16T17:54:52.289Z",
+  "captured_at": "2026-04-19T04:15:19.216Z",
   "source_status": "ok",
   "items": [
     {
@@ -28,6 +28,17 @@
       "notes": "Captured from Keells API via automated Puppeteer session."
     },
     {
+      "id": "937002-import",
+      "source_product_id": "937002",
+      "name": "Bairaha Whole Chicken Skinless",
+      "source_url": "https://www.keellssuper.com/product/937002",
+      "displayed_price_lkr": 1360,
+      "raw_size_text": null,
+      "uom": "KG",
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
       "id": "934001-import",
       "source_product_id": "934001",
       "name": "Bone In Curry Pork",
@@ -39,11 +50,33 @@
       "notes": "Captured from Keells API via automated Puppeteer session."
     },
     {
+      "id": "935060-import",
+      "source_product_id": "935060",
+      "name": "Chicken Boneless Thigh",
+      "source_url": "https://www.keellssuper.com/product/935060",
+      "displayed_price_lkr": 2100,
+      "raw_size_text": null,
+      "uom": "KG",
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "935003-import",
+      "source_product_id": "935003",
+      "name": "Chicken Breast Meat Boneless",
+      "source_url": "https://www.keellssuper.com/product/935003",
+      "displayed_price_lkr": 2170,
+      "raw_size_text": null,
+      "uom": "KG",
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
       "id": "935006-import",
       "source_product_id": "935006",
       "name": "Chicken Drumsticks Skin On",
       "source_url": "https://www.keellssuper.com/product/935006",
-      "displayed_price_lkr": 1390,
+      "displayed_price_lkr": 1250,
       "raw_size_text": null,
       "uom": "KG",
       "in_stock": true,
@@ -131,7 +164,7 @@
       "source_product_id": "935015",
       "name": "Chicken Whole Legs Skin On",
       "source_url": "https://www.keellssuper.com/product/935015",
-      "displayed_price_lkr": 1290,
+      "displayed_price_lkr": 1450,
       "raw_size_text": null,
       "uom": "KG",
       "in_stock": true,
@@ -182,17 +215,6 @@
       "notes": "Captured from Keells API via automated Puppeteer session."
     },
     {
-      "id": "937004-import",
-      "source_product_id": "937004",
-      "name": "Cic Skin Less Whole Chicken",
-      "source_url": "https://www.keellssuper.com/product/937004",
-      "displayed_price_lkr": 1400,
-      "raw_size_text": null,
-      "uom": "KG",
-      "in_stock": true,
-      "notes": "Captured from Keells API via automated Puppeteer session."
-    },
-    {
       "id": "937005-import",
       "source_product_id": "937005",
       "name": "Cic Whole Chicken With Giblet",
@@ -231,6 +253,17 @@
       "name": "Local Mutton For Curry",
       "source_url": "https://www.keellssuper.com/product/933002",
       "displayed_price_lkr": 5100,
+      "raw_size_text": null,
+      "uom": "KG",
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "933005-import",
+      "source_product_id": "933005",
+      "name": "Mutton Leg Local",
+      "source_url": "https://www.keellssuper.com/product/933005",
+      "displayed_price_lkr": 5590,
       "raw_size_text": null,
       "uom": "KG",
       "in_stock": true,
@@ -545,17 +578,6 @@
       "notes": "Captured from Keells API via automated Puppeteer session."
     },
     {
-      "id": "937002-import",
-      "source_product_id": "937002",
-      "name": "Bairaha Whole Chicken Skinless",
-      "source_url": "https://www.keellssuper.com/product/937002",
-      "displayed_price_lkr": 1360,
-      "raw_size_text": null,
-      "uom": "KG",
-      "in_stock": true,
-      "notes": "Captured from Keells API via automated Puppeteer session."
-    },
-    {
       "id": "931003-import",
       "source_product_id": "931003",
       "name": "Bbq Spare Ribs Sheet",
@@ -655,28 +677,6 @@
       "notes": "Captured from Keells API via automated Puppeteer session."
     },
     {
-      "id": "935060-import",
-      "source_product_id": "935060",
-      "name": "Chicken Boneless Thigh",
-      "source_url": "https://www.keellssuper.com/product/935060",
-      "displayed_price_lkr": 2100,
-      "raw_size_text": null,
-      "uom": "KG",
-      "in_stock": true,
-      "notes": "Captured from Keells API via automated Puppeteer session."
-    },
-    {
-      "id": "935003-import",
-      "source_product_id": "935003",
-      "name": "Chicken Breast Meat Boneless",
-      "source_url": "https://www.keellssuper.com/product/935003",
-      "displayed_price_lkr": 2170,
-      "raw_size_text": null,
-      "uom": "KG",
-      "in_stock": true,
-      "notes": "Captured from Keells API via automated Puppeteer session."
-    },
-    {
       "id": "939025-import",
       "source_product_id": "939025",
       "name": "Chicken Mortadella",
@@ -693,6 +693,17 @@
       "name": "Chilled Whole Chicken Skinless",
       "source_url": "https://www.keellssuper.com/product/935018",
       "displayed_price_lkr": 1380,
+      "raw_size_text": null,
+      "uom": "KG",
+      "in_stock": true,
+      "notes": "Captured from Keells API via automated Puppeteer session."
+    },
+    {
+      "id": "937004-import",
+      "source_product_id": "937004",
+      "name": "Cic Skin Less Whole Chicken",
+      "source_url": "https://www.keellssuper.com/product/937004",
+      "displayed_price_lkr": 1400,
       "raw_size_text": null,
       "uom": "KG",
       "in_stock": true,
@@ -759,17 +770,6 @@
       "name": "Minced Pork",
       "source_url": "https://www.keellssuper.com/product/934003",
       "displayed_price_lkr": 3990,
-      "raw_size_text": null,
-      "uom": "KG",
-      "in_stock": true,
-      "notes": "Captured from Keells API via automated Puppeteer session."
-    },
-    {
-      "id": "933005-import",
-      "source_product_id": "933005",
-      "name": "Mutton Leg Local",
-      "source_url": "https://www.keellssuper.com/product/933005",
-      "displayed_price_lkr": 5590,
       "raw_size_text": null,
       "uom": "KG",
       "in_stock": true,

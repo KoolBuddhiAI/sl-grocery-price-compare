@@ -246,14 +246,36 @@ async function main() {
     }
 
     console.log(`Pushing snapshot to ${pushUrl}/api/snapshots...`);
-    const resp = await fetch(`${pushUrl}/api/snapshots`, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${pushKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(snapshot),
-    });
+
+    const maxAttempts = 3;
+    let resp = null;
+    let lastError = null;
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        resp = await fetch(`${pushUrl}/api/snapshots`, {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${pushKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(snapshot),
+        });
+        break;
+      } catch (err) {
+        lastError = err;
+        const msg = err instanceof Error ? err.message : String(err);
+        console.error(`Push attempt ${attempt}/${maxAttempts} failed: ${msg}`);
+        if (attempt < maxAttempts) {
+          await new Promise((r) => setTimeout(r, 2000 * attempt));
+        }
+      }
+    }
+
+    if (!resp) {
+      console.error(`Push failed after ${maxAttempts} attempts: ${lastError}`);
+      process.exitCode = 1;
+      return;
+    }
 
     if (resp.ok) {
       const result = await resp.json();

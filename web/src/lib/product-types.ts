@@ -1,4 +1,5 @@
 import type { NormalizedProduct } from './api';
+import type { MergeRule } from './merge-rules';
 import mappingData from '../data/product-type-mapping.json';
 
 export type ProductType = {
@@ -43,6 +44,7 @@ export function getAllSubcategories(): string[] {
 export type GroupedProducts = {
   type: ProductType;
   products: NormalizedProduct[];
+  mergeRuleId?: string;
 };
 
 // Brand prefixes to strip when computing the core product name
@@ -139,6 +141,55 @@ export function groupProductsForCategory(products: NormalizedProduct[], category
   }
 
   // Sort groups by their cheapest product's unit price
+  result.sort((a, b) => {
+    const aMin = a.products[0]?.price_per_kg_lkr ?? Infinity;
+    const bMin = b.products[0]?.price_per_kg_lkr ?? Infinity;
+    return aMin - bMin;
+  });
+
+  return result;
+}
+
+export function applyMergeRules(groups: GroupedProducts[], rules: MergeRule[]): GroupedProducts[] {
+  if (rules.length === 0) return groups;
+
+  // Build lookup: group key → rule
+  const keyToRule = new Map<string, MergeRule>();
+  for (const rule of rules) {
+    for (const key of rule.sourceGroupKeys) {
+      keyToRule.set(key, rule);
+    }
+  }
+
+  // Collect groups by rule ID
+  const mergedByRule = new Map<string, { rule: MergeRule; products: NormalizedProduct[] }>();
+  const ungrouped: GroupedProducts[] = [];
+
+  for (const group of groups) {
+    const rule = keyToRule.get(group.type.id);
+    if (rule) {
+      if (!mergedByRule.has(rule.id)) {
+        mergedByRule.set(rule.id, { rule, products: [] });
+      }
+      mergedByRule.get(rule.id)!.products.push(...group.products);
+    } else {
+      ungrouped.push(group);
+    }
+  }
+
+  // Build merged groups
+  const merged: GroupedProducts[] = [];
+  for (const [, { rule, products }] of mergedByRule) {
+    if (products.length === 0) continue;
+    merged.push({
+      type: { id: rule.id, label: rule.label, subcategory: 'All' },
+      products: sortByUnitPrice(products),
+      mergeRuleId: rule.id,
+    });
+  }
+
+  // Combine and re-sort by cheapest unit price
+  const result = [...merged, ...ungrouped];
   result.sort((a, b) => {
     const aMin = a.products[0]?.price_per_kg_lkr ?? Infinity;
     const bMin = b.products[0]?.price_per_kg_lkr ?? Infinity;

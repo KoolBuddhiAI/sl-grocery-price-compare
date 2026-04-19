@@ -9,6 +9,11 @@ type Props = {
   products: NormalizedProduct[];
   enabledStores: Set<Store>;
   apiUrl: string;
+  mergeMode?: boolean;
+  selected?: boolean;
+  onToggleSelect?: () => void;
+  mergeRuleId?: string;
+  onUnmerge?: (ruleId: string) => void;
 };
 
 function formatPrice(price: number | null): string {
@@ -34,7 +39,7 @@ const subcategoryEmoji: Record<string, string> = {
   Other: '\uD83D\uDCE6',
 };
 
-export default function ProductTypeGroup({ type, products, enabledStores, apiUrl }: Props) {
+export default function ProductTypeGroup({ type, products, enabledStores, apiUrl, mergeMode, selected, onToggleSelect, mergeRuleId, onUnmerge }: Props) {
   const [expanded, setExpanded] = useState(true);
   const [expandedProductId, setExpandedProductId] = useState<string | null>(null);
 
@@ -52,14 +57,37 @@ export default function ProductTypeGroup({ type, products, enabledStores, apiUrl
 
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden">
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="w-full flex items-center justify-between px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
-      >
+      <div className="flex items-center">
+        {mergeMode && (
+          <label
+            className="flex items-center justify-center w-10 h-full cursor-pointer px-2 py-3"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <input
+              type="checkbox"
+              checked={selected ?? false}
+              onChange={() => onToggleSelect?.()}
+              className="w-4 h-4 accent-blue-500 cursor-pointer"
+            />
+          </label>
+        )}
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="flex-1 flex items-center justify-between px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+        >
         <div className="flex items-center gap-2">
           <span className="text-lg">{emoji}</span>
           <span className="font-semibold text-gray-900 dark:text-white">{type.label}</span>
           <span className="text-xs text-gray-400 dark:text-gray-500">({filtered.length})</span>
+          {mergeRuleId && !mergeMode && (
+            <button
+              onClick={(e) => { e.stopPropagation(); onUnmerge?.(mergeRuleId); }}
+              className="text-xs px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-800/60 transition-colors"
+              title="Unmerge this group"
+            >
+              merged &times;
+            </button>
+          )}
         </div>
         <div className="flex items-center gap-3">
           {cheapest !== null && (
@@ -77,6 +105,7 @@ export default function ProductTypeGroup({ type, products, enabledStores, apiUrl
           </svg>
         </div>
       </button>
+      </div>
 
       {expanded && (
         <div className="overflow-x-auto">

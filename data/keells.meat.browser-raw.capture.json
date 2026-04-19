@@ -18,6 +18,15 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
+    "productId": "937002",
+    "name": "Bairaha Whole Chicken Skinless",
+    "url": "https://www.keellssuper.com/product/937002",
+    "price": 1360,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
     "productId": "934001",
     "name": "Bone In Curry Pork",
     "url": "https://www.keellssuper.com/product/934001",
@@ -27,10 +36,28 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
+    "productId": "935060",
+    "name": "Chicken Boneless Thigh",
+    "url": "https://www.keellssuper.com/product/935060",
+    "price": 2100,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "935003",
+    "name": "Chicken Breast Meat Boneless",
+    "url": "https://www.keellssuper.com/product/935003",
+    "price": 2170,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
     "productId": "935006",
     "name": "Chicken Drumsticks Skin On",
     "url": "https://www.keellssuper.com/product/935006",
-    "price": 1390,
+    "price": 1250,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -102,7 +129,7 @@
     "productId": "935015",
     "name": "Chicken Whole Legs Skin On",
     "url": "https://www.keellssuper.com/product/935015",
-    "price": 1290,
+    "price": 1450,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -144,15 +171,6 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "937004",
-    "name": "Cic Skin Less Whole Chicken",
-    "url": "https://www.keellssuper.com/product/937004",
-    "price": 1400,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
     "productId": "937005",
     "name": "Cic Whole Chicken With Giblet",
     "url": "https://www.keellssuper.com/product/937005",
@@ -184,6 +202,15 @@
     "name": "Local Mutton For Curry",
     "url": "https://www.keellssuper.com/product/933002",
     "price": 5100,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "933005",
+    "name": "Mutton Leg Local",
+    "url": "https://www.keellssuper.com/product/933005",
+    "price": 5590,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -441,15 +468,6 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "937002",
-    "name": "Bairaha Whole Chicken Skinless",
-    "url": "https://www.keellssuper.com/product/937002",
-    "price": 1360,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
     "productId": "931003",
     "name": "Bbq Spare Ribs Sheet",
     "url": "https://www.keellssuper.com/product/931003",
@@ -531,24 +549,6 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "935060",
-    "name": "Chicken Boneless Thigh",
-    "url": "https://www.keellssuper.com/product/935060",
-    "price": 2100,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "935003",
-    "name": "Chicken Breast Meat Boneless",
-    "url": "https://www.keellssuper.com/product/935003",
-    "price": 2170,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
     "productId": "939025",
     "name": "Chicken Mortadella",
     "url": "https://www.keellssuper.com/product/939025",
@@ -562,6 +562,15 @@
     "name": "Chilled Whole Chicken Skinless",
     "url": "https://www.keellssuper.com/product/935018",
     "price": 1380,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "937004",
+    "name": "Cic Skin Less Whole Chicken",
+    "url": "https://www.keellssuper.com/product/937004",
+    "price": 1400,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -616,15 +625,6 @@
     "name": "Minced Pork",
     "url": "https://www.keellssuper.com/product/934003",
     "price": 3990,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "933005",
-    "name": "Mutton Leg Local",
-    "url": "https://www.keellssuper.com/product/933005",
-    "price": 5590,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."

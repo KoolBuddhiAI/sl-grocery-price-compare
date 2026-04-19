@@ -1,18 +1,9 @@
 [
   {
-    "productId": "912342",
-    "name": " Myco Farm Abalone Mushroom 200G                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ",
-    "url": "https://www.keellssuper.com/product/912342",
-    "price": 250,
-    "uom": "NO",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
     "productId": "916002",
     "name": "Ambarella",
     "url": "https://www.keellssuper.com/product/916002",
-    "price": 420,
+    "price": 500,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -23,6 +14,24 @@
     "url": "https://www.keellssuper.com/product/914000",
     "price": 160,
     "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "915001",
+    "name": "Baby Potatoes",
+    "url": "https://www.keellssuper.com/product/915001",
+    "price": 740,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "912113",
+    "name": "Basil Leaves 50g",
+    "url": "https://www.keellssuper.com/product/912113",
+    "price": 100,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -39,7 +48,7 @@
     "productId": "915002",
     "name": "Beetroot",
     "url": "https://www.keellssuper.com/product/915002",
-    "price": 220,
+    "price": 250,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -54,10 +63,19 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
+    "productId": "913006",
+    "name": "Bell Pepper Red",
+    "url": "https://www.keellssuper.com/product/913006",
+    "price": 680,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
     "productId": "913007",
     "name": "Bell Pepper Yellow",
     "url": "https://www.keellssuper.com/product/913007",
-    "price": 780,
+    "price": 740,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -66,7 +84,7 @@
     "productId": "914006",
     "name": "Big Onions",
     "url": "https://www.keellssuper.com/product/914006",
-    "price": 230,
+    "price": 220,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -75,7 +93,7 @@
     "productId": "914007",
     "name": "Bitter Gourd",
     "url": "https://www.keellssuper.com/product/914007",
-    "price": 280,
+    "price": 260,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -84,7 +102,16 @@
     "productId": "914008",
     "name": "Brinjals",
     "url": "https://www.keellssuper.com/product/914008",
-    "price": 230,
+    "price": 350,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "913008",
+    "name": "Broccoli",
+    "url": "https://www.keellssuper.com/product/913008",
+    "price": 1350,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -111,7 +138,7 @@
     "productId": "915006",
     "name": "Capsicum",
     "url": "https://www.keellssuper.com/product/915006",
-    "price": 690,
+    "price": 590,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -120,7 +147,7 @@
     "productId": "915007",
     "name": "Carrot",
     "url": "https://www.keellssuper.com/product/915007",
-    "price": 530,
+    "price": 520,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -129,7 +156,16 @@
     "productId": "913014",
     "name": "Cauliflower",
     "url": "https://www.keellssuper.com/product/913014",
-    "price": 640,
+    "price": 840,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "913015",
+    "name": "Celery",
+    "url": "https://www.keellssuper.com/product/913015",
+    "price": 560,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -138,7 +174,7 @@
     "productId": "913016",
     "name": "Cherry Tomato",
     "url": "https://www.keellssuper.com/product/913016",
-    "price": 3010,
+    "price": 2820,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -147,7 +183,7 @@
     "productId": "913017",
     "name": "Chinese Cabbage",
     "url": "https://www.keellssuper.com/product/913017",
-    "price": 460,
+    "price": 620,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -174,7 +210,7 @@
     "productId": "914009",
     "name": "Cucumber",
     "url": "https://www.keellssuper.com/product/914009",
-    "price": 260,
+    "price": 220,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -198,29 +234,11 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "912115",
-    "name": "Dill Leaves 25g",
-    "url": "https://www.keellssuper.com/product/912115",
-    "price": 70,
-    "uom": "NO",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "912116",
-    "name": "Fennel Leaves 25g",
-    "url": "https://www.keellssuper.com/product/912116",
-    "price": 65,
-    "uom": "NO",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "912019",
-    "name": "Fresh Leaf Chopped Gotukola 100g",
-    "url": "https://www.keellssuper.com/product/912019",
-    "price": 150,
-    "uom": "NO",
+    "productId": "914013",
+    "name": "Egg Plants",
+    "url": "https://www.keellssuper.com/product/914013",
+    "price": 300,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -237,7 +255,7 @@
     "productId": "914014",
     "name": "Garlic",
     "url": "https://www.keellssuper.com/product/914014",
-    "price": 890,
+    "price": 880,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -246,7 +264,7 @@
     "productId": "914016",
     "name": "Ginger",
     "url": "https://www.keellssuper.com/product/914016",
-    "price": 800,
+    "price": 890,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -261,10 +279,28 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
+    "productId": "912153",
+    "name": "Globle Green Organic Oys/Mushrm 200g",
+    "url": "https://www.keellssuper.com/product/912153",
+    "price": 198,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "915008",
+    "name": "Green Beans",
+    "url": "https://www.keellssuper.com/product/915008",
+    "price": 420,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
     "productId": "914017",
     "name": "Green Chilies",
     "url": "https://www.keellssuper.com/product/914017",
-    "price": 420,
+    "price": 310,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -275,6 +311,15 @@
     "url": "https://www.keellssuper.com/product/914018",
     "price": 360,
     "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "912357",
+    "name": "Green Hills Chopped Mukunuwanna 150g",
+    "url": "https://www.keellssuper.com/product/912357",
+    "price": 160,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -297,6 +342,24 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
+    "productId": "912350",
+    "name": "Green Hills Kankun 150g",
+    "url": "https://www.keellssuper.com/product/912350",
+    "price": 160,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "913040",
+    "name": "Green House Tomatoes",
+    "url": "https://www.keellssuper.com/product/913040",
+    "price": 590,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
     "productId": "913042",
     "name": "Iceberg Lettuce",
     "url": "https://www.keellssuper.com/product/913042",
@@ -315,19 +378,10 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "915009",
-    "name": "Japanese Leeks",
-    "url": "https://www.keellssuper.com/product/915009",
-    "price": 720,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "916018",
-    "name": "Kankun",
-    "url": "https://www.keellssuper.com/product/916018",
-    "price": 79,
+    "productId": "912030",
+    "name": "Janitha Ameri. Oyster Mushroom 200g",
+    "url": "https://www.keellssuper.com/product/912030",
+    "price": 210,
     "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -354,7 +408,7 @@
     "productId": "915010",
     "name": "Knol Khol",
     "url": "https://www.keellssuper.com/product/915010",
-    "price": 200,
+    "price": 240,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -363,16 +417,7 @@
     "productId": "914024",
     "name": "Kohila",
     "url": "https://www.keellssuper.com/product/914024",
-    "price": 740,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "913053",
-    "name": "Korean (Long) Raddish",
-    "url": "https://www.keellssuper.com/product/913053",
-    "price": 340,
+    "price": 780,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -381,7 +426,7 @@
     "productId": "914026",
     "name": "Ladies Fingers",
     "url": "https://www.keellssuper.com/product/914026",
-    "price": 220,
+    "price": 210,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -396,15 +441,6 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "916074",
-    "name": "Lassana Agri Green Batavia Lettuce 150g",
-    "url": "https://www.keellssuper.com/product/916074",
-    "price": 460,
-    "uom": "NO",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
     "productId": "916077",
     "name": "Lassana Agri Red Coral Lettuce 100g",
     "url": "https://www.keellssuper.com/product/916077",
@@ -414,10 +450,19 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
+    "productId": "916079",
+    "name": "Lassana Agri Red Oak Lettuce 80g",
+    "url": "https://www.keellssuper.com/product/916079",
+    "price": 395,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
     "productId": "915011",
     "name": "Leeks",
     "url": "https://www.keellssuper.com/product/915011",
-    "price": 300,
+    "price": 260,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -426,7 +471,7 @@
     "productId": "914028",
     "name": "Lemon Grass",
     "url": "https://www.keellssuper.com/product/914028",
-    "price": 1560,
+    "price": 1440,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -435,7 +480,7 @@
     "productId": "914029",
     "name": "Lime",
     "url": "https://www.keellssuper.com/product/914029",
-    "price": 600,
+    "price": 590,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -444,16 +489,16 @@
     "productId": "914030",
     "name": "Long Beans",
     "url": "https://www.keellssuper.com/product/914030",
-    "price": 260,
+    "price": 220,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "916028",
-    "name": "Mango Curry",
-    "url": "https://www.keellssuper.com/product/916028",
-    "price": 360,
+    "productId": "914031",
+    "name": "Lotus Yam",
+    "url": "https://www.keellssuper.com/product/914031",
+    "price": 1650,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -462,7 +507,7 @@
     "productId": "916029",
     "name": "Manioc",
     "url": "https://www.keellssuper.com/product/916029",
-    "price": 260,
+    "price": 240,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -471,7 +516,7 @@
     "productId": "913055",
     "name": "Minchi Leaves",
     "url": "https://www.keellssuper.com/product/913055",
-    "price": 500,
+    "price": 580,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -480,7 +525,7 @@
     "productId": "916032",
     "name": "Mukunuwenna",
     "url": "https://www.keellssuper.com/product/916032",
-    "price": 98,
+    "price": 95,
     "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -498,7 +543,7 @@
     "productId": "914034",
     "name": "Nivithi",
     "url": "https://www.keellssuper.com/product/914034",
-    "price": 180,
+    "price": 190,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -525,25 +570,7 @@
     "productId": "914036",
     "name": "Onion Leaves",
     "url": "https://www.keellssuper.com/product/914036",
-    "price": 400,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "911020",
-    "name": "Organic Carrot",
-    "url": "https://www.keellssuper.com/product/911020",
-    "price": 690,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "911041",
-    "name": "Organic Green Beans",
-    "url": "https://www.keellssuper.com/product/911041",
-    "price": 920,
+    "price": 460,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -552,16 +579,7 @@
     "productId": "911042",
     "name": "Organic Green Chilies",
     "url": "https://www.keellssuper.com/product/911042",
-    "price": 710,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "911080",
-    "name": "Organic Potato",
-    "url": "https://www.keellssuper.com/product/911080",
-    "price": 470,
+    "price": 650,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -570,7 +588,7 @@
     "productId": "913056",
     "name": "Pakchoi",
     "url": "https://www.keellssuper.com/product/913056",
-    "price": 600,
+    "price": 520,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -588,7 +606,7 @@
     "productId": "913057",
     "name": "Parsley",
     "url": "https://www.keellssuper.com/product/913057",
-    "price": 440,
+    "price": 480,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -603,10 +621,19 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
+    "productId": "916065",
+    "name": "Perfectly Imperfect Brinjals",
+    "url": "https://www.keellssuper.com/product/916065",
+    "price": 260,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
     "productId": "916060",
     "name": "Perfectly Imperfect Capsicum",
     "url": "https://www.keellssuper.com/product/916060",
-    "price": 500,
+    "price": 430,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -615,7 +642,7 @@
     "productId": "916058",
     "name": "Perfectly Imperfect Carrots",
     "url": "https://www.keellssuper.com/product/916058",
-    "price": 390,
+    "price": 380,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -624,7 +651,7 @@
     "productId": "916067",
     "name": "Perfectly Imperfect Cucumber",
     "url": "https://www.keellssuper.com/product/916067",
-    "price": 200,
+    "price": 170,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -633,7 +660,16 @@
     "productId": "916061",
     "name": "Perfectly Imperfect Garlic",
     "url": "https://www.keellssuper.com/product/916061",
-    "price": 650,
+    "price": 640,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "916062",
+    "name": "Perfectly Imperfect Potatoes",
+    "url": "https://www.keellssuper.com/product/916062",
+    "price": 250,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -642,16 +678,7 @@
     "productId": "916069",
     "name": "Perfectly Imperfect Salad Cucumber",
     "url": "https://www.keellssuper.com/product/916069",
-    "price": 400,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "916064",
-    "name": "Perfectly Imperfect Tomatoes",
-    "url": "https://www.keellssuper.com/product/916064",
-    "price": 190,
+    "price": 370,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -678,7 +705,7 @@
     "productId": "914038",
     "name": "Plantain Flower",
     "url": "https://www.keellssuper.com/product/914038",
-    "price": 260,
+    "price": 140,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -696,7 +723,7 @@
     "productId": "916038",
     "name": "Polos",
     "url": "https://www.keellssuper.com/product/916038",
-    "price": 310,
+    "price": 320,
     "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -705,7 +732,7 @@
     "productId": "915013",
     "name": "Potatoes",
     "url": "https://www.keellssuper.com/product/915013",
-    "price": 330,
+    "price": 310,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -714,7 +741,7 @@
     "productId": "914015",
     "name": "Pre-Packed Garlic",
     "url": "https://www.keellssuper.com/product/914015",
-    "price": 900,
+    "price": 940,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -732,7 +759,7 @@
     "productId": "914042",
     "name": "Pre-Packed Red Onions",
     "url": "https://www.keellssuper.com/product/914042",
-    "price": 380,
+    "price": 410,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -741,7 +768,7 @@
     "productId": "914039",
     "name": "Pumpkin",
     "url": "https://www.keellssuper.com/product/914039",
-    "price": 80,
+    "price": 70,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -750,7 +777,7 @@
     "productId": "915015",
     "name": "Raddish",
     "url": "https://www.keellssuper.com/product/915015",
-    "price": 200,
+    "price": 220,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -768,7 +795,7 @@
     "productId": "913059",
     "name": "Red Cabbage",
     "url": "https://www.keellssuper.com/product/913059",
-    "price": 580,
+    "price": 620,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -786,7 +813,25 @@
     "productId": "914044",
     "name": "Ribbed Gourd",
     "url": "https://www.keellssuper.com/product/914044",
-    "price": 420,
+    "price": 300,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "912117",
+    "name": "Rosemary 25g",
+    "url": "https://www.keellssuper.com/product/912117",
+    "price": 100,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "913067",
+    "name": "Salad Leaves",
+    "url": "https://www.keellssuper.com/product/913067",
+    "price": 160,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -795,7 +840,7 @@
     "productId": "914047",
     "name": "Snake Gourd",
     "url": "https://www.keellssuper.com/product/914047",
-    "price": 220,
+    "price": 180,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -810,10 +855,19 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
+    "productId": "914049",
+    "name": "Sweet Potato",
+    "url": "https://www.keellssuper.com/product/914049",
+    "price": 320,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
     "productId": "914050",
     "name": "Thalana Batu",
     "url": "https://www.keellssuper.com/product/914050",
-    "price": 220,
+    "price": 230,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -828,18 +882,18 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "912349",
-    "name": "Three Star  Spinach 150G                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ",
-    "url": "https://www.keellssuper.com/product/912349",
-    "price": 130,
+    "productId": "912092",
+    "name": "Three Star Cut Gotukola 100g",
+    "url": "https://www.keellssuper.com/product/912092",
+    "price": 150,
     "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "912092",
-    "name": "Three Star Cut Gotukola 100g",
-    "url": "https://www.keellssuper.com/product/912092",
+    "productId": "912098",
+    "name": "Three Star Gotukola Pkt 100g",
+    "url": "https://www.keellssuper.com/product/912098",
     "price": 150,
     "uom": "NO",
     "inStock": true,
@@ -864,19 +918,10 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "912118",
-    "name": "Thyme 25g",
-    "url": "https://www.keellssuper.com/product/912118",
-    "price": 70,
-    "uom": "NO",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
     "productId": "915016",
     "name": "Tomatoes",
     "url": "https://www.keellssuper.com/product/915016",
-    "price": 250,
+    "price": 190,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -894,8 +939,26 @@
     "productId": "913070",
     "name": "Yellow Zucchini",
     "url": "https://www.keellssuper.com/product/913070",
-    "price": 400,
+    "price": 360,
     "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "913071",
+    "name": "Zucchini",
+    "url": "https://www.keellssuper.com/product/913071",
+    "price": 440,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "912342",
+    "name": " Myco Farm Abalone Mushroom 200G                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ",
+    "url": "https://www.keellssuper.com/product/912342",
+    "price": 250,
+    "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -948,34 +1011,7 @@
     "productId": "915000",
     "name": "Baby Carrots",
     "url": "https://www.keellssuper.com/product/915000",
-    "price": 700,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "915001",
-    "name": "Baby Potatoes",
-    "url": "https://www.keellssuper.com/product/915001",
-    "price": 800,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "912113",
-    "name": "Basil Leaves 50g",
-    "url": "https://www.keellssuper.com/product/912113",
-    "price": 100,
-    "uom": "NO",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "913006",
-    "name": "Bell Pepper Red",
-    "url": "https://www.keellssuper.com/product/913006",
-    "price": 790,
+    "price": 720,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -999,28 +1035,10 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "913008",
-    "name": "Broccoli",
-    "url": "https://www.keellssuper.com/product/913008",
-    "price": 1440,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
     "productId": "915004",
     "name": "Butter Beans",
     "url": "https://www.keellssuper.com/product/915004",
     "price": 720,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "913015",
-    "name": "Celery",
-    "url": "https://www.keellssuper.com/product/913015",
-    "price": 640,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -1038,7 +1056,16 @@
     "productId": "912006",
     "name": "Corn (Bada Iringu)",
     "url": "https://www.keellssuper.com/product/912006",
-    "price": 123,
+    "price": 132,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "912115",
+    "name": "Dill Leaves 25g",
+    "url": "https://www.keellssuper.com/product/912115",
+    "price": 70,
     "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -1048,15 +1075,6 @@
     "name": "Drumsticks",
     "url": "https://www.keellssuper.com/product/914012",
     "price": 1080,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "914013",
-    "name": "Egg Plants",
-    "url": "https://www.keellssuper.com/product/914013",
-    "price": 360,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -1075,6 +1093,24 @@
     "name": "Farmhouse Oyster Mushroom 200g",
     "url": "https://www.keellssuper.com/product/916087",
     "price": 200,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "912116",
+    "name": "Fennel Leaves 25g",
+    "url": "https://www.keellssuper.com/product/912116",
+    "price": 65,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "912019",
+    "name": "Fresh Leaf Chopped Gotukola 100g",
+    "url": "https://www.keellssuper.com/product/912019",
+    "price": 150,
     "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -1134,15 +1170,6 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "912153",
-    "name": "Globle Green Organic Oys/Mushrm 200g",
-    "url": "https://www.keellssuper.com/product/912153",
-    "price": 198,
-    "uom": "NO",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
     "productId": "916009",
     "name": "Gonica Kola",
     "url": "https://www.keellssuper.com/product/916009",
@@ -1155,44 +1182,8 @@
     "productId": "916010",
     "name": "Gotukola",
     "url": "https://www.keellssuper.com/product/916010",
-    "price": 128,
+    "price": 127,
     "uom": "NO",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "915008",
-    "name": "Green Beans",
-    "url": "https://www.keellssuper.com/product/915008",
-    "price": 620,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "912357",
-    "name": "Green Hills Chopped Mukunuwanna 150g",
-    "url": "https://www.keellssuper.com/product/912357",
-    "price": 160,
-    "uom": "NO",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "912350",
-    "name": "Green Hills Kankun 150g",
-    "url": "https://www.keellssuper.com/product/912350",
-    "price": 160,
-    "uom": "NO",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "913040",
-    "name": "Green House Tomatoes",
-    "url": "https://www.keellssuper.com/product/913040",
-    "price": 360,
-    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -1530,11 +1521,11 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "912030",
-    "name": "Janitha Ameri. Oyster Mushroom 200g",
-    "url": "https://www.keellssuper.com/product/912030",
-    "price": 210,
-    "uom": "NO",
+    "productId": "915009",
+    "name": "Japanese Leeks",
+    "url": "https://www.keellssuper.com/product/915009",
+    "price": 600,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -1543,6 +1534,15 @@
     "name": "Kalawan Pala",
     "url": "https://www.keellssuper.com/product/916017",
     "price": 85,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "916018",
+    "name": "Kankun",
+    "url": "https://www.keellssuper.com/product/916018",
+    "price": 79,
     "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -1566,6 +1566,15 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
+    "productId": "913053",
+    "name": "Korean (Long) Raddish",
+    "url": "https://www.keellssuper.com/product/913053",
+    "price": 280,
+    "uom": "KG",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
     "productId": "912048",
     "name": "Lahiru Abalone Fresh Mushroom 200g",
     "url": "https://www.keellssuper.com/product/912048",
@@ -1579,6 +1588,15 @@
     "name": "Lahiru Oyster Fresh Mushroom 200g",
     "url": "https://www.keellssuper.com/product/912049",
     "price": 200,
+    "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "916074",
+    "name": "Lassana Agri Green Batavia Lettuce 150g",
+    "url": "https://www.keellssuper.com/product/916074",
+    "price": 460,
     "uom": "NO",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -1629,15 +1647,6 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "916079",
-    "name": "Lassana Agri Red Oak Lettuce 80g",
-    "url": "https://www.keellssuper.com/product/916079",
-    "price": 395,
-    "uom": "NO",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
     "productId": "916073",
     "name": "Lassana Agri Romain Lettuce 130g",
     "url": "https://www.keellssuper.com/product/916073",
@@ -1656,20 +1665,20 @@
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
   {
-    "productId": "914031",
-    "name": "Lotus Yam",
-    "url": "https://www.keellssuper.com/product/914031",
-    "price": 1500,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
     "productId": "916026",
     "name": "Lunuiwila Leaves",
     "url": "https://www.keellssuper.com/product/916026",
     "price": 85,
     "uom": "NO",
+    "inStock": true,
+    "notes": "Captured from Keells API via automated Puppeteer session."
+  },
+  {
+    "productId": "916028",
+    "name": "Mango Curry",
+    "url": "https://www.keellssuper.com/product/916028",
+    "price": 400,
+    "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
   },
@@ -1776,7 +1785,7 @@
     "productId": "911006",
     "name": "Organic Beetroot",
     "url": "https://www.keellssuper.com/product/911006",
-    "price": 290,
+    "price": 330,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
@@ -1785,16 +1794,7 @@
     "productId": "911014",
     "name": "Organic Brinjals",
     "url": "https://www.keellssuper.com/product/911014",
-    "price": 440,
-    "uom": "KG",
-    "inStock": true,
-    "notes": "Captured from Keells API via automated Puppeteer session."
-  },
-  {
-    "productId": "911017",
-    "name": "Organic Cabbage",
-    "url": "https://www.keellssuper.com/product/911017",
-    "price": 430,
+    "price": 460,
     "uom": "KG",
     "inStock": true,
     "notes": "Captured from Keells API via automated Puppeteer session."
