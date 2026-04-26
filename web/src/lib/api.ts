@@ -33,6 +33,15 @@ export type StoreMeta = {
   captured_at: string | null;
   extraction_mode: string | null;
   count?: number;
+  refresh_status?: {
+    provider: Store;
+    category: string;
+    attempted_at: string;
+    source_status: string;
+    item_count: number;
+    message: string;
+    success: boolean;
+  } | null;
 };
 
 export type ProductsResponse = {

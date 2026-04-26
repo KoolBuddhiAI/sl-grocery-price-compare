@@ -1,3 +1,5 @@
+import type { RefreshStatusRecord, SourceStatus } from "./schema.ts";
+
 /**
  * KV storage helpers for reading/writing snapshot data.
  *
@@ -22,6 +24,30 @@ export function snapshotKey(provider: string, category: string): string {
   return `snapshots:${provider}:${category}`;
 }
 
+export function refreshStatusKey(provider: string, category: string): string {
+  return `refresh-status:${provider}:${category}`;
+}
+
+function isSourceStatus(value: unknown): value is SourceStatus {
+  return value === "ok"
+    || value === "partial"
+    || value === "blocked_or_unstable"
+    || value === "not_found";
+}
+
+function parseRefreshStatusRecord(value: unknown): RefreshStatusRecord | null {
+  if (typeof value !== "object" || value === null) return null;
+  const record = value as Record<string, unknown>;
+  if (!isValidProvider(String(record.provider))) return null;
+  if (typeof record.category !== "string" || record.category.length === 0) return null;
+  if (typeof record.attempted_at !== "string" || record.attempted_at.length === 0) return null;
+  if (!isSourceStatus(record.source_status)) return null;
+  if (typeof record.item_count !== "number") return null;
+  if (typeof record.message !== "string") return null;
+  if (typeof record.success !== "boolean") return null;
+  return record as RefreshStatusRecord;
+}
+
 export async function getSnapshotFromKV(
   env: Env | undefined,
   key: string
@@ -41,6 +67,37 @@ export async function putSnapshotToKV(
   data: unknown
 ): Promise<void> {
   await env.SNAPSHOTS.put(key, JSON.stringify(data));
+}
+
+export async function getRefreshStatusFromKV(
+  env: Env | undefined,
+  provider: string,
+  category: string
+): Promise<RefreshStatusRecord | null> {
+  const data = await getSnapshotFromKV(env, refreshStatusKey(provider, category));
+  return parseRefreshStatusRecord(data);
+}
+
+export async function putRefreshStatusToKV(
+  env: Env,
+  record: RefreshStatusRecord
+): Promise<void> {
+  await env.SNAPSHOTS.put(
+    refreshStatusKey(record.provider, record.category),
+    JSON.stringify(record)
+  );
+}
+
+export function summarizeError(error: unknown): string {
+  if (error instanceof Error) {
+    return error.message || error.name;
+  }
+  if (typeof error === "string") return error;
+  try {
+    return JSON.stringify(error);
+  } catch {
+    return "Unknown error";
+  }
 }
 
 export type HistoryEntry = {

@@ -112,6 +112,8 @@ See [docs/keells-provider.md](docs/keells-provider.md) for full API documentatio
 
 These stores have no bot protection. The Cloudflare Worker fetches them automatically via cron trigger (every 6 hours). No manual action needed once deployed.
 
+Each cron attempt now also writes a lightweight `refresh-status:{provider}:{category}` KV record. That status is exposed in `GET /api/health`, including failed refreshes and empty-result runs, so automatic update issues are visible even when the snapshot itself is not replaced.
+
 To trigger manually during development:
 
 ```bash
@@ -140,7 +142,7 @@ Edit `data/product-type-mapping.json` to fix mismatches — set `confidence: "ma
 |----------|-------------|
 | `GET /api/products` | All 200 products across all stores |
 | `GET /api/products?store=keells` | Filter by store |
-| `GET /api/health` | Per-store freshness, status, product counts |
+| `GET /api/health` | Per-store freshness, status, product counts, latest cron refresh status |
 | `POST /api/snapshots` | Push snapshot to KV (requires Bearer auth) |
 | `GET /api/glomark/fetch` | Live fetch from Glomark (debug) |
 | `GET /api/cargills/fetch` | Live fetch from Cargills (debug) |

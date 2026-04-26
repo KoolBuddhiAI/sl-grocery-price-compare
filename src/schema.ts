@@ -97,3 +97,13 @@ export type CargillsImportedSnapshot = {
   source_status: SourceStatus;
   items: CargillsImportedSnapshotItem[];
 };
+
+export type RefreshStatusRecord = {
+  provider: Store;
+  category: string;
+  attempted_at: string;
+  source_status: SourceStatus;
+  item_count: number;
+  message: string;
+  success: boolean;
+};

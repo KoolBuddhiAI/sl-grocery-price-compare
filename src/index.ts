@@ -4,9 +4,9 @@ import { getImportedGlomarkMeatProducts, getImportedGlomarkSnapshotMeta, parseGl
 import { getImportedCargillsMeatProducts, getImportedCargillsSnapshotMeta, parseCargillsImportedSnapshot, normalizeCargillsImportedSnapshot } from "./providers/cargills.import.ts";
 import { fetchGlomarkCategory } from "./adapters/glomark.fetch.ts";
 import { fetchCargillsCategory } from "./adapters/cargills.fetch.ts";
-import { getSnapshotFromKV, snapshotKey, isValidProvider, putSnapshotToKV, appendPriceHistory, getPriceHistory } from "./kv-helpers.ts";
+import { getSnapshotFromKV, snapshotKey, isValidProvider, putSnapshotToKV, appendPriceHistory, getPriceHistory, getRefreshStatusFromKV, putRefreshStatusToKV, summarizeError } from "./kv-helpers.ts";
 import type { Env, HistoryEntry } from "./kv-helpers.ts";
-import type { NormalizedProduct } from "./schema.ts";
+import type { CargillsImportedSnapshot, GlomarkImportedSnapshot, NormalizedProduct } from "./schema.ts";
 
 const CATEGORIES = ["meat", "seafood", "vegetables", "fruits"] as const;
 
@@ -298,6 +298,52 @@ function enrichWithPriceChanges(
   });
 }
 
+async function refreshProviderCategory<TSnapshot extends GlomarkImportedSnapshot | CargillsImportedSnapshot>(
+  env: Env,
+  provider: "glomark" | "cargills",
+  category: string,
+  fetchSnapshot: (category: string) => Promise<TSnapshot>,
+  normalizeSnapshot: (
+    snapshot: TSnapshot
+  ) => Array<{ id: string; displayed_price_lkr: number | null; price_per_kg_lkr?: number | null }>
+): Promise<void> {
+  const attemptedAt = new Date().toISOString();
+
+  try {
+    const snapshot = await fetchSnapshot(category);
+    const itemCount = snapshot.items.length;
+    const success = itemCount > 0;
+    const message = success
+      ? `Fetched ${itemCount} items and updated snapshot.`
+      : "Fetch completed with 0 items; snapshot/history not updated.";
+
+    if (success) {
+      await putSnapshotToKV(env, snapshotKey(provider, category), snapshot);
+      await appendPriceHistory(env, provider, category, normalizeSnapshot(snapshot));
+    }
+
+    await putRefreshStatusToKV(env, {
+      provider,
+      category,
+      attempted_at: attemptedAt,
+      source_status: snapshot.source_status,
+      item_count: itemCount,
+      message,
+      success,
+    });
+  } catch (error) {
+    await putRefreshStatusToKV(env, {
+      provider,
+      category,
+      attempted_at: attemptedAt,
+      source_status: "blocked_or_unstable",
+      item_count: 0,
+      message: summarizeError(error),
+      success: false,
+    });
+  }
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     if (request.method === "OPTIONS") {
@@ -402,11 +448,13 @@ export default {
         const keells = await getKeellsProducts(env, category);
         const glomark = await getGlomarkProducts(env, category);
         const cargills = await getCargillsProducts(env, category);
+        const glomarkRefresh = await getRefreshStatusFromKV(env, "glomark", category);
+        const cargillsRefresh = await getRefreshStatusFromKV(env, "cargills", category);
 
         healthData[category] = {
           keells: { ...keells.meta, count: keells.products.length },
-          glomark: { ...glomark.meta, count: glomark.products.length },
-          cargills: { ...cargills.meta, count: cargills.products.length },
+          glomark: { ...glomark.meta, count: glomark.products.length, refresh_status: glomarkRefresh },
+          cargills: { ...cargills.meta, count: cargills.products.length, refresh_status: cargillsRefresh },
         };
       }
 
@@ -421,21 +469,20 @@ export default {
 
   async scheduled(_event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
     for (const category of CATEGORIES) {
-      // Fetch Glomark
-      const glomarkSnapshot = await fetchGlomarkCategory(category);
-      if (glomarkSnapshot.items.length > 0) {
-        await env.SNAPSHOTS.put(snapshotKey("glomark", category), JSON.stringify(glomarkSnapshot));
-        const glomarkNormalized = normalizeGlomarkImportedSnapshot(glomarkSnapshot);
-        await appendPriceHistory(env, "glomark", category, glomarkNormalized);
-      }
-
-      // Fetch Cargills
-      const cargillsSnapshot = await fetchCargillsCategory(category);
-      if (cargillsSnapshot.items.length > 0) {
-        await env.SNAPSHOTS.put(snapshotKey("cargills", category), JSON.stringify(cargillsSnapshot));
-        const cargillsNormalized = normalizeCargillsImportedSnapshot(cargillsSnapshot);
-        await appendPriceHistory(env, "cargills", category, cargillsNormalized);
-      }
+      ctx.waitUntil(refreshProviderCategory(
+        env,
+        "glomark",
+        category,
+        fetchGlomarkCategory,
+        snapshot => normalizeGlomarkImportedSnapshot(snapshot)
+      ));
+      ctx.waitUntil(refreshProviderCategory(
+        env,
+        "cargills",
+        category,
+        fetchCargillsCategory,
+        snapshot => normalizeCargillsImportedSnapshot(snapshot)
+      ));
     }
   },
 };
