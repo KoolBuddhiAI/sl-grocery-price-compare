@@ -29,8 +29,9 @@ Use a **hybrid ingestion architecture** where each provider uses the extraction 
 
   +------------------+        +-----------------+       +------------------+
   | POST /api/       |        | Cron Trigger    |       | Cron Trigger     |
-  | snapshots        |        | (every 6h)      |       | (every 6h)       |
-  | (Keells push)    |        |                 |       |                  |
+  | snapshots        |        | (daily 02:30    |       | (daily 02:30     |
+  | (Keells push)    |        | UTC / 08:00     |       | UTC / 08:00      |
+  |                  |        | Colombo)        |       | Colombo)         |
   +--------+---------+        +--------+--------+       +--------+---------+
            |                           |                         |
            |                  Glomark fetch              Cargills fetch
@@ -87,7 +88,7 @@ Use a **hybrid ingestion architecture** where each provider uses the extraction 
 ## Data Flow: Glomark (Worker-Native)
 
 ```
-Cron trigger (every 6 hours)
+Cron trigger (daily at 02:30 UTC / 08:00 Colombo)
   → fetch("https://glomark.lk/fresh/meat/c/144")
   → receive 960KB HTML with productList = [...] embedded in <script>
   → extractProductListFromHtml(html) → 38 raw products
@@ -100,7 +101,7 @@ All 38 products in one HTTP GET. No pagination, no auth, no session. The `produc
 ## Data Flow: Cargills (Worker-Native)
 
 ```
-Cron trigger (every 6 hours)
+Cron trigger (daily at 02:30 UTC / 08:00 Colombo)
   → POST /Web/CheckDeliveryOptionV1 (PinCode=Colombo)
   → extract Set-Cookie headers (ASP.NET_SessionId, etc.)
   → POST /Web/GetMenuCategoryItemsPagingV3/ (CategoryId=MTE=, cookies)
@@ -200,7 +201,7 @@ Every snapshot in KV follows the same shape:
 ## Cron Schedule
 
 ```
-Worker cron: */6 * * * * (every 6 hours)
+Worker cron: 30 2 * * * (daily at 02:30 UTC / 08:00 Colombo)
   → fetchGlomarkCategory("meat") → KV.put("snapshots:glomark:meat")
   → fetchCargillsCategory("meat") → KV.put("snapshots:cargills:meat")
 
@@ -231,7 +232,7 @@ The `GET /api/health` endpoint exposes per-store freshness:
 }
 ```
 
-The frontend shows "Updated 3 hours ago" per store and warns when data is older than 24 hours.
+The frontend shows a relative freshness label such as "Updated 3 hours ago", warns when data is older than 24 hours, and also renders the exact capture timestamp in `Asia/Colombo` (`UTC+5:30`) so the local interpretation is explicit.
 
 ## Product Type Mapping
 
@@ -266,7 +267,7 @@ See the product type grouping design in the PRD for the frontend comparison layo
     "SNAPSHOT_API_KEY": "<set-via-wrangler-secret>"
   },
   "triggers": {
-    "crons": ["0 */6 * * *"]
+    "crons": ["30 2 * * *"]
   }
 }
 ```

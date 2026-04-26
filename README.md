@@ -117,9 +117,11 @@ See [docs/keells-provider.md](docs/keells-provider.md) for full API documentatio
 
 ### Glomark & Cargills (automatic — Worker cron)
 
-These stores have no bot protection. The Cloudflare Worker fetches them automatically via cron trigger (every 6 hours). No manual action needed once deployed.
+These stores have no bot protection. The Cloudflare Worker fetches them automatically via cron trigger once per day at `02:30 UTC` (`08:00` in Colombo / Sri Lanka, `UTC+5:30`). No manual action is needed once deployed.
 
 Each cron attempt now also writes a lightweight `refresh-status:{provider}:{category}` KV record. That status is exposed in `GET /api/health`, including failed refreshes and empty-result runs, so automatic update issues are visible even when the snapshot itself is not replaced.
+
+The frontend freshness pills keep the relative label, such as `Updated 2h ago`, and now also show the exact local capture time in `Asia/Colombo`. `captured_at` is stored as UTC in snapshots, then converted in the browser for display.
 
 To trigger manually during development:
 

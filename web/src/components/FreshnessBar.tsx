@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 import type { HealthResponse, Store } from '../lib/api';
 import { fetchHealth, getStoresForCategory } from '../lib/api';
+import {
+  formatAsiaColomboTimestamp,
+  getAsiaColomboTimeZoneLabel,
+  getAsiaColomboTimeZoneTooltip,
+} from '../lib/time';
 
 const storeColors: Record<Store, string> = {
   keells: 'text-green-600 dark:text-green-400',
@@ -16,7 +21,10 @@ const storeLabels: Record<Store, string> = {
 
 function timeAgo(dateStr: string | null): { text: string; stale: boolean } {
   if (!dateStr) return { text: 'No data', stale: true };
-  const diff = Date.now() - new Date(dateStr).getTime();
+  const capturedAt = new Date(dateStr).getTime();
+  if (Number.isNaN(capturedAt)) return { text: 'Invalid timestamp', stale: true };
+
+  const diff = Date.now() - capturedAt;
   const hours = Math.floor(diff / (1000 * 60 * 60));
   const days = Math.floor(hours / 24);
   const stale = hours >= 24;
@@ -37,6 +45,8 @@ type Props = {
 export default function FreshnessBar({ category = 'meat' }: Props) {
   const [health, setHealth] = useState<HealthResponse | null>(null);
   const [error, setError] = useState(false);
+  const timeZoneLabel = getAsiaColomboTimeZoneLabel();
+  const timeZoneTooltip = getAsiaColomboTimeZoneTooltip();
 
   useEffect(() => {
     fetchHealth()
@@ -78,23 +88,33 @@ export default function FreshnessBar({ category = 'meat' }: Props) {
     <div className="flex flex-wrap gap-3">
       {activeStores.map(([store, meta]) => {
         const { text: agoText, stale } = timeAgo(meta.captured_at);
+        const exactTime = formatAsiaColomboTimestamp(meta.captured_at);
+        const exactTimeDisplay = meta.captured_at ? `${exactTime} ${timeZoneLabel}` : exactTime;
         return (
           <div
             key={store}
-            className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${
+            className={`min-w-0 rounded-lg px-3 py-2 text-sm ${
               stale
                 ? 'bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800'
                 : 'bg-gray-50 dark:bg-gray-800'
             }`}
           >
-            <span className={`font-medium ${storeColors[store]}`}>{storeLabels[store]}</span>
-            <span className="text-gray-500 dark:text-gray-400">
-              {meta.count} items
-            </span>
-            <span className="text-gray-400 dark:text-gray-500">|</span>
-            <span className={stale ? 'text-amber-600 dark:text-amber-400 font-medium' : 'text-gray-500 dark:text-gray-400'}>
-              Updated {agoText}
-            </span>
+            <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
+              <span className={`font-medium ${storeColors[store]}`}>{storeLabels[store]}</span>
+              <span className="text-gray-500 dark:text-gray-400">
+                {meta.count} items
+              </span>
+              <span className="text-gray-400 dark:text-gray-500">•</span>
+              <span className={stale ? 'font-medium text-amber-600 dark:text-amber-400' : 'text-gray-500 dark:text-gray-400'}>
+                Updated {agoText}
+              </span>
+            </div>
+            <div
+              className="mt-1 truncate text-xs text-gray-500 dark:text-gray-400"
+              title={`${exactTime} ${timeZoneTooltip} (${timeZoneLabel})`}
+            >
+              {exactTimeDisplay}
+            </div>
           </div>
         );
       })}
