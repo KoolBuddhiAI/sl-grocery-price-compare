@@ -101,9 +101,13 @@ export type CargillsImportedSnapshot = {
 export type RefreshStatusRecord = {
   provider: Store;
   category: string;
-  attempted_at: string;
-  source_status: SourceStatus;
-  item_count: number;
-  message: string;
-  success: boolean;
+  last_attempted_at: string;
+  last_attempt_source_status: SourceStatus;
+  last_attempt_item_count: number;
+  last_attempt_message: string;
+  last_attempt_success: boolean;
+  last_successful_at: string | null;
+  last_success_item_count: number | null;
+  last_error_message: string | null;
+  last_error_at: string | null;
 };

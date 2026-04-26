@@ -4,9 +4,9 @@ import { getImportedGlomarkMeatProducts, getImportedGlomarkSnapshotMeta, parseGl
 import { getImportedCargillsMeatProducts, getImportedCargillsSnapshotMeta, parseCargillsImportedSnapshot, normalizeCargillsImportedSnapshot } from "./providers/cargills.import.ts";
 import { fetchGlomarkCategory } from "./adapters/glomark.fetch.ts";
 import { fetchCargillsCategory } from "./adapters/cargills.fetch.ts";
-import { getSnapshotFromKV, snapshotKey, isValidProvider, putSnapshotToKV, appendPriceHistory, getPriceHistory, getRefreshStatusFromKV, putRefreshStatusToKV, summarizeError } from "./kv-helpers.ts";
+import { getSnapshotFromKV, snapshotKey, isValidProvider, putSnapshotToKV, appendPriceHistory, getPriceHistory, getRefreshStatusFromKV, putRefreshStatusToKV, summarizeError, mergeRefreshStatusRecord } from "./kv-helpers.ts";
 import type { Env, HistoryEntry } from "./kv-helpers.ts";
-import type { CargillsImportedSnapshot, GlomarkImportedSnapshot, NormalizedProduct } from "./schema.ts";
+import type { CargillsImportedSnapshot, GlomarkImportedSnapshot, NormalizedProduct, SourceStatus } from "./schema.ts";
 
 const CATEGORIES = ["meat", "seafood", "vegetables", "fruits"] as const;
 
@@ -259,6 +259,24 @@ function directionOf(prev: number | null, curr: number | null): "up" | "down" | 
   return "same";
 }
 
+function isSourceStatus(value: unknown): value is SourceStatus {
+  return value === "ok"
+    || value === "partial"
+    || value === "blocked_or_unstable"
+    || value === "not_found";
+}
+
+function sourceStatusOfError(error: unknown): SourceStatus {
+  if (typeof error === "object" && error !== null && "sourceStatus" in error && isSourceStatus((error as { sourceStatus: unknown }).sourceStatus)) {
+    return (error as { sourceStatus: SourceStatus }).sourceStatus;
+  }
+  return "blocked_or_unstable";
+}
+
+function statusCodeForSourceStatus(sourceStatus: SourceStatus): number {
+  return sourceStatus === "not_found" ? 404 : 502;
+}
+
 type EnrichedProduct = NormalizedProduct & {
   price_direction: "up" | "down" | "same" | null;
   previous_price_lkr: number | null;
@@ -308,21 +326,22 @@ async function refreshProviderCategory<TSnapshot extends GlomarkImportedSnapshot
   ) => Array<{ id: string; displayed_price_lkr: number | null; price_per_kg_lkr?: number | null }>
 ): Promise<void> {
   const attemptedAt = new Date().toISOString();
+  const previousStatus = await getRefreshStatusFromKV(env, provider, category);
 
   try {
     const snapshot = await fetchSnapshot(category);
     const itemCount = snapshot.items.length;
     const success = itemCount > 0;
     const message = success
-      ? `Fetched ${itemCount} items and updated snapshot.`
-      : "Fetch completed with 0 items; snapshot/history not updated.";
+      ? `${provider}: fetched ${itemCount} items and updated snapshot`
+      : `${provider}: fetch completed with 0 items; snapshot/history not updated`;
 
     if (success) {
       await putSnapshotToKV(env, snapshotKey(provider, category), snapshot);
       await appendPriceHistory(env, provider, category, normalizeSnapshot(snapshot));
     }
 
-    await putRefreshStatusToKV(env, {
+    await putRefreshStatusToKV(env, mergeRefreshStatusRecord(previousStatus, {
       provider,
       category,
       attempted_at: attemptedAt,
@@ -330,17 +349,17 @@ async function refreshProviderCategory<TSnapshot extends GlomarkImportedSnapshot
       item_count: itemCount,
       message,
       success,
-    });
+    }));
   } catch (error) {
-    await putRefreshStatusToKV(env, {
+    await putRefreshStatusToKV(env, mergeRefreshStatusRecord(previousStatus, {
       provider,
       category,
       attempted_at: attemptedAt,
-      source_status: "blocked_or_unstable",
+      source_status: sourceStatusOfError(error),
       item_count: 0,
       message: summarizeError(error),
       success: false,
-    });
+    }));
   }
 }
 
@@ -411,34 +430,58 @@ export default {
 
     if (request.method === "GET" && url.pathname === "/api/cargills/fetch") {
       const category = url.searchParams.get("category") || "meat";
-      const snapshot = await fetchCargillsCategory(category);
-      return json({
-        data: snapshot.items,
-        meta: {
-          store: "cargills",
-          category,
-          source_status: snapshot.source_status,
-          captured_at: snapshot.captured_at,
-          extraction_mode: snapshot.extraction_mode,
-          count: snapshot.items.length,
-        },
-      });
+      try {
+        const snapshot = await fetchCargillsCategory(category);
+        return json({
+          data: snapshot.items,
+          meta: {
+            store: "cargills",
+            category,
+            source_status: snapshot.source_status,
+            captured_at: snapshot.captured_at,
+            extraction_mode: snapshot.extraction_mode,
+            count: snapshot.items.length,
+          },
+        });
+      } catch (error) {
+        const sourceStatus = sourceStatusOfError(error);
+        return json({
+          error: summarizeError(error),
+          meta: {
+            store: "cargills",
+            category,
+            source_status: sourceStatus,
+          },
+        }, { status: statusCodeForSourceStatus(sourceStatus) });
+      }
     }
 
     if (request.method === "GET" && url.pathname === "/api/glomark/fetch") {
       const category = url.searchParams.get("category") || "meat";
-      const snapshot = await fetchGlomarkCategory(category);
-      return json({
-        data: snapshot.items,
-        meta: {
-          store: "glomark",
-          category,
-          source_status: snapshot.source_status,
-          captured_at: snapshot.captured_at,
-          extraction_mode: snapshot.extraction_mode,
-          count: snapshot.items.length,
-        },
-      });
+      try {
+        const snapshot = await fetchGlomarkCategory(category);
+        return json({
+          data: snapshot.items,
+          meta: {
+            store: "glomark",
+            category,
+            source_status: snapshot.source_status,
+            captured_at: snapshot.captured_at,
+            extraction_mode: snapshot.extraction_mode,
+            count: snapshot.items.length,
+          },
+        });
+      } catch (error) {
+        const sourceStatus = sourceStatusOfError(error);
+        return json({
+          error: summarizeError(error),
+          meta: {
+            store: "glomark",
+            category,
+            source_status: sourceStatus,
+          },
+        }, { status: statusCodeForSourceStatus(sourceStatus) });
+      }
     }
 
     if (request.method === "GET" && url.pathname === "/api/health") {

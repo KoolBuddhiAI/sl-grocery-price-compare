@@ -26,6 +26,12 @@ type GlomarkRawProduct = {
   subCategoryDetails?: { name: string };
 };
 
+type FetchDiagnosticError = Error & { sourceStatus: SourceStatus };
+
+function createFetchDiagnosticError(message: string, sourceStatus: SourceStatus = "blocked_or_unstable"): FetchDiagnosticError {
+  return Object.assign(new Error(message), { sourceStatus });
+}
+
 function slugify(name: string): string {
   return name
     .toLowerCase()
@@ -103,6 +109,14 @@ export function extractProductListFromHtml(html: string): GlomarkRawProduct[] {
   }
 }
 
+export function requireProductListFromHtml(html: string): GlomarkRawProduct[] {
+  const rawProducts = extractProductListFromHtml(html);
+  if (rawProducts.length === 0) {
+    throw createFetchDiagnosticError("glomark: productList missing from HTML");
+  }
+  return rawProducts;
+}
+
 export function transformGlomarkProducts(
   rawProducts: GlomarkRawProduct[],
   options: { capturedAt?: string; sourceStatus?: SourceStatus; category?: string } = {}
@@ -142,29 +156,11 @@ export async function fetchGlomarkCategory(
   });
 
   if (!response.ok) {
-    return {
-      provider: "glomark",
-      category,
-      extraction_mode: "worker_fetch",
-      captured_at: new Date().toISOString(),
-      source_status: "blocked_or_unstable",
-      items: [],
-    };
+    throw createFetchDiagnosticError(`glomark: category fetch non-200 (${response.status})`);
   }
 
   const html = await response.text();
-  const rawProducts = extractProductListFromHtml(html);
-
-  if (rawProducts.length === 0) {
-    return {
-      provider: "glomark",
-      category,
-      extraction_mode: "worker_fetch",
-      captured_at: new Date().toISOString(),
-      source_status: "not_found",
-      items: [],
-    };
-  }
+  const rawProducts = requireProductListFromHtml(html);
 
   return transformGlomarkProducts(rawProducts, { category });
 }

@@ -23,6 +23,12 @@ type CargillsRawProduct = {
   EnId: string;
 };
 
+type FetchDiagnosticError = Error & { sourceStatus: SourceStatus };
+
+function createFetchDiagnosticError(message: string, sourceStatus: SourceStatus = "blocked_or_unstable"): FetchDiagnosticError {
+  return Object.assign(new Error(message), { sourceStatus });
+}
+
 function slugify(name: string): string {
   return name
     .toLowerCase()
@@ -116,6 +122,21 @@ export function transformCargillsProducts(
   };
 }
 
+export function parseCargillsProductsResponse(body: string): CargillsRawProduct[] {
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(body);
+  } catch {
+    throw createFetchDiagnosticError("cargills: JSON parse failed");
+  }
+
+  if (!Array.isArray(parsed)) {
+    throw createFetchDiagnosticError("cargills: product array missing from response");
+  }
+
+  return parsed as CargillsRawProduct[];
+}
+
 /**
  * Bootstrap a session with Cargills and return the session cookies.
  */
@@ -130,7 +151,7 @@ async function bootstrapSession(): Promise<string> {
   });
 
   if (!response.ok) {
-    throw new Error(`Session bootstrap failed: ${response.status}`);
+    throw createFetchDiagnosticError(`cargills: session bootstrap failed (${response.status})`);
   }
 
   // Consume the response body
@@ -161,15 +182,8 @@ export async function fetchCargillsCategory(
   let cookies: string;
   try {
     cookies = await bootstrapSession();
-  } catch {
-    return {
-      provider: "cargills",
-      category,
-      extraction_mode: "worker_fetch",
-      captured_at: new Date().toISOString(),
-      source_status: "blocked_or_unstable",
-      items: [],
-    };
+  } catch (error) {
+    throw error instanceof Error ? error : createFetchDiagnosticError("cargills: session bootstrap failed");
   }
 
   const encodedId = encodeCategoryId(categoryId);
@@ -186,29 +200,10 @@ export async function fetchCargillsCategory(
   });
 
   if (!response.ok) {
-    return {
-      provider: "cargills",
-      category,
-      extraction_mode: "worker_fetch",
-      captured_at: new Date().toISOString(),
-      source_status: "blocked_or_unstable",
-      items: [],
-    };
+    throw createFetchDiagnosticError(`cargills: product fetch non-200 (${response.status})`);
   }
 
-  let rawProducts: CargillsRawProduct[];
-  try {
-    rawProducts = await response.json() as CargillsRawProduct[];
-  } catch {
-    return {
-      provider: "cargills",
-      category,
-      extraction_mode: "worker_fetch",
-      captured_at: new Date().toISOString(),
-      source_status: "blocked_or_unstable",
-      items: [],
-    };
-  }
+  const rawProducts = parseCargillsProductsResponse(await response.text());
 
   if (!Array.isArray(rawProducts) || rawProducts.length === 0) {
     return {

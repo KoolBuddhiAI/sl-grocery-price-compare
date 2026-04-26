@@ -226,11 +226,13 @@ The `GET /api/health` endpoint exposes per-store freshness:
 {
   "stores": {
     "keells":   { "source_status": "ok", "captured_at": "...", "count": 80 },
-    "glomark":  { "source_status": "ok", "captured_at": "...", "count": 38 },
-    "cargills": { "source_status": "ok", "captured_at": "...", "count": 82 }
+    "glomark":  { "source_status": "ok", "captured_at": "...", "count": 38, "refresh_status": { "last_attempted_at": "...", "last_successful_at": "...", "last_error_message": null } },
+    "cargills": { "source_status": "ok", "captured_at": "...", "count": 82, "refresh_status": { "last_attempted_at": "...", "last_successful_at": "...", "last_error_message": "cargills: product fetch non-200 (503)" } }
   }
 }
 ```
+
+For automatic Glomark and Cargills refreshes, health also carries the most recent attempt outcome and the last recorded error. Adapter failures now preserve stage-specific messages such as `glomark: productList missing from HTML`, `cargills: session bootstrap failed (...)`, `cargills: product fetch non-200 (...)`, or `cargills: JSON parse failed`.
 
 The frontend shows a relative freshness label such as "Updated 3 hours ago", warns when data is older than 24 hours, and also renders the exact capture timestamp in `Asia/Colombo` (`UTC+5:30`) so the local interpretation is explicit.
 

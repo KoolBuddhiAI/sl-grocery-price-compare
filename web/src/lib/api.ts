@@ -36,11 +36,15 @@ export type StoreMeta = {
   refresh_status?: {
     provider: Store;
     category: string;
-    attempted_at: string;
-    source_status: string;
-    item_count: number;
-    message: string;
-    success: boolean;
+    last_attempted_at: string;
+    last_attempt_source_status: string;
+    last_attempt_item_count: number;
+    last_attempt_message: string;
+    last_attempt_success: boolean;
+    last_successful_at: string | null;
+    last_success_item_count: number | null;
+    last_error_message: string | null;
+    last_error_at: string | null;
   } | null;
 };
 

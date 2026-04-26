@@ -35,17 +35,93 @@ function isSourceStatus(value: unknown): value is SourceStatus {
     || value === "not_found";
 }
 
+type LegacyRefreshStatusRecord = {
+  provider: Provider;
+  category: string;
+  attempted_at: string;
+  source_status: SourceStatus;
+  item_count: number;
+  message: string;
+  success: boolean;
+};
+
+export type RefreshStatusAttempt = {
+  provider: Provider;
+  category: string;
+  attempted_at: string;
+  source_status: SourceStatus;
+  item_count: number;
+  message: string;
+  success: boolean;
+};
+
+function isLegacyRefreshStatusRecord(value: Record<string, unknown>): value is LegacyRefreshStatusRecord {
+  return isValidProvider(String(value.provider))
+    && typeof value.category === "string"
+    && value.category.length > 0
+    && typeof value.attempted_at === "string"
+    && value.attempted_at.length > 0
+    && isSourceStatus(value.source_status)
+    && typeof value.item_count === "number"
+    && typeof value.message === "string"
+    && typeof value.success === "boolean";
+}
+
+function fromLegacyRefreshStatusRecord(record: LegacyRefreshStatusRecord): RefreshStatusRecord {
+  return {
+    provider: record.provider,
+    category: record.category,
+    last_attempted_at: record.attempted_at,
+    last_attempt_source_status: record.source_status,
+    last_attempt_item_count: record.item_count,
+    last_attempt_message: record.message,
+    last_attempt_success: record.success,
+    last_successful_at: record.success ? record.attempted_at : null,
+    last_success_item_count: record.success ? record.item_count : null,
+    last_error_message: record.success ? null : record.message,
+    last_error_at: record.success ? null : record.attempted_at,
+  };
+}
+
 function parseRefreshStatusRecord(value: unknown): RefreshStatusRecord | null {
   if (typeof value !== "object" || value === null) return null;
   const record = value as Record<string, unknown>;
+
+  if (isLegacyRefreshStatusRecord(record)) {
+    return fromLegacyRefreshStatusRecord(record);
+  }
+
   if (!isValidProvider(String(record.provider))) return null;
   if (typeof record.category !== "string" || record.category.length === 0) return null;
-  if (typeof record.attempted_at !== "string" || record.attempted_at.length === 0) return null;
-  if (!isSourceStatus(record.source_status)) return null;
-  if (typeof record.item_count !== "number") return null;
-  if (typeof record.message !== "string") return null;
-  if (typeof record.success !== "boolean") return null;
+  if (typeof record.last_attempted_at !== "string" || record.last_attempted_at.length === 0) return null;
+  if (!isSourceStatus(record.last_attempt_source_status)) return null;
+  if (typeof record.last_attempt_item_count !== "number") return null;
+  if (typeof record.last_attempt_message !== "string") return null;
+  if (typeof record.last_attempt_success !== "boolean") return null;
+  if (record.last_successful_at !== null && typeof record.last_successful_at !== "string") return null;
+  if (record.last_success_item_count !== null && typeof record.last_success_item_count !== "number") return null;
+  if (record.last_error_message !== null && typeof record.last_error_message !== "string") return null;
+  if (record.last_error_at !== null && typeof record.last_error_at !== "string") return null;
   return record as RefreshStatusRecord;
+}
+
+export function mergeRefreshStatusRecord(
+  previous: RefreshStatusRecord | null,
+  attempt: RefreshStatusAttempt
+): RefreshStatusRecord {
+  return {
+    provider: attempt.provider,
+    category: attempt.category,
+    last_attempted_at: attempt.attempted_at,
+    last_attempt_source_status: attempt.source_status,
+    last_attempt_item_count: attempt.item_count,
+    last_attempt_message: attempt.message,
+    last_attempt_success: attempt.success,
+    last_successful_at: attempt.success ? attempt.attempted_at : previous?.last_successful_at ?? null,
+    last_success_item_count: attempt.success ? attempt.item_count : previous?.last_success_item_count ?? null,
+    last_error_message: attempt.success ? previous?.last_error_message ?? null : attempt.message,
+    last_error_at: attempt.success ? previous?.last_error_at ?? null : attempt.attempted_at,
+  };
 }
 
 export async function getSnapshotFromKV(
