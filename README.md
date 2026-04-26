@@ -38,6 +38,13 @@ See [docs/architecture-big-picture.md](docs/architecture-big-picture.md) for the
 | [Glomark Provider](docs/glomark-provider.md) | Glomark HTML extraction docs |
 | [Cargills Provider](docs/cargills-provider.md) | Cargills session + POST API docs |
 
+## Live App
+
+- Frontend: `https://sl-grocery-prices.pages.dev`
+- Worker API: `https://price-compare-cloudflare.<your-workers-subdomain>.workers.dev`
+
+If you bind a custom domain later, update these links here so the repo stays authoritative.
+
 ## Quick Start
 
 ### Prerequisites
@@ -88,7 +95,7 @@ npm run keells:push
 **Environment variables for push:**
 
 ```bash
-export WORKER_URL="https://price-compare-cloudflare.your-subdomain.workers.dev"
+export WORKER_URL="https://price-compare-cloudflare.<your-workers-subdomain>.workers.dev"
 export SNAPSHOT_API_KEY="your-secret-key"
 ```
 
